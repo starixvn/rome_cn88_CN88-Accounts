@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @StaticResources.AssetStyles.RenderCommon("/bundles/common/common")
+    @StaticResources.AssetStyles.Render("/bundles/site-accounts/default")
+    @RenderSection("Styles", required: false)
+</head>
+<body @Html.Raw(CN88.Web.Helpers.BrowserManager.BuildMobileHtmlClass())>
+    @RenderBody()
+    @StaticResources.AssetScripts.RenderCommon("/bundles/common/common")
+    @StaticResources.AssetScripts.Render("/bundles/site-accounts/default")
+    @RenderSection("Scripts", required: false)
+    @Html.Raw(Fanex.Logging.LogManager.RenderJavascriptLogger())
+</body>
+</html>

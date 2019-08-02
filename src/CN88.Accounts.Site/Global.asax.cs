@@ -9,9 +9,9 @@
     using System.Web.Mvc;
     using System.Web.Routing;
     using Alpha.Logging;
-    using CN88.Accounts.Shared.Configurations;
+    using CN88.Accounts.Shared;
     using CN88.Accounts.Site.App_Start;
-    using CN88.Accounts.Site.Shared;
+    using CN88.Accounts.Site.Features.Shared;
     using CN88.Web.Filters;
     using CN88.Web.Helpers;
     using Fanex.Data;
@@ -26,12 +26,12 @@
     {
         protected void Application_Start()
         {
-            ViewEngines.Engines.Clear();
-            ViewEngines.Engines.Add(new RazorViewEngine());
-            MvcHandler.DisableMvcResponseHeader = true;
-
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new FeatureFoldersRazorViewEngine());
+            MvcHandler.DisableMvcResponseHeader = true;
 
             var sensitivteInfo = new[] { "password", "seccode", "securitycode" };
             LoggingConfig.Init(sensitivteInfo, DatabaseInfoGetters.GetDbExceptionInfo);

@@ -1,4 +1,17 @@
 ﻿@{
-    Layout = "~/Shared/Views/_Layout.cshtml";
+    Layout = "~/Features/Shared/Views/_Layout.cshtml";
 }
-<h1>Problem Account</h1>
+@section Styles{
+    @StaticResources.RenderStyles("~/Features/ProblemAccount/bundles/index")
+}
+@model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.IndexViewModel
+<div class="page-title">@Resources.ProblemAccount</div>
+<div class="note">
+    <span class="start">*</span>@Resources.ProblemAccountNote
+</div>
+<form class="form-inline filter" role="form" id="problem-account-form">
+    @DateRangePicker.Render(Model.DateRangePickerViewModel)
+</form>
+@section Scripts{
+    @StaticResources.RenderScripts("~/Features/ProblemAccount/bundles/index")
+}

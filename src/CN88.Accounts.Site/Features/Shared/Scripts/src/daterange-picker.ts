@@ -1,0 +1,43 @@
+﻿class DateRangePickerOption {
+    constructor(
+        public selectorId: string = "daterange-picker",
+        public onChange: Function = null) {
+        this.selectorId = selectorId;
+        this.onChange = onChange;
+    }
+}
+
+class DateRangePickerComponent {
+    $: JQueryStatic;
+    options = new DateRangePickerOption();
+
+    constructor($: JQueryStatic) {
+        this.$ = $;
+    }
+
+    render = (options: DateRangePickerOption = new DateRangePickerOption()) => {
+        this.options = this.$.extend({}, this.options, options);
+
+        let dateRangePicker = this.$("#" + this.options.selectorId);
+        let currentDate = dateRangePicker.data("currentdate");
+        let minDate = dateRangePicker.data("mindate");
+        let maxDate = dateRangePicker.data("maxdate");
+
+        dateRangePicker.nexDatePicker({
+            datePickerFormat: {
+                dateFormat: cn88Accounts.format.shortDate_DatePicker
+            },
+            selectedItem: dateRangePicker.data("selecteddaterange"),
+            minDate: new Date(minDate),
+            maxDate: maxDate === "" ? null : maxDate,
+            currentDate: new Date(currentDate),
+            onSelectDatePicker: () => {
+                if (this.options.onChange) {
+                    this.options.onChange();
+                }
+            }
+        });
+
+        return dateRangePicker;
+    };
+}

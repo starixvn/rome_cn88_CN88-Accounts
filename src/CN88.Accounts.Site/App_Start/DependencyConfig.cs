@@ -4,7 +4,7 @@
     using System.Reflection;
     using System.Web.Mvc;
     using CN88.Accounts.Shared.Models;
-    using CN88.Accounts.Site.Shared;
+    using CN88.Accounts.Site.Features.Shared;
     using CN88.Web.Helpers;
     using Fanex.Data.Repository;
     using Fanex.Logging;

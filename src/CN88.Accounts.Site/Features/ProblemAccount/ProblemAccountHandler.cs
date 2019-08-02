@@ -9,7 +9,7 @@
     {
         public Task<IndexViewModel> Handle(IndexQuery message)
         {
-            return Task.FromResult(new IndexViewModel());
+            return Task.FromResult(new IndexViewModel(message));
         }
     }
 }

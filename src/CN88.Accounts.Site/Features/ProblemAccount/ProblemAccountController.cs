@@ -3,7 +3,7 @@
     using System.Threading.Tasks;
     using System.Web.Mvc;
     using CN88.Accounts.Site.Features.ProblemAccount.Requests;
-    using CN88.Accounts.Site.Shared;
+    using CN88.Accounts.Site.Features.Shared;
     using MediatR;
 
     public class ProblemAccountController : SiteBaseController

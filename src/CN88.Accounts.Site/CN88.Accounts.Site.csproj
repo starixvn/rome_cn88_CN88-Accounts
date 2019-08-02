@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -24,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.4</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -193,39 +195,72 @@
     <Content Include="App_Data\SPNames\Dev\DBCust.CustDB.xml" />
     <Content Include="App_Data\SPNames\Internal\DBCust.CustDB.xml" />
     <Content Include="App_Data\SPNames\Main\DBCust.CustDB.xml" />
+    <Content Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </Content>
+    <Content Include="Features\ProblemAccount\bundles\index.css" />
+    <Content Include="Features\ProblemAccount\bundles\index.js" />
+    <Content Include="Features\ProblemAccount\bundles\index.min.css">
+      <DependentUpon>index.css</DependentUpon>
+    </Content>
+    <Content Include="Features\ProblemAccount\bundles\index.min.js">
+      <DependentUpon>index.js</DependentUpon>
+    </Content>
+    <Content Include="Features\ProblemAccount\Styles\problem-account.css">
+      <DependentUpon>problem-account.scss</DependentUpon>
+    </Content>
+    <Content Include="Features\ProblemAccount\Styles\problem-account.min.css">
+      <DependentUpon>problem-account.css</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\DependencyConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Features\Shared\FeatureFoldersRazorViewEngine.cs" />
     <Compile Include="Features\ProblemAccount\ProblemAccountController.cs" />
     <Compile Include="Features\ProblemAccount\ProblemAccountHandler.cs" />
     <Compile Include="Features\ProblemAccount\Requests\IndexQuery.cs" />
     <Compile Include="Features\ProblemAccount\ViewModels\IndexViewModel.cs" />
+    <Compile Include="Features\Shared\ViewModels\DateRangePickerViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Shared\BaseQuery.cs" />
-    <Compile Include="Shared\QueryEntityModelBinder.cs" />
-    <Compile Include="Shared\SiteBaseController.cs" />
-    <Compile Include="Shared\User.cs" />
+    <Compile Include="Features\Shared\BaseQuery.cs" />
+    <Compile Include="Features\Shared\QueryEntityModelBinder.cs" />
+    <Compile Include="Features\Shared\SiteBaseController.cs" />
+    <Compile Include="Features\Shared\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\AuthorizationSection.config" />
     <Content Include="Features\ProblemAccount\Views\Index.cshtml" />
-    <Content Include="Features\ProblemAccount\Views\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Features\ProblemAccount\Styles\problem-account.scss" />
+    <Content Include="compilerconfig.json" />
+    <Content Include="bundleconfig.json" />
+    <Content Include="App_Code\DateRangePicker.cshtml" />
     <None Include="packages.config" />
-    <Content Include="Shared\Views\_Layout.cshtml" />
-    <Content Include="Shared\Views\Web.config">
+    <Content Include="Features\Shared\Views\_Layout.cshtml" />
+    <Content Include="Features\Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Shared\Views\NoInformation.cshtml" />
+    <Content Include="Features\Shared\Views\NoInformation.cshtml" />
     <Content Include="Web.AppSettings.config" />
     <Content Include="Web.local.config" />
+    <Content Include="tsconfig.json" />
+    <Content Include="typings\globals\bootstrap\typings.json" />
+    <Content Include="typings\globals\cleave.js\LICENSE" />
+    <Content Include="typings\globals\cleave.js\package.json" />
+    <Content Include="typings\globals\cleave.js\README.md" />
+    <Content Include="typings\globals\jasmine-jquery\typings.json" />
+    <Content Include="typings\globals\jasmine\typings.json" />
+    <Content Include="typings\globals\jquery.blockui\typings.json" />
+    <Content Include="typings\globals\jquery.cookie\typings.json" />
+    <Content Include="typings\globals\jqueryui\typings.json" />
+    <Content Include="typings\globals\jquery\typings.json" />
+    <Content Include="typings\globals\moment\typings.json" />
+    <Content Include="typings\globals\storejs\typings.json" />
     <None Include="Web.AppSettings.backupMNL.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </None>
@@ -279,11 +314,34 @@
       <Name>CN88.Accounts</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Features\ProblemAccount\Scripts\src\problem-account.ts" />
+    <TypeScriptCompile Include="Features\Shared\Scripts\src\core.ts" />
+    <TypeScriptCompile Include="Features\Shared\Scripts\src\daterange-picker.ts" />
+    <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\cleave.js\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\cleave.js\options\creditCard.d.ts" />
+    <TypeScriptCompile Include="typings\globals\cleave.js\options\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\jasmine-jquery\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\jasmine\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\jquery.blockui\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\jquery.cookie\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\jqueryui\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\jquery\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\moment\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\numeral\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\storejs\index.d.ts" />
+    <TypeScriptCompile Include="typings\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
@@ -311,6 +369,17 @@
     <Error Condition="!Exists('..\..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>
+      cd $(ProjectDir)
+      cd ..
+      cd ..
+      cd build
+      assets.build
+      if not exist "$(WebProjectOutputDir)\bin\Roslyn" md "$(WebProjectOutputDir)\bin\Roslyn"
+      start /MIN xcopy /s /y /R "$(OutDir)roslyn\*.*" "$(WebProjectOutputDir)\bin\Roslyn"
+</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

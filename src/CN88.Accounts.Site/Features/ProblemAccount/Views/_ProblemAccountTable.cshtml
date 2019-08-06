@@ -1,0 +1,31 @@
+﻿@using CN88.Accounts.ProblemAccount.Resources
+@model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.IndexViewModel
+<table id="tblProblemAccount" class="tbl-style2 table-problem-account">
+    <thead>
+        <tr>
+            <th>@SharedResources.No</th>
+            <th>@ProblemAccountResources.ProblemAccount</th>
+            <th>@SharedResources.Name</th>
+            <th>@SharedResources.Nickname</th>
+            @if (Model.CustLevel.IsMasterLevel())
+            {
+                <th>@ProblemAccountResources.ProblemAgentAccounts <span class="icon-info" data-toggle="tooltip" title="@ProblemAccountResources.ProblemAgentAccountsTooltip" /></th>
+            }
+            @if (Model.CustLevel.IsAgentLevel())
+            {
+                <th>@ProblemAccountResources.ProblemMemberAccounts <span class="icon-info" data-toggle="tooltip" title="@ProblemAccountResources.ProblemMemberAccountsTooltip" /></th>
+            }
+            <th>@SharedResources.Status</th>
+            <th>@ProblemAccountResources.DateNotified</th>
+            <th>@ProblemAccountResources.ReviewStatus</th>
+            <th align="center">
+                <input type="checkbox" id="SelectAll" name="SelectAll" value="" />
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="@Model.NumberOfColumns" align="center">@SharedResources.NoInformationIsAvailable</td>
+        </tr>
+    </tbody>
+</table>

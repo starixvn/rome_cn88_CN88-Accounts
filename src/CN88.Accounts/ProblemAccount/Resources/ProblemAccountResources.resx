@@ -117,7 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NoInformationIsAvailable" xml:space="preserve">
-    <value>无资料</value>
+  <data name="ProblemAccount" xml:space="preserve">
+    <value>Problem Account</value>
+  </data>
+  <data name="ProblemAccountNote" xml:space="preserve">
+    <value>This page displays a listing of user's downline accounts that have problems.</value>
+  </data>
+  <data name="ReviewStatus" xml:space="preserve">
+    <value>Review Status</value>
+  </data>
+  <data name="Reviewed" xml:space="preserve">
+    <value>Reviewed</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="NotReviewed" xml:space="preserve">
+    <value>Not Reviewed</value>
+  </data>
+  <data name="DateNotified" xml:space="preserve">
+    <value>Date Notified</value>
+  </data>
+  <data name="ProblemAgentAccounts" xml:space="preserve">
+    <value>Problem Agent Accounts</value>
+  </data>
+  <data name="ProblemMemberAccounts" xml:space="preserve">
+    <value>Problem Member Accounts</value>
+  </data>
+  <data name="ProblemAgentAccountsTooltip" xml:space="preserve">
+    <value>Problem Agent Accounts are the newly marked ones in the selected report period.</value>
+  </data>
+  <data name="ProblemMemberAccountsTooltip" xml:space="preserve">
+    <value>Problem Member Accounts are the newly marked ones in the selected report period.</value>
   </data>
 </root>

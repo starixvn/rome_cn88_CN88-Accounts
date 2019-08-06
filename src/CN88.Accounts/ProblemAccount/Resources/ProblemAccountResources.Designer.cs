@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CN88.Accounts.Shared.AppResources {
+namespace CN88.Accounts.ProblemAccount.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace CN88.Accounts.Shared.AppResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    public class ProblemAccountResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal ProblemAccountResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace CN88.Accounts.Shared.AppResources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CN88.Accounts.Shared.AppResources.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CN88.Accounts.ProblemAccount.Resources.ProblemAccountResources", typeof(ProblemAccountResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,29 @@ namespace CN88.Accounts.Shared.AppResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to From.
+        ///   Looks up a localized string similar to All.
         /// </summary>
-        public static string From {
+        public static string All {
             get {
-                return ResourceManager.GetString("From", resourceCulture);
+                return ResourceManager.GetString("All", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No information is available.
+        ///   Looks up a localized string similar to Date Notified.
         /// </summary>
-        public static string NoInformationIsAvailable {
+        public static string DateNotified {
             get {
-                return ResourceManager.GetString("NoInformationIsAvailable", resourceCulture);
+                return ResourceManager.GetString("DateNotified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Reviewed.
+        /// </summary>
+        public static string NotReviewed {
+            get {
+                return ResourceManager.GetString("NotReviewed", resourceCulture);
             }
         }
         
@@ -97,11 +106,56 @@ namespace CN88.Accounts.Shared.AppResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To.
+        ///   Looks up a localized string similar to Problem Agent Accounts.
         /// </summary>
-        public static string To {
+        public static string ProblemAgentAccounts {
             get {
-                return ResourceManager.GetString("To", resourceCulture);
+                return ResourceManager.GetString("ProblemAgentAccounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Problem Agent Accounts are the newly marked ones in the selected report period..
+        /// </summary>
+        public static string ProblemAgentAccountsTooltip {
+            get {
+                return ResourceManager.GetString("ProblemAgentAccountsTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Problem Member Accounts.
+        /// </summary>
+        public static string ProblemMemberAccounts {
+            get {
+                return ResourceManager.GetString("ProblemMemberAccounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Problem Member Accounts are the newly marked ones in the selected report period..
+        /// </summary>
+        public static string ProblemMemberAccountsTooltip {
+            get {
+                return ResourceManager.GetString("ProblemMemberAccountsTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reviewed.
+        /// </summary>
+        public static string Reviewed {
+            get {
+                return ResourceManager.GetString("Reviewed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Review Status.
+        /// </summary>
+        public static string ReviewStatus {
+            get {
+                return ResourceManager.GetString("ReviewStatus", resourceCulture);
             }
         }
     }

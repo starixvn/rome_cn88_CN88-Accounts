@@ -1,0 +1,44 @@
+﻿@using CN88.Accounts.ProblemAccount.Resources
+@using CN88.Accounts.Site.Features.Shared.ViewModels
+@model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.IndexViewModel
+<div class="filter">
+    <div class="note">
+        <span class="start">*</span>@ProblemAccountResources.ProblemAccountNote
+    </div>
+    <form class="form-inline filter" role="form" id="problem-account-form">
+        @RenderHiddenFeilds()
+        @DateRangePicker.Render(Model.DateRangePicker)
+        @RenderReviewStatusDropdown(Model.ReviewStatusSelection)
+        @if (Model.CustLevel.IsAgentLevel() || Model.CustLevel.IsMemberLevel())
+        {
+            <div class="form-group">
+                <label>@SharedResources.ResourceManager.GetString(Model.CustLevel.GetDirectUplineLevel().DisplayName)</label>
+                <input type="text" id="UplineUsername" name="UplineUsername" value="" />
+            </div>
+        }
+        <div class="form-group">
+            <label>@SharedResources.UsernameOrNameContains</label>
+            <input type="text" id="SearchUsername" name="SearchUsername" value="" />
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn-submit" value="@SharedResources.Submit" />
+        </div>
+    </form>
+</div>
+@helper RenderHiddenFeilds()
+{
+    @Html.Hidden("CustLevelId", Model.CustLevel.Value)
+}
+@helper RenderReviewStatusDropdown(SingleSelectionViewModel viewModel)
+{
+    <div class="form-group">
+        <label>@ProblemAccountResources.ReviewStatus</label>
+        <select id="dropdown-review-status">
+            @foreach (var group in viewModel.Items)
+            {
+                <option value="@group.Value" @(group.Selected ? " selected=\"selected\"" : string.Empty)>@group.Text</option>
+            }
+        </select>
+        <input type="hidden" name="" id="SelectedReviewStatus" value="@viewModel.SelectedId" />
+    </div>
+}

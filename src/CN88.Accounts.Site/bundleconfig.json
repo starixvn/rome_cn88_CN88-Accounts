@@ -10,6 +10,7 @@
     "inputFiles": [
       "Features/Shared/Scripts/src/core.js",
       "Features/Shared/Scripts/src/daterange-picker.js",
+      "Features/Shared/Scripts/src/single-selection-dropdown.js",
       "Features/ProblemAccount/Scripts/src/problem-account.js"
     ]
   }

@@ -4,14 +4,25 @@
 @section Styles{
     @StaticResources.RenderStyles("~/Features/ProblemAccount/bundles/index")
 }
+@using CN88.Web.Models
 @model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.IndexViewModel
-<div class="page-title">@Resources.ProblemAccount</div>
-<div class="note">
-    <span class="start">*</span>@Resources.ProblemAccountNote
+<ul id="nav-tabs" class="nav @(Model.IsMobile ? "nav-tabs" : "nav-tabs-style2")" role="tablist">
+    <li class="@(Model.CustLevel.IsMasterLevel() ? "active" : string.Empty)" role="presentation">
+        <a href="@Url.Action("Index", "ProblemAccount", new { CustLevelId = UserLevel.Master.Value })">@SharedResources.Master</a>
+    </li>
+    <li class="@(Model.CustLevel.IsAgentLevel() ? "active" : string.Empty)" role="presentation">
+        <a href="@Url.Action("Index", "ProblemAccount", new { CustLevelId = UserLevel.Agent.Value })">@SharedResources.Agent</a>
+    </li>
+    <li class="@(Model.CustLevel.IsMemberLevel() ? "active" : string.Empty)" role="presentation">
+        <a href="@Url.Action("Index", "ProblemAccount", new { CustLevelId = UserLevel.Member.Value })">@SharedResources.Member</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane fade in active" role="tabpanel">
+        @Html.Partial("_Filter")
+        @Html.Partial("_ProblemAccountTable")
+    </div>
 </div>
-<form class="form-inline filter" role="form" id="problem-account-form">
-    @DateRangePicker.Render(Model.DateRangePickerViewModel)
-</form>
 @section Scripts{
     @StaticResources.RenderScripts("~/Features/ProblemAccount/bundles/index")
 }

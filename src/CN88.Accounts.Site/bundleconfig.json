@@ -1,5 +1,11 @@
 ﻿[
   {
+    "outputFileName": "Features/Shared/bundles/accounts.css",
+    "inputFiles": [
+      "Features/Shared/Styles/accounts.css"
+    ]
+  },
+  {
     "outputFileName": "Features/ProblemAccount/bundles/index.css",
     "inputFiles": [
       "Features/ProblemAccount/Styles/problem-account.css"
@@ -9,6 +15,7 @@
     "outputFileName": "Features/ProblemAccount/bundles/index.js",
     "inputFiles": [
       "Features/Shared/Scripts/src/core.js",
+      "Features/Shared/Scripts/src/pager.js",
       "Features/Shared/Scripts/src/daterange-picker.js",
       "Features/Shared/Scripts/src/single-selection-dropdown.js",
       "Features/ProblemAccount/Scripts/src/problem-account.js"

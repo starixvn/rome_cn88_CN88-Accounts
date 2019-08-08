@@ -1,0 +1,9 @@
+﻿@using CN88.Accounts.Shared.Resources
+@helper Render(int colspan)
+{
+    <tbody>
+        <tr>
+            <td colspan="@colspan.ToString()" align="center">@SharedResources.NoInformationIsAvailable</td>
+        </tr>
+    </tbody>
+}

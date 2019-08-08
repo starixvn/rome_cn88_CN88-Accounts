@@ -5,19 +5,11 @@
 
     public class BaseQuery
     {
+        private readonly IUser viewer;
+
         public BaseQuery(IUser viewer)
         {
-            ViewerId = viewer.Id;
-            ViewerName = viewer.Name;
-            NickName = viewer.NickName;
-            ViewerLevelId = viewer.LevelId;
-            SubAccountId = viewer.SubAccountId;
-            IsSubAccount = viewer.IsSubAccount;
-            IsInternal = viewer.IsInternal;
-            IP = viewer.IP;
-            LanguageKey = viewer.LanguageKey;
-            Language = viewer.Language;
-            AccountManagementEditView = viewer.AccountManagementEditView;
+            this.viewer = viewer;
         }
 
         public int CustId { get; set; }
@@ -28,35 +20,35 @@
 
         public virtual UserLevel CustLevel => Enumeration.FromValue<UserLevel>(CustLevelId);
 
-        public int ViewerId { get; }
+        public int ViewerId => viewer.Id;
 
-        public string ViewerName { get; }
+        public string ViewerName => viewer.Name;
 
-        public string NickName { get; }
+        public string NickName => viewer.NickName;
 
-        public byte ViewerLevelId { get; }
+        public byte ViewerLevelId => viewer.LevelId;
 
         public virtual UserLevel ViewerLevel => Enumeration.FromValue<UserLevel>(ViewerLevelId);
 
-        public int SubAccountId { get; }
+        public int SubAccountId => viewer.SubAccountId;
 
-        public bool IsSubAccount { get; }
+        public bool IsSubAccount => viewer.IsSubAccount;
 
-        public bool AccountManagementEditView { get; }
+        public bool IsAllDownline => viewer.IsAllDownline;
 
-        public bool IsInternal { get; }
+        public bool AccountManagementEditView => viewer.AccountManagementEditView;
 
-        public string IP { get; }
+        public bool IsInternal => viewer.IsInternal;
 
-        public string Language { get; }
+        public string IP => viewer.IP;
 
-        public string LanguageKey { get; }
+        public string Language => viewer.Language;
+
+        public string LanguageKey => viewer.LanguageKey;
 
         public virtual bool IsValid()
             => ViewerId > 0
             && !string.IsNullOrWhiteSpace(ViewerName)
             && !string.IsNullOrWhiteSpace(Language);
-
-        public virtual string ErrorMessage { get; set; }
     }
 }

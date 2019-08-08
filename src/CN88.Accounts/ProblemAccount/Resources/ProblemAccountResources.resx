@@ -150,4 +150,7 @@
   <data name="ProblemMemberAccountsTooltip" xml:space="preserve">
     <value>Problem Member Accounts are the newly marked ones in the selected report period.</value>
   </data>
+  <data name="SetToReviewed" xml:space="preserve">
+    <value>Set to Reviewed</value>
+  </data>
 </root>

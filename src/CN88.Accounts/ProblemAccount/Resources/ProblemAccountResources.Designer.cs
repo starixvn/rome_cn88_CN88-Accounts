@@ -158,5 +158,14 @@ namespace CN88.Accounts.ProblemAccount.Resources {
                 return ResourceManager.GetString("ReviewStatus", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set to Reviewed.
+        /// </summary>
+        public static string SetToReviewed {
+            get {
+                return ResourceManager.GetString("SetToReviewed", resourceCulture);
+            }
+        }
     }
 }

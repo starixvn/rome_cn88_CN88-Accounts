@@ -192,8 +192,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\SPNames\Dev\DBAGE.bodb02.xml" />
     <Content Include="App_Data\SPNames\Dev\DBCust.CustDB.xml" />
+    <Content Include="App_Data\SPNames\Internal\DBAGE.bodb02.xml" />
     <Content Include="App_Data\SPNames\Internal\DBCust.CustDB.xml" />
+    <Content Include="App_Data\SPNames\Main\DBAGE.bodb02.xml" />
     <Content Include="App_Data\SPNames\Main\DBCust.CustDB.xml" />
     <Content Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -212,18 +215,31 @@
     <Content Include="Features\ProblemAccount\Styles\problem-account.min.css">
       <DependentUpon>problem-account.css</DependentUpon>
     </Content>
+    <Content Include="Features\Shared\bundles\accounts.css" />
+    <Content Include="Features\Shared\bundles\accounts.min.css">
+      <DependentUpon>accounts.css</DependentUpon>
+    </Content>
+    <Content Include="Features\Shared\Styles\accounts.css">
+      <DependentUpon>accounts.scss</DependentUpon>
+    </Content>
+    <Content Include="Features\Shared\Styles\accounts.min.css">
+      <DependentUpon>accounts.css</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\DependencyConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Features\ProblemAccount\ViewModels\FilterViewModel.cs" />
     <Compile Include="Features\Shared\FeatureFoldersRazorViewEngine.cs" />
     <Compile Include="Features\ProblemAccount\ProblemAccountController.cs" />
     <Compile Include="Features\ProblemAccount\ProblemAccountHandler.cs" />
     <Compile Include="Features\ProblemAccount\Requests\IndexQuery.cs" />
     <Compile Include="Features\ProblemAccount\ViewModels\IndexViewModel.cs" />
+    <Compile Include="Features\Shared\Helpers\UrlHelper.cs" />
     <Compile Include="Features\Shared\ViewModels\DateRangePickerViewModel.cs" />
+    <Compile Include="Features\Shared\ViewModels\PagerViewModel.cs" />
     <Compile Include="Features\Shared\ViewModels\SingleSelectionViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -243,6 +259,9 @@
     <Content Include="Features\ProblemAccount\Views\_Filter.cshtml" />
     <Content Include="Features\ProblemAccount\Views\Index.cshtml" />
     <Content Include="Features\ProblemAccount\Views\_ProblemAccountTable.cshtml" />
+    <Content Include="App_Code\Pager.cshtml" />
+    <Content Include="App_Code\NoInformationTable.cshtml" />
+    <Content Include="Features\Shared\Styles\accounts.scss" />
     <None Include="packages.config" />
     <Content Include="Features\Shared\Views\_Layout.cshtml" />
     <Content Include="Features\Web.config">
@@ -321,6 +340,7 @@
     <TypeScriptCompile Include="Features\ProblemAccount\Scripts\src\problem-account.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\core.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\daterange-picker.ts" />
+    <TypeScriptCompile Include="Features\Shared\Scripts\src\pager.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\single-selection-dropdown.ts" />
     <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\cleave.js\index.d.ts" />

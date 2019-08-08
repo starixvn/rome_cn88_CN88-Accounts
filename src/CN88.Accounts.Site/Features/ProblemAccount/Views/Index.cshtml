@@ -5,7 +5,11 @@
     @StaticResources.RenderStyles("~/Features/ProblemAccount/bundles/index")
 }
 @using CN88.Web.Models
+@using CN88.Accounts.ProblemAccount.Resources
 @model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.IndexViewModel
+<div class="note">
+    <span class="start">*</span>@ProblemAccountResources.ProblemAccountNote
+</div>
 <ul id="nav-tabs" class="nav @(Model.IsMobile ? "nav-tabs" : "nav-tabs-style2")" role="tablist">
     <li class="@(Model.CustLevel.IsMasterLevel() ? "active" : string.Empty)" role="presentation">
         <a href="@Url.Action("Index", "ProblemAccount", new { CustLevelId = UserLevel.Master.Value })">@SharedResources.Master</a>
@@ -19,10 +23,12 @@
 </ul>
 <div class="tab-content">
     <div class="tab-pane fade in active" role="tabpanel">
-        @Html.Partial("_Filter")
+        @Html.Partial("_Filter", Model.FilterViewModel)
         @Html.Partial("_ProblemAccountTable")
+        @Pager.Render(Model.PagerViewModel)
     </div>
 </div>
+@Html.Hidden(nameof(SharedResources.UpdateStatus), SharedResources.UpdateStatus)
 @section Scripts{
     @StaticResources.RenderScripts("~/Features/ProblemAccount/bundles/index")
 }

@@ -153,4 +153,31 @@
   <data name="Status" xml:space="preserve">
     <value>状态</value>
   </data>
+  <data name="Page" xml:space="preserve">
+    <value>页</value>
+  </data>
+  <data name="of" xml:space="preserve">
+    <value>之</value>
+  </data>
+  <data name="Pager_DisplayItems" xml:space="preserve">
+    <value>显示{from}到{to}，共{total}笔</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>启用</value>
+  </data>
+  <data name="Inactive" xml:space="preserve">
+    <value>停用</value>
+  </data>
+  <data name="ViewOnly" xml:space="preserve">
+    <value>只能看帐</value>
+  </data>
+  <data name="Suspended" xml:space="preserve">
+    <value>禁止登入</value>
+  </data>
+  <data name="UpdateStatus" xml:space="preserve">
+    <value>更新状态</value>
+  </data>
+  <data name="ExportToExcel" xml:space="preserve">
+    <value>导出Excel</value>
+  </data>
 </root>

@@ -1,12 +1,8 @@
 ﻿namespace CN88.Accounts.Site.Features.ProblemAccount.ViewModels
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Web.Mvc;
     using CN88.Accounts.ProblemAccount;
-    using CN88.Accounts.ProblemAccount.Resources;
-    using CN88.Accounts.Shared;
+    using CN88.Accounts.Shared.Models;
     using CN88.Accounts.Site.Features.ProblemAccount.Requests;
     using CN88.Accounts.Site.Features.Shared.ViewModels;
     using CN88.Web.Helpers;
@@ -14,41 +10,56 @@
 
     public class IndexViewModel
     {
-        public IndexViewModel(IndexQuery query, BrowserHelper browserHelper)
-        {
-            IsMobile = browserHelper.IsMobile();
-            CustLevel = query.CustLevel;
+        private readonly IndexQuery query;
 
-            DateRangePicker = new DateRangePickerViewModel(
-                DateTime.MinValue,
-                SystemTime.Today,
-                query.FromDate,
-                query.ToDate);
-            ReviewStatusSelection = new SingleSelectionViewModel(
-                BuildReviewStatusSelectListItems(query.SelectedReviewStatus),
-                query.SelectedReviewStatus);
+        public IndexViewModel(
+            IndexQuery query,
+            bool isMobile,
+            BrowserHelper browserHelper,
+            PagedData<ProblemAccount> pagedData)
+        {
+            this.query = query;
+            IsMobile = isMobile;
+            PageData = pagedData;
         }
 
         public bool IsMobile { get; }
 
-        public UserLevel CustLevel { get; }
+        public UserLevel CustLevel => query.CustLevel;
+
+        public PagedData<ProblemAccount> PageData { get; }
 
         public int NumberOfColumns => CustLevel.IsMasterLevel() || CustLevel.IsAgentLevel() ? 9 : 8;
 
-        public DateRangePickerViewModel DateRangePicker { get; }
+        public FilterViewModel FilterViewModel => new FilterViewModel(query);
 
-        public SingleSelectionViewModel ReviewStatusSelection { get; }
+        public PagerViewModel PagerViewModel
+            => new PagerViewModel(PageData.PageIndex, PageData.PageSize, PageData.TotalRecords);
 
-        private IEnumerable<SelectListItem> BuildReviewStatusSelectListItems(int selectedStatus)
-            => new List<SelectListItem>
+        public string BuildDownlineLink(string uplineUsername, string currentLink)
+            => Shared.Helpers.UrlHelper.ReplaceOrAddQueryStringParamsFunc(
+                currentLink,
+                GetDownlineLinkRouteValues(uplineUsername));
+
+        public string BuildStatusLink(int custId, byte statusId)
+            => Shared.Helpers.UrlHelper.AddQueryStringParams(
+                Shared.Helpers.UrlHelper.MapFeaturesPath("~/CustomerList/StatusPopup"),
+                new Dictionary<string, object>
+                {
+                    [nameof(custId)] = custId,
+                    [nameof(statusId)] = statusId,
+                    [nameof(query.CustLevelId)] = query.CustLevelId
+                });
+
+        private IDictionary<string, object> GetDownlineLinkRouteValues(string uplineUsername)
+            => new Dictionary<string, object>
             {
-                new SelectListItem { Text = ProblemAccountResources.All, Value = ReviewStatusConstants.All.ToString() },
-                new SelectListItem { Text = ProblemAccountResources.Reviewed, Value = ReviewStatusConstants.Reviewed.ToString() },
-                new SelectListItem { Text = ProblemAccountResources.NotReviewed, Value = ReviewStatusConstants.NotReviewed.ToString() }
-            }.Select(item =>
-            {
-                item.Selected = item.Value == selectedStatus.ToString();
-                return item;
-            });
+                [nameof(uplineUsername)] = uplineUsername,
+                [nameof(query.FromDate)] = query.FromDate,
+                [nameof(query.ToDate)] = query.ToDate,
+                [nameof(query.SelectedReviewStatus)] = query.SelectedReviewStatus,
+                [nameof(query.CustLevelId)] = query.CustLevel.GetDirectDownLineLevel().Value
+            };
+
     }
 }

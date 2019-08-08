@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Reflection;
     using System.Web.Mvc;
+    using CN88.Accounts.ProblemAccount;
     using CN88.Accounts.Shared.Models;
     using CN88.Accounts.Site.Features.Shared;
     using CN88.Web.Helpers;
@@ -69,7 +70,8 @@
 
             container.RegisterSingleton(Logger.Log);
             container.RegisterSingleton<BrowserHelper, BrowserHelperImpl>();
-            container.Register<SessionManager, SessionManagerImpl>(Lifestyle.Scoped);
+
+            container.RegisterSingleton<ProblemAccountService, ProblemAccountServiceImpl>();
         }
     }
 }

@@ -5,10 +5,13 @@
     <title>@ViewBag.Title</title>
     @StaticResources.AssetStyles.RenderCommon("/bundles/common/common")
     @StaticResources.AssetStyles.Render("/bundles/site-accounts/default")
+    @StaticResources.RenderStyles("~/Features/Shared/bundles/accounts")
     @RenderSection("Styles", required: false)
 </head>
 <body @Html.Raw(CN88.Web.Helpers.BrowserManager.BuildMobileHtmlClass())>
-    @RenderBody()
+    <div class="content-page">
+        @RenderBody()
+    </div>
     @StaticResources.AssetScripts.RenderCommon("/bundles/common/common")
     @StaticResources.AssetScripts.Render("/bundles/site-accounts/default")
     @RenderSection("Scripts", required: false)

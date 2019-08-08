@@ -30,6 +30,8 @@
 
         public bool IsSubAccount => userSession.IsSubAcc;
 
+        public bool IsAllDownline => userSession.GetProperty<bool>("ISALLDOWNLINE");
+
         public string IP => userSession.UserLoginIp;
 
         public bool AccountManagementEditView => userSession.SubPageAccess.UpdateAccount;

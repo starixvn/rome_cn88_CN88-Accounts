@@ -4,11 +4,11 @@
 
     public static class ReviewStatusConstants
     {
-        public const int All = 0;
-        public const int Reviewed = 1;
-        public const int NotReviewed = 2;
+        public const byte All = 2;
+        public const byte Reviewed = 1;
+        public const byte NotReviewed = 0;
 
-        public static IDictionary<int, string> Items { get; } = new Dictionary<int, string>
+        public static IDictionary<byte, string> Items { get; } = new Dictionary<byte, string>
         {
             [All] = nameof(All),
             [Reviewed] = nameof(Reviewed),

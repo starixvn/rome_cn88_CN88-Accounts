@@ -18,12 +18,22 @@
             FromDate = SystemTime.Today.AddDays(-14);
             ToDate = SystemTime.Today;
             SelectedReviewStatus = ReviewStatusConstants.NotReviewed;
+            PageIndex = 1;
+            PageSize = 50;
         }
 
         public DateTime FromDate { get; set; }
 
         public DateTime ToDate { get; set; }
 
-        public int SelectedReviewStatus { get; set; }
+        public byte SelectedReviewStatus { get; set; }
+
+        public string UplineUsername { get; set; }
+
+        public string SearchUsername { get; set; }
+
+        public int PageIndex { get; set; }
+
+        public int PageSize { get; set; }
     }
 }

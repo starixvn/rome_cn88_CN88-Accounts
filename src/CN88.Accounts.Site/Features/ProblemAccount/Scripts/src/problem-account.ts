@@ -6,6 +6,7 @@
     pager: PagerComponent;
 
     $tooltips: JQuery;
+    $reportForm: JQuery;
     $tblProblemAccount: JQuery;
     $updateStatusLink: JQuery;
 
@@ -42,6 +43,7 @@
 
     cacheDOMElements(): void {
         this.$tooltips = this.$('[data-toggle="tooltip"]');
+        this.$reportForm = this.$("#report-form");
         this.$tblProblemAccount = this.$("#tblProblemAccount");
         this.$updateStatusLink = this.$("#UpdateStatusLink");
 
@@ -49,6 +51,7 @@
     }
 
     bindEvents(): void {
+        this.$reportForm.submit(this.onSubmit);
         this.$tblProblemAccount.find(".status-link").click(this.onStatusLinkClick);
     }
 
@@ -65,6 +68,10 @@
 
     openPopup(url: string, title = "", popupCss = "", width = 490, height = 210): void {
         this.topWindow["popupManager"].open({ title, url, width, height, popupCss });
+    }
+
+    onSubmit = () => {
+        this.reviewStatusDropdown.updateSelectedValue();
     }
 }
 

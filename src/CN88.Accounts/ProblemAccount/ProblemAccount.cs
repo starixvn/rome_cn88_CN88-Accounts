@@ -6,11 +6,16 @@
 
     public class ProblemAccount
     {
+        public ProblemAccount()
+        {
+        }
+
         public ProblemAccount(
             int custId,
             string username,
             string name,
             string nickname,
+            int numberOfDownline,
             byte status,
             DateTime createdDate,
             bool isReviewed)
@@ -19,6 +24,7 @@
             Username = username;
             Name = name;
             Nickname = nickname;
+            NumberOfDownline = numberOfDownline;
             Status = status;
             CreatedDate = createdDate;
             IsReviewed = isReviewed;
@@ -31,6 +37,8 @@
         public string Name { get; }
 
         public string Nickname { get; }
+
+        public int NumberOfDownline { get; }
 
         public byte Status { get; }
 

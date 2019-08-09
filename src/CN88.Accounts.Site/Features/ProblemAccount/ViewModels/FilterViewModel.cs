@@ -13,7 +13,7 @@
 
     public class FilterViewModel
     {
-        public FilterViewModel(IndexQuery query)
+        public FilterViewModel(ProblemAccountQuery query)
         {
             UplineUsername = query.UplineUsername;
             SearchUsername = query.SearchUsername;

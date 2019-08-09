@@ -1,0 +1,54 @@
+﻿namespace CN88.Accounts.Site.Features.Shared
+{
+    using System;
+    using System.IO;
+    using System.Web.Hosting;
+    using CN88.Accounts.Shared.Resources;
+    using CN88.Web.Models;
+    using ONEbook.SpreadSheets;
+
+    public abstract class ExcelBaseHandler
+    {
+        private Func<string, string> mapPath;
+
+        protected internal Func<string, string> MapPath
+        {
+            get { return mapPath ?? HostingEnvironment.MapPath; }
+            set { mapPath = value; }
+        }
+
+        protected abstract string GetExcelTemplateDir();
+
+        internal Func<string, bool> IsFileExist { get; set; } = File.Exists;
+
+        protected internal virtual TemplateInfo GetTemplateInfo(UserLevel userLevel)
+            => new TemplateInfo(
+                   ExcelTemplatePath(userLevel),
+                   noInfomationText: SharedResources.NoInformationIsAvailable,
+                   bodyStartIndex: 3,
+                   bodyEndIndex: 4,
+                   footerEndIndex: 5);
+
+        protected internal virtual string ExcelTemplatePath(UserLevel viewerLevel)
+            => GetExcelTemplatePath(viewerLevel.DisplayName);
+
+        protected internal virtual string GetExcelTemplatePath(string templateName, string fileExtension = "xls")
+        {
+            if (string.IsNullOrWhiteSpace(templateName))
+            {
+                throw new ArgumentNullException(nameof(templateName), "Template Name cannot be null or empty");
+            }
+
+            var relativePath = $"{GetExcelTemplateDir()}/ExcelTemplates/{templateName}.{fileExtension}";
+
+            var absolutePath = MapPath(relativePath);
+
+            if (IsFileExist(absolutePath))
+            {
+                return absolutePath;
+            }
+
+            throw new FileNotFoundException($"Template {absolutePath} does not exist");
+        }
+    }
+}

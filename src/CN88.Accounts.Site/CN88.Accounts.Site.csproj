@@ -101,6 +101,9 @@
     <Reference Include="Fanex.Products, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.Products.1.0.0.5\lib\net461\Fanex.Products.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="MediatR, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MediatR.3.0.1\lib\net45\MediatR.dll</HintPath>
     </Reference>
@@ -110,6 +113,24 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NPOI.2.2.1\lib\net40\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NPOI.2.2.1\lib\net40\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NPOI.2.2.1\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NPOI.2.2.1\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="ONEbook.SpreadSheets, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ONEbook.SpreadSheets.1.0.0.1\lib\net461\ONEbook.SpreadSheets.dll</HintPath>
+    </Reference>
+    <Reference Include="ONEbook.SpreadSheets.NPOI, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ONEbook.SpreadSheets.NPOI.1.0.0.3\lib\net461\ONEbook.SpreadSheets.NPOI.dll</HintPath>
     </Reference>
     <Reference Include="ONEbook.UM, Version=2.0.2.9, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\ONEbook.UM.2.0.2.9\lib\net40\ONEbook.UM.dll</HintPath>
@@ -225,14 +246,17 @@
   <ItemGroup>
     <Compile Include="App_Start\DependencyConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Features\ProblemAccount\Requests\ProblemAccountExcelQuery.cs" />
     <Compile Include="Features\ProblemAccount\ViewModels\FilterViewModel.cs" />
+    <Compile Include="Features\Shared\ExcelBaseHandler.cs" />
     <Compile Include="Features\Shared\FeatureFoldersRazorViewEngine.cs" />
     <Compile Include="Features\ProblemAccount\ProblemAccountController.cs" />
     <Compile Include="Features\ProblemAccount\ProblemAccountHandler.cs" />
-    <Compile Include="Features\ProblemAccount\Requests\IndexQuery.cs" />
+    <Compile Include="Features\ProblemAccount\Requests\ProblemAccountQuery.cs" />
     <Compile Include="Features\ProblemAccount\ViewModels\IndexViewModel.cs" />
     <Compile Include="Features\Shared\Helpers\UrlHelper.cs" />
     <Compile Include="Features\Shared\ViewModels\DateRangePickerViewModel.cs" />
+    <Compile Include="Features\Shared\ViewModels\ExcelFileViewModel.cs" />
     <Compile Include="Features\Shared\ViewModels\PagerViewModel.cs" />
     <Compile Include="Features\Shared\ViewModels\SingleSelectionViewModel.cs" />
     <Compile Include="Global.asax.cs">
@@ -322,7 +346,9 @@
       <DependentUpon>Web.local.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Features\ProblemAccount\ExcelTemplates\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CN88.Accounts\CN88.Accounts.csproj">
       <Project>{80a08109-f25f-4bc5-a71a-5b6a4ef6dd0e}</Project>

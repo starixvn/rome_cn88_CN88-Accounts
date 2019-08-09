@@ -9,9 +9,9 @@
     using CN88.Web.Models;
     using MediatR;
 
-    public class IndexQuery : BaseQuery, IRequest<IndexViewModel>
+    public class ProblemAccountQuery : BaseQuery, IRequest<IndexViewModel>
     {
-        public IndexQuery(IUser viewer)
+        public ProblemAccountQuery(IUser viewer)
             : base(viewer)
         {
             CustLevelId = UserLevel.Master.Value;

@@ -10,11 +10,11 @@
             <th class="col-nickname">@SharedResources.Nickname</th>
             @if (Model.CustLevel.IsMasterLevel())
             {
-                <th class="col-numberofaccounts">@ProblemAccountResources.ProblemAgentAccounts <span class="icon-info" data-toggle="tooltip" title="@ProblemAccountResources.ProblemAgentAccountsTooltip" /></th>
+                <th class="col-numberofaccounts text-center">@ProblemAccountResources.ProblemAgentAccounts <span class="icon-info" data-toggle="tooltip" title="@ProblemAccountResources.ProblemAgentAccountsTooltip" /></th>
             }
             @if (Model.CustLevel.IsAgentLevel())
             {
-                <th class="col-numberofaccounts">@ProblemAccountResources.ProblemMemberAccounts <span class="icon-info" data-toggle="tooltip" title="@ProblemAccountResources.ProblemMemberAccountsTooltip" /></th>
+                <th class="col-numberofaccounts text-center">@ProblemAccountResources.ProblemMemberAccounts <span class="icon-info" data-toggle="tooltip" title="@ProblemAccountResources.ProblemMemberAccountsTooltip" /></th>
             }
             <th class="col-status text-center">@SharedResources.Status</th>
             <th class="col-datenotified">@ProblemAccountResources.DateNotified</th>
@@ -46,7 +46,7 @@
                     <td>@account.Nickname</td>
                     @if (Model.CustLevel.IsMasterLevel() || Model.CustLevel.IsAgentLevel())
                     {
-                        <td></td>
+                        <td class="text-center">@account.NumberOfDownline</td>
                     }
                     <td align="center">
                         <a class="link status-link" data-username="@account.Username" href="@Model.BuildStatusLink(account.CustId,account.Status)">@account.StatusName</a>
@@ -54,7 +54,10 @@
                     <td>@account.CreatedDate</td>
                     <td>@account.ReviewStatus</td>
                     <td class="text-center">
-                        <input type="checkbox" name="@account.CustId" value="@account.CustId" />
+                        @if (!account.IsReviewed)
+                        {
+                            <input type="checkbox" name="@account.CustId" value="@account.CustId" />
+                        }
                     </td>
                 </tr>
                 index++;

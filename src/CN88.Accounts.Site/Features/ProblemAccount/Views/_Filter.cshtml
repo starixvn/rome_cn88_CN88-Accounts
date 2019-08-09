@@ -37,6 +37,6 @@
                 <option value="@group.Value" @(group.Selected ? " selected=\"selected\"" : string.Empty)>@group.Text</option>
             }
         </select>
-        <input type="hidden" name="" id="SelectedReviewStatus" value="@viewModel.SelectedId" />
+        <input type="hidden" name="SelectedReviewStatus" id="SelectedReviewStatus" value="@viewModel.SelectedId" />
     </div>
 }

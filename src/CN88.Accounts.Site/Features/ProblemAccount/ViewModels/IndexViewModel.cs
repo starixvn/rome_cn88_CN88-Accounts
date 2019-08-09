@@ -10,10 +10,10 @@
 
     public class IndexViewModel
     {
-        private readonly IndexQuery query;
+        private readonly ProblemAccountQuery query;
 
         public IndexViewModel(
-            IndexQuery query,
+            ProblemAccountQuery query,
             bool isMobile,
             BrowserHelper browserHelper,
             PagedData<ProblemAccount> pagedData)

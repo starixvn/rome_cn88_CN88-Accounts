@@ -13,7 +13,7 @@
         {
         }
 
-        public async Task<ActionResult> Index(IndexQuery message)
+        public async Task<ActionResult> Index(ProblemAccountQuery message)
             => await ViewAsync(message);
     }
 }

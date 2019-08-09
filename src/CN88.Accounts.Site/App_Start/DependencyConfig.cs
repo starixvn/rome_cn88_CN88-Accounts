@@ -10,6 +10,8 @@
     using Fanex.Data.Repository;
     using Fanex.Logging;
     using MediatR;
+    using ONEbook.SpreadSheets;
+    using ONEbook.SpreadSheets.NPOI;
     using SimpleInjector;
     using SimpleInjector.Integration.Web;
     using SimpleInjector.Integration.Web.Mvc;
@@ -67,6 +69,7 @@
         {
             container.Register<IUserSession, UserSessionExt>(Lifestyle.Scoped);
             container.Register<IUser, User>(Lifestyle.Scoped);
+            container.Register(typeof(Workbook<>), typeof(NpoiWorkbook<>), Lifestyle.Scoped);
 
             container.RegisterSingleton(Logger.Log);
             container.RegisterSingleton<BrowserHelper, BrowserHelperImpl>();

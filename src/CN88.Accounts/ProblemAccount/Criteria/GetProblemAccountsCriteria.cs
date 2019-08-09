@@ -1,5 +1,6 @@
 ﻿namespace CN88.Accounts.ProblemAccount.Criteria
 {
+    using System;
     using Fanex.Data.Repository;
 
     public class GetProblemAccountsCriteria : CriteriaBase
@@ -12,6 +13,8 @@
             byte searchRoleId,
             string searchUsername,
             byte reviewStatusId,
+            DateTime fromDate,
+            DateTime toDate,
             int pageIndex,
             int pageSize)
         {
@@ -22,6 +25,8 @@
             SearchRoleId = searchRoleId;
             SearchUsername = searchUsername;
             ReviewStatusId = reviewStatusId;
+            FromDate = fromDate;
+            ToDate = toDate;
             PageIndex = pageIndex;
             PageSize = pageSize;
         }
@@ -39,6 +44,10 @@
         public string SearchUsername { get; }
 
         public byte ReviewStatusId { get; }
+
+        public DateTime FromDate { get; }
+
+        public DateTime ToDate { get; }
 
         public int PageIndex { get; }
 

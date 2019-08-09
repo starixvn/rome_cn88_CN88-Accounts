@@ -1,11 +1,5 @@
 ﻿[
   {
-    "outputFileName": "Features/Shared/bundles/accounts.css",
-    "inputFiles": [
-      "Features/Shared/Styles/accounts.css"
-    ]
-  },
-  {
     "outputFileName": "Features/ProblemAccount/bundles/index.css",
     "inputFiles": [
       "Features/ProblemAccount/Styles/problem-account.css"

@@ -219,12 +219,6 @@
     <Content Include="Features\Shared\bundles\accounts.min.css">
       <DependentUpon>accounts.css</DependentUpon>
     </Content>
-    <Content Include="Features\Shared\Styles\accounts.css">
-      <DependentUpon>accounts.scss</DependentUpon>
-    </Content>
-    <Content Include="Features\Shared\Styles\accounts.min.css">
-      <DependentUpon>accounts.css</DependentUpon>
-    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -261,7 +255,6 @@
     <Content Include="Features\ProblemAccount\Views\_ProblemAccountTable.cshtml" />
     <Content Include="App_Code\Pager.cshtml" />
     <Content Include="App_Code\NoInformationTable.cshtml" />
-    <Content Include="Features\Shared\Styles\accounts.scss" />
     <None Include="packages.config" />
     <Content Include="Features\Shared\Views\_Layout.cshtml" />
     <Content Include="Features\Web.config">

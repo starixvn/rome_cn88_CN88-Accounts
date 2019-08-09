@@ -1,4 +1,6 @@
-﻿namespace CN88.Accounts.ProblemAccount.Params
+﻿using System;
+
+namespace CN88.Accounts.ProblemAccount.Params
 {
     public class GetProblemAccountsParam
     {
@@ -10,6 +12,8 @@
             byte searchRoleId,
             string searchUsername,
             byte reviewStatus,
+            DateTime fromDate,
+            DateTime toDate,
             int pageIndex,
             int pageSize)
         {
@@ -20,6 +24,8 @@
             SearchRoleId = searchRoleId;
             SearchUsername = searchUsername;
             ReviewStatus = reviewStatus;
+            FromDate = fromDate;
+            ToDate = toDate;
             PageIndex = pageIndex;
             PageSize = pageSize;
         }
@@ -37,6 +43,10 @@
         public string SearchUsername { get; }
 
         public byte ReviewStatus { get; }
+
+        public DateTime FromDate { get; }
+
+        public DateTime ToDate { get; }
 
         public int PageIndex { get; }
 

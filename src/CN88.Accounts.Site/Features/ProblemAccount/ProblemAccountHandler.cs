@@ -31,6 +31,8 @@
                 message.CustLevelId,
                 message.SearchUsername,
                 message.SelectedReviewStatus,
+                message.FromDate,
+                message.ToDate,
                 message.PageIndex,
                 message.PageSize);
 

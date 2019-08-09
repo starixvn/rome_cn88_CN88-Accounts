@@ -1,9 +1,5 @@
 ﻿[
   {
-    "outputFile": "Features/Shared/Styles/accounts.css",
-    "inputFile": "Features/Shared/Styles/accounts.scss"
-  },
-  {
     "outputFile": "Features/ProblemAccount/Styles/problem-account.css",
     "inputFile": "Features/ProblemAccount/Styles/problem-account.scss"
   }

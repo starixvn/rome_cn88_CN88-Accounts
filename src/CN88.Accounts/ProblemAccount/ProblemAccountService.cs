@@ -30,6 +30,8 @@
                 param.SearchRoleId,
                 param.SearchUsername,
                 param.ReviewStatus,
+                param.FromDate,
+                param.ToDate,
                 param.PageIndex,
                 param.PageSize);
 

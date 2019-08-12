@@ -9,6 +9,8 @@
     $reportForm: JQuery;
     $tblProblemAccount: JQuery;
     $updateStatusLink: JQuery;
+    $exportExcelForm: JQuery;
+    $excelIcon: JQuery;
 
     resoures = {
         updateStatus: ""
@@ -46,6 +48,8 @@
         this.$reportForm = this.$("#report-form");
         this.$tblProblemAccount = this.$("#tblProblemAccount");
         this.$updateStatusLink = this.$("#UpdateStatusLink");
+        this.$exportExcelForm = this.$("#export-excel-form");
+        this.$excelIcon = this.$("#icon-excel");
 
         this.resoures.updateStatus = this.$("#UpdateStatus").val();
     }
@@ -53,6 +57,7 @@
     bindEvents(): void {
         this.$reportForm.submit(this.onSubmit);
         this.$tblProblemAccount.find(".status-link").click(this.onStatusLinkClick);
+        this.$excelIcon.click(() => { this.$exportExcelForm.submit(); });
     }
 
     onStatusLinkClick = (e: JQueryEventObject) => {

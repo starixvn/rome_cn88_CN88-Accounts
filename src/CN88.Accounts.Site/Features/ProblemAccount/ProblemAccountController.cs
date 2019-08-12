@@ -15,5 +15,8 @@
 
         public async Task<ActionResult> Index(ProblemAccountQuery message)
             => await ViewAsync(message);
+
+        public async Task<ActionResult> Excel(ProblemAccountExcelQuery message)
+            => await ExcelView(message);
     }
 }

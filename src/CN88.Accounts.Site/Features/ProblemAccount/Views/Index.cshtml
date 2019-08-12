@@ -5,20 +5,19 @@
     @StaticResources.RenderStyles("~/Features/ProblemAccount/bundles/index")
 }
 @using CN88.Web.Models
-@using CN88.Accounts.ProblemAccount.Resources
 @model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.IndexViewModel
 <div class="note">
-    <span class="start">*</span>@ProblemAccountResources.ProblemAccountNote
+    <span class="start">*</span>@Resources.ProblemAccountNote
 </div>
 <ul id="nav-tabs" class="nav @(Model.IsMobile ? "nav-tabs" : "nav-tabs-style2")" role="tablist">
     <li class="@(Model.CustLevel.IsMasterLevel() ? "active" : string.Empty)" role="presentation">
-        <a href="@Url.Action("Index", "ProblemAccount", new { CustLevelId = UserLevel.Master.Value })">@SharedResources.Master</a>
+        <a href="@Url.Action("Index", "ProblemAccount", new { CustLevelId = UserLevel.Master.Value })">@Resources.Master</a>
     </li>
     <li class="@(Model.CustLevel.IsAgentLevel() ? "active" : string.Empty)" role="presentation">
-        <a href="@Url.Action("Index", "ProblemAccount", new { CustLevelId = UserLevel.Agent.Value })">@SharedResources.Agent</a>
+        <a href="@Url.Action("Index", "ProblemAccount", new { CustLevelId = UserLevel.Agent.Value })">@Resources.Agent</a>
     </li>
     <li class="@(Model.CustLevel.IsMemberLevel() ? "active" : string.Empty)" role="presentation">
-        <a href="@Url.Action("Index", "ProblemAccount", new { CustLevelId = UserLevel.Member.Value })">@SharedResources.Member</a>
+        <a href="@Url.Action("Index", "ProblemAccount", new { CustLevelId = UserLevel.Member.Value })">@Resources.Member</a>
     </li>
 </ul>
 <div class="tab-content">
@@ -28,7 +27,7 @@
         @Pager.Render(Model.PagerViewModel)
     </div>
 </div>
-@Html.Hidden(nameof(SharedResources.UpdateStatus), SharedResources.UpdateStatus)
+@Html.Hidden(nameof(Resources.UpdateStatus), Resources.UpdateStatus)
 @section Scripts{
     @StaticResources.RenderScripts("~/Features/ProblemAccount/bundles/index")
 }

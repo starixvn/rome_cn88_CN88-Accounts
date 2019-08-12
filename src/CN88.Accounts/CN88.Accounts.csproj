@@ -58,19 +58,14 @@
     <Compile Include="ProblemAccount\Params\GetProblemAccountsParam.cs" />
     <Compile Include="ProblemAccount\ProblemAccount.cs" />
     <Compile Include="ProblemAccount\ProblemAccountService.cs" />
-    <Compile Include="ProblemAccount\Resources\ProblemAccountResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProblemAccountResources.resx</DependentUpon>
-    </Compile>
     <Compile Include="ProblemAccount\ReviewStatusConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\Constants\CustomerStatusConstants.cs" />
     <Compile Include="Shared\Models\PagedData.cs" />
-    <Compile Include="Shared\Resources\SharedResources.Designer.cs">
+    <Compile Include="Shared\Resources\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SharedResources.resx</DependentUpon>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Shared\AppSettings.cs" />
     <Compile Include="Shared\Extensions\DateTimeExtensions.cs" />
@@ -82,22 +77,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ProblemAccount\Resources\ProblemAccountResources.zh-TW.resx">
-      <LastGenOutput>ProblemAccountResources.zh-TW.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProblemAccount\Resources\ProblemAccountResources.zh-Hans.resx">
-      <LastGenOutput>ProblemAccountResources.zh-Hans.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProblemAccount\Resources\ProblemAccountResources.resx">
+    <EmbeddedResource Include="Shared\Resources\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ProblemAccountResources.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Shared\Resources\SharedResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SharedResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Shared\Resources\SharedResources.zh-Hans.resx" />
-    <EmbeddedResource Include="Shared\Resources\SharedResources.zh-TW.resx" />
+    <EmbeddedResource Include="Shared\Resources\Resources.zh-Hans.resx" />
+    <EmbeddedResource Include="Shared\Resources\Resources.zh-TW.resx" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

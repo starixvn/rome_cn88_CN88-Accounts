@@ -3,7 +3,7 @@
     using System.Threading.Tasks;
     using CN88.Accounts.ProblemAccount;
     using CN88.Accounts.ProblemAccount.Params;
-    using CN88.Accounts.ProblemAccount.Resources;
+    using CN88.Accounts.Shared.Resources;
     using CN88.Accounts.Site.Features.ProblemAccount.Requests;
     using CN88.Accounts.Site.Features.ProblemAccount.ViewModels;
     using CN88.Accounts.Site.Features.Shared;
@@ -49,15 +49,15 @@
             var fileContent = workbook
                 .UseTemplate(GetTemplateInfo(message.CustLevel))
                 .Body(problemAccounts.DataSource, GetBodyRowMapper(message.CustLevel))
-                .Header(ProblemAccountResources.ResourceManager.GetString)
+                .Header(Resources.ResourceManager.GetString)
                 .ExportToBytes();
 
             return new ExcelFileViewModel("Problem Account", fileContent);
         }
 
-        protected override string GetExcelTemplateDir() => "~/Features/ProblemAccount";
+        protected override string GetExcelTemplateDir() => "~/Features/ProblemAccount/ExcelTemplates";
 
-        private GetProblemAccountsParam CreateParam(ProblemAccountQuery message)
+        private static GetProblemAccountsParam CreateParam(ProblemAccountQuery message)
             => new GetProblemAccountsParam(
                 message.ViewerId,
                 message.SubAccountId,
@@ -81,16 +81,16 @@
 
             if (userLevel.IsMasterLevel() || userLevel.IsAgentLevel())
             {
-                mapper.Map(E, data => data.NumberOfDownline)
-                    .Map(F, data => data.StatusName)
-                    .Map(G, data => data.CreatedDate)
-                    .Map(H, data => data.ReviewStatus);
+                mapper.Map(E, data => data.NumberOfDownline);
+                mapper.Map(F, data => data.StatusName);
+                mapper.Map(G, data => data.CreatedDate);
+                mapper.Map(H, data => data.ReviewStatus);
             }
             else
             {
-                mapper.Map(E, data => data.StatusName)
-                    .Map(F, data => data.CreatedDate)
-                    .Map(G, data => data.ReviewStatus);
+                mapper.Map(E, data => data.StatusName);
+                mapper.Map(F, data => data.CreatedDate);
+                mapper.Map(G, data => data.ReviewStatus);
             }
 
             return mapper;

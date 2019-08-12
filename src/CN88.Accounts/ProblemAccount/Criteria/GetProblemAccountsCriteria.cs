@@ -56,7 +56,7 @@
         public int TotalRows { get; set; }
 
         public override string GetSettingKey()
-            => "CS_Customer_ProblemAccount_Sel";
+            => "CS_ProblemAccount_CustomerList";
 
         public override bool IsValid()
             => CustId > 0 && 0 < SearchRoleId && SearchRoleId < 4;

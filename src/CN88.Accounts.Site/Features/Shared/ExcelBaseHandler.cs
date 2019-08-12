@@ -24,10 +24,10 @@
         protected internal virtual TemplateInfo GetTemplateInfo(UserLevel userLevel)
             => new TemplateInfo(
                    ExcelTemplatePath(userLevel),
-                   noInfomationText: SharedResources.NoInformationIsAvailable,
-                   bodyStartIndex: 3,
-                   bodyEndIndex: 4,
-                   footerEndIndex: 5);
+                   noInfomationText: Resources.NoInformationIsAvailable,
+                   titleStartIndex: -1,
+                   headerStartIndex: 1,
+                   bodyStartIndex: 2);
 
         protected internal virtual string ExcelTemplatePath(UserLevel viewerLevel)
             => GetExcelTemplatePath(viewerLevel.DisplayName);
@@ -39,7 +39,7 @@
                 throw new ArgumentNullException(nameof(templateName), "Template Name cannot be null or empty");
             }
 
-            var relativePath = $"{GetExcelTemplateDir()}/ExcelTemplates/{templateName}.{fileExtension}";
+            var relativePath = $"{GetExcelTemplateDir()}/{templateName}.{fileExtension}";
 
             var absolutePath = MapPath(relativePath);
 

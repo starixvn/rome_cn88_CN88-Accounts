@@ -5,8 +5,8 @@
     using System.Linq;
     using System.Web.Mvc;
     using CN88.Accounts.ProblemAccount;
-    using CN88.Accounts.ProblemAccount.Resources;
     using CN88.Accounts.Shared;
+    using CN88.Accounts.Shared.Resources;
     using CN88.Accounts.Site.Features.ProblemAccount.Requests;
     using CN88.Accounts.Site.Features.Shared.ViewModels;
     using CN88.Web.Models;
@@ -45,9 +45,9 @@
         private IEnumerable<SelectListItem> BuildReviewStatusSelectListItems(int selectedStatus)
             => new List<SelectListItem>
             {
-                new SelectListItem { Text = ProblemAccountResources.All, Value = ReviewStatusConstants.All.ToString() },
-                new SelectListItem { Text = ProblemAccountResources.Reviewed, Value = ReviewStatusConstants.Reviewed.ToString() },
-                new SelectListItem { Text = ProblemAccountResources.NotReviewed, Value = ReviewStatusConstants.NotReviewed.ToString() }
+                new SelectListItem { Text = Resources.All, Value = ReviewStatusConstants.All.ToString() },
+                new SelectListItem { Text = Resources.Reviewed, Value = ReviewStatusConstants.Reviewed.ToString() },
+                new SelectListItem { Text = Resources.NotReviewed, Value = ReviewStatusConstants.NotReviewed.ToString() }
             }.Select(item =>
             {
                 item.Selected = item.Value == selectedStatus.ToString();

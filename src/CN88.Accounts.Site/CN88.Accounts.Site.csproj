@@ -264,6 +264,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Features\Shared\BaseQuery.cs" />
     <Compile Include="Features\Shared\QueryEntityModelBinder.cs" />
@@ -282,6 +283,9 @@
     <Content Include="App_Code\Pager.cshtml" />
     <Content Include="App_Code\NoInformationTable.cshtml" />
     <Content Include="CN88.Accounts.Site.ruleset" />
+    <Content Include="Features\ProblemAccount\ExcelTemplates\Agent.xls" />
+    <Content Include="Features\ProblemAccount\ExcelTemplates\Master.xls" />
+    <Content Include="Features\ProblemAccount\ExcelTemplates\Member.xls" />
     <None Include="packages.config" />
     <Content Include="Features\Shared\Views\_Layout.cshtml" />
     <Content Include="Features\Web.config">
@@ -349,9 +353,7 @@
       <DependentUpon>Web.local.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Features\ProblemAccount\ExcelTemplates\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\CN88.Accounts\CN88.Accounts.csproj">
       <Project>{80a08109-f25f-4bc5-a71a-5b6a4ef6dd0e}</Project>

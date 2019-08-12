@@ -1,5 +1,4 @@
-﻿@using CN88.Accounts.ProblemAccount.Resources
-@using CN88.Accounts.Site.Features.Shared.ViewModels
+﻿@using CN88.Accounts.Site.Features.Shared.ViewModels
 @model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.FilterViewModel
 <form class="form-inline filter" role="form" id="report-form">
     @RenderHiddenFeilds()
@@ -8,20 +7,31 @@
     @if (Model.CustLevel.IsAgentLevel() || Model.CustLevel.IsMemberLevel())
     {
         <div class="form-group">
-            <label>@SharedResources.ResourceManager.GetString(Model.CustLevel.GetDirectUplineLevel().DisplayName)</label>
+            <label>@Resources.ResourceManager.GetString(Model.CustLevel.GetDirectUplineLevel().DisplayName)</label>
             <input type="text" id="UplineUsername" name="UplineUsername" class="control" value="@Model.UplineUsername" />
         </div>
     }
     <div class="form-group">
-        <label>@SharedResources.UsernameOrNameContains</label>
+        <label>@Resources.UsernameOrNameContains</label>
         <input type="text" id="SearchUsername" name="SearchUsername" class="control" value="@Model.SearchUsername" />
     </div>
     <div class="form-group">
-        <input type="submit" class="btn-submit" value="@SharedResources.Submit" />
+        <input type="submit" class="btn-submit" value="@Resources.Submit" />
     </div>
     <div class="form-group">
-        <span id="icon-excel" class="icon-excel" title="@SharedResources.ExportToExcel" data-toggle="tooltip" data-placement="bottom"></span>
+        <span id="icon-excel" class="icon-excel" title="@Resources.ExportToExcel" data-toggle="tooltip" data-placement="bottom"></span>
     </div>
+</form>
+<form class="hide" role="form" id="export-excel-form" action="@Url.Action("Excel", "ProblemAccount")">
+    @RenderHiddenFeilds()
+    @Html.Hidden("FromDate", Model.DateRangePicker.FromDate)
+    @Html.Hidden("ToDate", Model.DateRangePicker.ToDate)
+    @Html.Hidden("SelectedReviewStatus", Model.ReviewStatusSelection.SelectedId)
+    @if (Model.CustLevel.IsAgentLevel() || Model.CustLevel.IsMemberLevel())
+    {
+        @Html.Hidden("UplineUsername", Model.UplineUsername)
+    }
+    @Html.Hidden("SearchUsername", Model.SearchUsername)
 </form>
 @helper RenderHiddenFeilds()
 {
@@ -30,7 +40,7 @@
 @helper RenderReviewStatusDropdown(SingleSelectionViewModel viewModel)
 {
     <div class="form-group">
-        <label>@ProblemAccountResources.ReviewStatus</label>
+        <label>@Resources.ReviewStatus</label>
         <select id="dropdown-review-status">
             @foreach (var group in viewModel.Items)
             {

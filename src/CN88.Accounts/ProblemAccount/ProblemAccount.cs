@@ -42,13 +42,13 @@
 
         public byte Status { get; }
 
-        public string StatusName => SharedResources.ResourceManager.GetString(CustomerStatusConstants.Items[Status]);
+        public string StatusName => Resources.ResourceManager.GetString(CustomerStatusConstants.Items[Status]);
 
         public DateTime CreatedDate { get; }
 
         public bool IsReviewed { get; }
 
         public string ReviewStatus
-            => Resources.ProblemAccountResources.ResourceManager.GetString(ReviewStatusConstants.Items[Convert.ToByte(IsReviewed)]);
+            => Resources.ResourceManager.GetString(ReviewStatusConstants.Items[Convert.ToByte(IsReviewed)]);
     }
 }

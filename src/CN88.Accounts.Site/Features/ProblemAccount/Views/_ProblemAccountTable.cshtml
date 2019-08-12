@@ -1,24 +1,23 @@
-﻿@using CN88.Accounts.ProblemAccount.Resources
-@model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.IndexViewModel
-<input type="button" id="btnReview" name="btnReview" class="btn-submit btn-review" value="@ProblemAccountResources.SetToReviewed" />
+﻿@model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.IndexViewModel
+<input type="button" id="btnReview" name="btnReview" class="btn-submit btn-review" value="@Resources.SetToReviewed" />
 <table id="tblProblemAccount" class="tbl-style2 table-problem-account">
     <thead>
         <tr>
-            <th class="col-no">@SharedResources.No</th>
-            <th class="col-username">@ProblemAccountResources.ProblemAccount</th>
-            <th class="col-name">@SharedResources.Name</th>
-            <th class="col-nickname">@SharedResources.Nickname</th>
+            <th class="col-no">@Resources.No</th>
+            <th class="col-username">@Resources.ProblemAccount</th>
+            <th class="col-name">@Resources.Name</th>
+            <th class="col-nickname">@Resources.Nickname</th>
             @if (Model.CustLevel.IsMasterLevel())
             {
-                <th class="col-numberofaccounts text-center">@ProblemAccountResources.ProblemAgentAccounts <span class="icon-info" data-toggle="tooltip" title="@ProblemAccountResources.ProblemAgentAccountsTooltip" /></th>
+                <th class="col-numberofaccounts text-center">@Resources.ProblemAgentAccounts <span class="icon-info" data-toggle="tooltip" title="@Resources.ProblemAgentAccountsTooltip" /></th>
             }
             @if (Model.CustLevel.IsAgentLevel())
             {
-                <th class="col-numberofaccounts text-center">@ProblemAccountResources.ProblemMemberAccounts <span class="icon-info" data-toggle="tooltip" title="@ProblemAccountResources.ProblemMemberAccountsTooltip" /></th>
+                <th class="col-numberofaccounts text-center">@Resources.ProblemMemberAccounts <span class="icon-info" data-toggle="tooltip" title="@Resources.ProblemMemberAccountsTooltip" /></th>
             }
-            <th class="col-status text-center">@SharedResources.Status</th>
-            <th class="col-datenotified">@ProblemAccountResources.DateNotified</th>
-            <th class="col-reviewstatus">@ProblemAccountResources.ReviewStatus</th>
+            <th class="col-status text-center">@Resources.Status</th>
+            <th class="col-datenotified">@Resources.DateNotified</th>
+            <th class="col-reviewstatus">@Resources.ReviewStatus</th>
             <th class="text-center">
                 <input type="checkbox" id="SelectAll" name="SelectAll" value="" />
             </th>

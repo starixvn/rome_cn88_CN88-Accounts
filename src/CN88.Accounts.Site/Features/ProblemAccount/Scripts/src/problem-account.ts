@@ -58,6 +58,9 @@
         this.$reportForm.submit(this.onSubmit);
         this.$tblProblemAccount.find(".status-link").click(this.onStatusLinkClick);
         this.$excelIcon.click(() => { this.$exportExcelForm.submit(); });
+        this.topWindow["popupManager"].onClosing = () => {
+            this.topWindow.$("#main").attr("src", (index, attr) => { return attr; });
+        };
     }
 
     onStatusLinkClick = (e: JQueryEventObject) => {

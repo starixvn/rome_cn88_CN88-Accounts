@@ -1,4 +1,8 @@
-﻿class CN88Accounts {
+﻿interface Window {
+    $: JQueryStatic;
+}
+
+class CN88Accounts {
     format = {
         shortDate_DatePicker: "YYYY-MM-DD"
     };

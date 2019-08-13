@@ -3,4 +3,7 @@
   <Function Name="Account Status">
     <Setting Key="CS_CustomerStatusSel" SpName="CS_CustomerStatusSel" DbName="DBCust.CustDB.BODBDownlineNetView" Plain="0" />
   </Function>
+  <Function Name="Problem Account">
+    <Setting Key="CS_ProblemAccount_CustomerList" SpName="CS_ProblemAccount_CustomerList" DbName="DBCust.CustDB.BODBDownlineNetView" Plain="0" />
+  </Function>
 </Functions>

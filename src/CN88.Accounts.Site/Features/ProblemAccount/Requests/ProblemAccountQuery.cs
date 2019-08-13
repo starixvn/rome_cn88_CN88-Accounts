@@ -3,6 +3,7 @@
     using System;
     using CN88.Accounts.ProblemAccount;
     using CN88.Accounts.Shared;
+    using CN88.Accounts.Shared.Constants;
     using CN88.Accounts.Shared.Models;
     using CN88.Accounts.Site.Features.ProblemAccount.ViewModels;
     using CN88.Accounts.Site.Features.Shared;
@@ -11,15 +12,17 @@
 
     public class ProblemAccountQuery : BaseQuery, IRequest<IndexViewModel>
     {
+        private const int defaultNumberOfDays = -13;
+
         public ProblemAccountQuery(IUser viewer)
             : base(viewer)
         {
             CustLevelId = UserLevel.Master.Value;
-            FromDate = SystemTime.Today.AddDays(-14);
+            FromDate = SystemTime.Today.AddDays(defaultNumberOfDays);
             ToDate = SystemTime.Today;
             SelectedReviewStatus = ReviewStatusConstants.NotReviewed;
             PageIndex = 1;
-            PageSize = 50;
+            PageSize = PagerConstants.DefaultPageSize;
         }
 
         public DateTime FromDate { get; set; }

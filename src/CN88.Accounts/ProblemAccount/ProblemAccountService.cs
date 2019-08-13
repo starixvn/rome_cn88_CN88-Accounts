@@ -9,6 +9,8 @@
     public interface ProblemAccountService
     {
         Task<PagedData<ProblemAccount>> GetProblemAccounts(GetProblemAccountsParam param);
+
+        Task<Result> UpdateReviewStatus(UpdateReviewStatusParam param);
     }
 
     public class ProblemAccountServiceImpl : ProblemAccountService
@@ -42,6 +44,22 @@
                 criteria.PageIndex,
                 criteria.PageSize,
                 criteria.TotalRows);
+        }
+
+        public async Task<Result> UpdateReviewStatus(UpdateReviewStatusParam param)
+        {
+            var command = new UpdateReviewStatusCommand(
+                param.UserId,
+                param.SubAccId,
+                param.RoleId,
+                param.IsAllDownline,
+                param.DownlineList,
+                param.Language,
+                param.LoginIP);
+
+            await dynamicRepository.ExecuteAsync(command);
+
+            return new Result(command.ErrCode, command.ErrMsg);
         }
     }
 }

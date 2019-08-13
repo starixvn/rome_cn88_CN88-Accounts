@@ -1,10 +1,10 @@
 ﻿class PagerOption {
     constructor(
         public onSelectPage: () => void = null,
-        public pagerId: string = "pager",
-        public formId: string = "report-form",
-        public pageIndexId: string = "PageIndex",
-        public pageSizeId: string = "PageSize",
+        public pagerId = "pager",
+        public formId = "report-form",
+        public pageIndexId = "PageIndex",
+        public pageSizeId = "PageSize",
         public pageList: number[] = [10, 50, 100, 500]) {
     }
 }
@@ -28,9 +28,8 @@ class PagerComponent {
     }
 
     render = (pagerOption: PagerOption = new PagerOption(this.onChange)) => {
-        let self = this;
-        this.pagerOption = <PagerOption>this.$.extend({}, this.pagerOption, pagerOption);
-        let pager = this.$("#" + this.pagerOption.pagerId);
+        this.pagerOption = this.$.extend({}, this.pagerOption, pagerOption) as PagerOption;
+        const pager = this.$("#" + this.pagerOption.pagerId);
 
         this.$reportForm = this.$("#" + this.pagerOption.formId);
         this.totalRecords = pager.data("totalrecords");
@@ -53,7 +52,7 @@ class PagerComponent {
                 showRefresh: false,
                 onSelectPage: this.onSelectPage,
                 beforePageText: pager.data("labelpage"),
-                afterPageText: pager.data("labelof") + " {pages}",
+                afterPageText: `${pager.data("labelof")} {pages}`,
                 displayMsg: pager.data("labeldisplayitems")
             });
 

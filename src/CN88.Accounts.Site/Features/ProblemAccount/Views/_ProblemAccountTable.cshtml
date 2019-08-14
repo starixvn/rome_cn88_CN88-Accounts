@@ -55,7 +55,7 @@
                     <td class="text-center">
                         @if (!account.IsReviewed)
                         {
-                            <input type="checkbox" name="@account.CustId" value="@account.CustId" />
+                            <input type="checkbox" name="@account.CustId" value="@account.CustId" data-username="@account.Username" />
                         }
                     </td>
                 </tr>

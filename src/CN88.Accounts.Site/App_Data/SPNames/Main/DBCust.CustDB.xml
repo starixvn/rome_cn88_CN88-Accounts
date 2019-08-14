@@ -5,5 +5,6 @@
   </Function>
   <Function Name="Problem Account">
     <Setting Key="CS_ProblemAccount_CustomerList" SpName="CS_ProblemAccount_CustomerList" DbName="DBCust.CustDB.BODBDownlineNet" Plain="0" />
+    <Setting Key="CS_ProblemAccount_ReviewStatusUpd" SpName="CS_ProblemAccount_ReviewStatusUpd" DbName="DBCust.CustDB.BODBDownlineNet" Plain="0" />
   </Function>
 </Functions>

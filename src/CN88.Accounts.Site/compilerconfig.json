@@ -2,5 +2,9 @@
   {
     "outputFile": "Features/ProblemAccount/Styles/problem-account.css",
     "inputFile": "Features/ProblemAccount/Styles/problem-account.scss"
+  },
+  {
+    "outputFile": "Features/ProblemAccount/Styles/update-review-status.css",
+    "inputFile": "Features/ProblemAccount/Styles/update-review-status.scss"
   }
 ]

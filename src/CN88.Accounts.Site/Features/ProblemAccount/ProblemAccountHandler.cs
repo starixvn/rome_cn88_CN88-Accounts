@@ -3,19 +3,21 @@
     using System.Threading.Tasks;
     using CN88.Accounts.ProblemAccount;
     using CN88.Accounts.ProblemAccount.Params;
+    using CN88.Accounts.Shared.Models;
     using CN88.Accounts.Shared.Resources;
     using CN88.Accounts.Site.Features.ProblemAccount.Requests;
     using CN88.Accounts.Site.Features.ProblemAccount.ViewModels;
     using CN88.Accounts.Site.Features.Shared;
     using CN88.Accounts.Site.Features.Shared.ViewModels;
     using CN88.Web.Helpers;
-    using CN88.Web.Models;
     using MediatR;
     using ONEbook.SpreadSheets;
     using static ONEbook.SpreadSheets.Column;
 
     public class ProblemAccountHandler : ExcelBaseHandler,
         IAsyncRequestHandler<ProblemAccountQuery, IndexViewModel>,
+        IAsyncRequestHandler<UpdateReviewStatusQuery, UpdateReviewStatusViewModel>,
+        IAsyncRequestHandler<UpdateReviewStatusCommand, Result>,
         IAsyncRequestHandler<ProblemAccountExcelQuery, ExcelFileViewModel>
     {
         private int currentRowIndex = 1;
@@ -39,6 +41,23 @@
             var problemAccounts = await problemAccountService.GetProblemAccounts(param);
 
             return new IndexViewModel(message, browserHelper.IsMobile(), browserHelper, problemAccounts);
+        }
+
+        public Task<UpdateReviewStatusViewModel> Handle(UpdateReviewStatusQuery message)
+            => Task.FromResult(new UpdateReviewStatusViewModel(message));
+
+        public async Task<Result> Handle(UpdateReviewStatusCommand message)
+        {
+            var param = new UpdateReviewStatusParam(
+                message.ViewerId,
+                message.SubAccountId,
+                message.CustLevelId,
+                message.IsAllDownline,
+                message.SelectedDownlineIds,
+                message.LanguageKey,
+                message.IP);
+
+            return await problemAccountService.UpdateReviewStatus(param);
         }
 
         public async Task<ExcelFileViewModel> Handle(ProblemAccountExcelQuery message)
@@ -71,7 +90,7 @@
                 message.PageIndex,
                 message.PageSize);
 
-        private Mapper<ProblemAccount> GetBodyRowMapper(UserLevel userLevel)
+        private Mapper<ProblemAccount> GetBodyRowMapper(Web.Models.UserLevel userLevel)
         {
             var mapper = new Mapper<ProblemAccount>()
                 .Map(A, _ => currentRowIndex++)
@@ -95,5 +114,7 @@
 
             return mapper;
         }
+
+
     }
 }

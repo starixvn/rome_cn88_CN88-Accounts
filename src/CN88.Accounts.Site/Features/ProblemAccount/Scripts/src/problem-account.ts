@@ -11,9 +11,16 @@
     $updateStatusLink: JQuery;
     $exportExcelForm: JQuery;
     $excelIcon: JQuery;
+    $btnReview: JQuery;
+    $checkboxSelectAll: JQuery;
+    $downlineCheckboxs: JQuery;
+
+    custLevelId: number;
+    updateReviewStatusUrl: string;
 
     resoures = {
-        updateStatus: ""
+        updateStatus: "",
+        setReviewedStatus: ""
     };
 
     constructor(
@@ -50,8 +57,15 @@
         this.$updateStatusLink = this.$("#UpdateStatusLink");
         this.$exportExcelForm = this.$("#export-excel-form");
         this.$excelIcon = this.$("#icon-excel");
+        this.$btnReview = this.$("#btnReview");
+        this.$checkboxSelectAll = this.$("#SelectAll");
+        this.$downlineCheckboxs = this.$("#tblProblemAccount tbody tr td input[type='checkbox']");
 
         this.resoures.updateStatus = this.$("#UpdateStatus").val();
+        this.resoures.setReviewedStatus = this.$("#SetReviewedStatus").val();
+
+        this.custLevelId = parseInt(this.$("#CustLevelId").val());
+        this.updateReviewStatusUrl = this.$("#UpdateReviewStatusUrl").val();
     }
 
     bindEvents(): void {
@@ -61,7 +75,33 @@
         this.topWindow["popupManager"].onClosing = () => {
             this.topWindow.$("#main").attr("src", (index, attr) => { return attr; });
         };
+        this.$checkboxSelectAll.change(this.onCheckboxSelectAllChange);
+        this.$downlineCheckboxs.on("click touchend", this.onDownlineCheckboxesClick);
+        this.$btnReview.on("click touchend", this.onSetToReviewClick);
     }
+
+    onCheckboxSelectAllChange = () => {
+        const isChecked = this.$checkboxSelectAll.is(":checked");
+        this.$downlineCheckboxs.prop("checked", isChecked);
+    };
+
+    onDownlineCheckboxesClick = (e: JQueryEventObject) => {
+        if (this.$(e.target).is(":checked")) {
+            let isAllchecked = true;
+
+            this.$downlineCheckboxs.each(function () {
+                if (!this.checked) {
+                    isAllchecked = false;
+                }
+            });
+
+            if (isAllchecked) {
+                this.$checkboxSelectAll.prop("checked", true);
+            }
+        } else {
+            this.$checkboxSelectAll.prop("checked", false);
+        }
+    };
 
     onStatusLinkClick = (e: JQueryEventObject) => {
         e.preventDefault();
@@ -74,12 +114,43 @@
         this.openPopup(url, title, "modal modal-status");
     };
 
-    openPopup(url: string, title = "", popupCss = "", width = 490, height = 210): void {
-        this.topWindow["popupManager"].open({ title, url, width, height, popupCss });
-    }
-
     onSubmit = () => {
         this.reviewStatusDropdown.updateSelectedValue();
+    };
+
+    onSetToReviewClick = () => {
+        const seleledDownlines = this.getSelectedDownlines();
+        const params = {
+            custLevelId: this.custLevelId,
+            selectedDownlineIds: seleledDownlines.custIds,
+            selectedDownlineUsernames: seleledDownlines.usernames
+        };
+        const url = `${this.updateReviewStatusUrl}?${this.$.param(params)}`;
+
+        this.openPopup(url, this.resoures.setReviewedStatus);
+    };
+
+    getSelectedDownlines() {
+        const selectedCustIds = [];
+        const selectedUsernames = [];
+
+        this.$downlineCheckboxs.each((index: number, elem: Element) => {
+            const $elem = this.$(elem);
+
+            if ($elem.is(":checked")) {
+                selectedCustIds.push([$elem.val()]);
+                selectedUsernames.push([$elem.data("username")]);
+            }
+        });
+
+        return {
+            custIds: selectedCustIds.join(","),
+            usernames: selectedUsernames.join(", ")
+        };
+    }
+
+    openPopup(url: string, title = "", popupCss = "", width = 490, height = 210): void {
+        this.topWindow["popupManager"].open({ title, url, width, height, popupCss });
     }
 }
 

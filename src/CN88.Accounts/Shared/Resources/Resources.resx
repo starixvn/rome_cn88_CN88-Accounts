@@ -216,4 +216,22 @@
   <data name="SetToReviewed" xml:space="preserve">
     <value>Set to Reviewed</value>
   </data>
+  <data name="SetReviewedStatus" xml:space="preserve">
+    <value>Set Reviewed Status</value>
+  </data>
+  <data name="NotAuthorized" xml:space="preserve">
+    <value>You are not authorized on this function.</value>
+  </data>
+  <data name="SetReviewedConfirmMessage" xml:space="preserve">
+    <value>Are you sure you want to set to Reviewed for {0}</value>
+  </data>
+  <data name="SetToReviewdForSelectedAccountsOnly" xml:space="preserve">
+    <value>Set to Reviewed for selected accounts only.</value>
+  </data>
+  <data name="SetToReviewdForSelectedAccountsAndAffectedDownlines" xml:space="preserve">
+    <value>Set to Reviewed for selected accounts and affected downlines.</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
 </root>

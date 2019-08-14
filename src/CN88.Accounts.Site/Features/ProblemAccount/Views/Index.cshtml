@@ -28,6 +28,8 @@
     </div>
 </div>
 @Html.Hidden(nameof(Resources.UpdateStatus), Resources.UpdateStatus)
+@Html.Hidden(nameof(Resources.SetReviewedStatus), Resources.SetReviewedStatus)
+@Html.Hidden("UpdateReviewStatusUrl", Url.Action("UpdateReviewStatus", "ProblemAccount"))
 @section Scripts{
     @StaticResources.RenderScripts("~/Features/ProblemAccount/bundles/index")
 }

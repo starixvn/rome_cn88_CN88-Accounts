@@ -180,4 +180,10 @@
   <data name="ExportToExcel" xml:space="preserve">
     <value>导出Excel</value>
   </data>
+  <data name="NotAuthorized" xml:space="preserve">
+    <value>您没有使用此功能的权限.</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
 </root>

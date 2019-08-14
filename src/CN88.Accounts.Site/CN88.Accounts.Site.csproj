@@ -229,11 +229,21 @@
     <Content Include="Features\ProblemAccount\bundles\index.min.js">
       <DependentUpon>index.js</DependentUpon>
     </Content>
+    <Content Include="Features\ProblemAccount\bundles\update-review-status.css" />
+    <Content Include="Features\ProblemAccount\bundles\update-review-status.min.css">
+      <DependentUpon>update-review-status.css</DependentUpon>
+    </Content>
     <Content Include="Features\ProblemAccount\Styles\problem-account.css">
       <DependentUpon>problem-account.scss</DependentUpon>
     </Content>
     <Content Include="Features\ProblemAccount\Styles\problem-account.min.css">
       <DependentUpon>problem-account.css</DependentUpon>
+    </Content>
+    <Content Include="Features\ProblemAccount\Styles\update-review-status.css">
+      <DependentUpon>update-review-status.scss</DependentUpon>
+    </Content>
+    <Content Include="Features\ProblemAccount\Styles\update-review-status.min.css">
+      <DependentUpon>update-review-status.css</DependentUpon>
     </Content>
     <Content Include="Features\Shared\bundles\accounts.css" />
     <Content Include="Features\Shared\bundles\accounts.min.css">
@@ -246,7 +256,10 @@
     <Compile Include="App_Start\DependencyConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Features\ProblemAccount\Requests\ProblemAccountExcelQuery.cs" />
+    <Compile Include="Features\ProblemAccount\Requests\UpdateReviewStatusCommand.cs" />
+    <Compile Include="Features\ProblemAccount\Requests\UpdateReviewStatusQuery.cs" />
     <Compile Include="Features\ProblemAccount\ViewModels\FilterViewModel.cs" />
+    <Compile Include="Features\ProblemAccount\ViewModels\UpdateReviewStatusViewModel.cs" />
     <Compile Include="Features\Shared\ExcelBaseHandler.cs" />
     <Compile Include="Features\Shared\FeatureFoldersRazorViewEngine.cs" />
     <Compile Include="Features\ProblemAccount\ProblemAccountController.cs" />
@@ -283,6 +296,8 @@
     <Content Include="Features\ProblemAccount\ExcelTemplates\Agent.xls" />
     <Content Include="Features\ProblemAccount\ExcelTemplates\Master.xls" />
     <Content Include="Features\ProblemAccount\ExcelTemplates\Member.xls" />
+    <Content Include="Features\ProblemAccount\Views\UpdateReviewStatus.cshtml" />
+    <Content Include="Features\ProblemAccount\Styles\update-review-status.scss" />
     <None Include="packages.config" />
     <Content Include="Features\Shared\Views\_Layout.cshtml" />
     <Content Include="Features\Web.config">

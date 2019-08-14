@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Features/Shared/Views/_Layout.cshtml";
+}
+@section Styles{
+    @StaticResources.RenderStyles("~/Features/ProblemAccount/bundles/update-review-status")
+}
+@model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.UpdateReviewStatusViewModel
+<div id="message-container" class="message-container"></div>
+<form id="formUpdateReviewStatus" action="@Url.Action("UpdateReviewStatus", "ProblemAccount")" method="post" class="form-horizontal">
+    @Html.AntiForgeryToken()
+    <p>@string.Format(Resources.SetReviewedConfirmMessage, Model.SelectedDownlineUsernames)</p>
+    @if (!Model.CustLevel.IsMemberLevel())
+    {
+        <div class="form-group">
+            <input type="radio" id="rd-selected-only" name="IsAffectedAllDownlines" value="false" />
+            <label for="rd-selected-only">@Resources.SetToReviewdForSelectedAccountsOnly</label>
+        </div>
+        <div class="form-group">
+            <input type="radio" id="rd-affected-downlines" name="IsAffectedAllDownlines" value="true" />
+            <label for="rd-affected-downlines">@Resources.SetToReviewdForSelectedAccountsAndAffectedDownlines</label>
+        </div>
+    }
+    @Html.Hidden(nameof(Model.SelectedDownlineIds), Model.SelectedDownlineIds)
+    <div class="list-button">
+        <input type="submit" class="btn-submit" value="@Resources.Submit" />
+        <input type="button" class="btn-cancel" value="@Resources.Cancel" />
+    </div>
+</form>

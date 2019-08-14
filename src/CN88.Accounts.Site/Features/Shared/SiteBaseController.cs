@@ -1,7 +1,10 @@
 ﻿namespace CN88.Accounts.Site.Features.Shared
 {
+    using System.Net;
     using System.Threading.Tasks;
     using System.Web.Mvc;
+    using CN88.Accounts.Shared.Models;
+    using CN88.Accounts.Shared.Resources;
     using CN88.Accounts.Site.Features.Shared.ViewModels;
     using CN88.Web.Controllers;
     using MediatR;
@@ -22,6 +25,14 @@
             => (message as BaseQuery).IsValid()
                 ? View(await mediator.Send(message))
                 : View(NoInformationPageViewPath);
+
+        protected async Task<ActionResult> JsonDataAsync<TResponse>(
+            IRequest<TResponse> message,
+            JsonRequestBehavior jsonRequestBehavior = JsonRequestBehavior.AllowGet)
+            => (message as BaseQuery).IsValid()
+                ? Json(await mediator.Send(message), jsonRequestBehavior)
+                : Json(new Result((int)HttpStatusCode.Forbidden, Resources.NotAuthorized));
+
 
         protected async Task<FileContentResult> ExcelView(IRequest<ExcelFileViewModel> message)
             => (message as BaseQuery).IsValid()

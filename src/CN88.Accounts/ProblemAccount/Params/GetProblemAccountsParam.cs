@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace CN88.Accounts.ProblemAccount.Params
+﻿namespace CN88.Accounts.ProblemAccount.Params
 {
+    using System;
+
     public class GetProblemAccountsParam
     {
         public GetProblemAccountsParam(

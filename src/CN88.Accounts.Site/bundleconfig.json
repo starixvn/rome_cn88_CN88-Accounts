@@ -14,5 +14,11 @@
       "Features/Shared/Scripts/src/single-selection-dropdown.js",
       "Features/ProblemAccount/Scripts/src/problem-account.js"
     ]
+  },
+  {
+    "outputFileName": "Features/ProblemAccount/bundles/update-review-status.css",
+    "inputFiles": [
+      "Features/ProblemAccount/Styles/update-review-status.css"
+    ]
   }
 ]

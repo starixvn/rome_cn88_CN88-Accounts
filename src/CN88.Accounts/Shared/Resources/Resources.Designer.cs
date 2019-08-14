@@ -88,6 +88,15 @@ namespace CN88.Accounts.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date Notified.
         /// </summary>
         public static string DateNotified {
@@ -174,6 +183,15 @@ namespace CN88.Accounts.Shared.Resources {
         public static string NoInformationIsAvailable {
             get {
                 return ResourceManager.GetString("NoInformationIsAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are not authorized on this function..
+        /// </summary>
+        public static string NotAuthorized {
+            get {
+                return ResourceManager.GetString("NotAuthorized", resourceCulture);
             }
         }
         
@@ -282,6 +300,42 @@ namespace CN88.Accounts.Shared.Resources {
         public static string ReviewStatus {
             get {
                 return ResourceManager.GetString("ReviewStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to set to Reviewed for {0}.
+        /// </summary>
+        public static string SetReviewedConfirmMessage {
+            get {
+                return ResourceManager.GetString("SetReviewedConfirmMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Reviewed Status.
+        /// </summary>
+        public static string SetReviewedStatus {
+            get {
+                return ResourceManager.GetString("SetReviewedStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set to Reviewed for selected accounts and affected downlines..
+        /// </summary>
+        public static string SetToReviewdForSelectedAccountsAndAffectedDownlines {
+            get {
+                return ResourceManager.GetString("SetToReviewdForSelectedAccountsAndAffectedDownlines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set to Reviewed for selected accounts only..
+        /// </summary>
+        public static string SetToReviewdForSelectedAccountsOnly {
+            get {
+                return ResourceManager.GetString("SetToReviewdForSelectedAccountsOnly", resourceCulture);
             }
         }
         

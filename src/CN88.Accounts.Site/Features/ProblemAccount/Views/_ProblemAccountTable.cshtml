@@ -4,7 +4,15 @@
     <thead>
         <tr>
             <th class="col-no">@Resources.No</th>
-            <th class="col-username">@Resources.ProblemAccount</th>
+            @if (Model.CustLevel.IsAgentLevel())
+            {
+                <th class="col-uplineusername">@Resources.Master</th>
+            }
+            @if (Model.CustLevel.IsMemberLevel())
+            {
+                <th class="col-uplineusername">@Resources.Agent</th>
+            }
+            <th class="col-username">@Resources.Username</th>
             <th class="col-name">@Resources.Name</th>
             <th class="col-nickname">@Resources.Nickname</th>
             @if (Model.CustLevel.IsMasterLevel())
@@ -31,6 +39,10 @@
             {
                 <tr>
                     <td>@index</td>
+                    @if (Model.CustLevel.IsAgentLevel() || Model.CustLevel.IsMemberLevel())
+                    {
+                        <td>@account.UplineUsername</td>
+                    }
                     <td class="username">
                         @if (Model.CustLevel.IsMemberLevel())
                         {

@@ -20,5 +20,13 @@
     "inputFiles": [
       "Features/ProblemAccount/Styles/update-review-status.css"
     ]
+  },
+  {
+    "outputFileName": "Features/ProblemAccount/bundles/update-review-status.js",
+    "inputFiles": [
+      "Features/Shared/Scripts/src/core.js",
+      "Features/Shared/Scripts/src/message.js",
+      "Features/ProblemAccount/Scripts/src/update-review-status.js"
+    ]
   }
 ]

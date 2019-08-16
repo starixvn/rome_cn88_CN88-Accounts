@@ -29,7 +29,7 @@
 
         public PagedData<ProblemAccount> PageData { get; }
 
-        public int NumberOfColumns => CustLevel.IsMasterLevel() || CustLevel.IsAgentLevel() ? 9 : 8;
+        public int NumberOfColumns => CustLevel.IsMasterLevel() || CustLevel.IsMemberLevel() ? 9 : 10;
 
         public FilterViewModel FilterViewModel => new FilterViewModel(query);
 

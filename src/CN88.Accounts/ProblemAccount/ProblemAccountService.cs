@@ -53,6 +53,7 @@
                 param.SubAccId,
                 param.RoleId,
                 param.IsAllDownline,
+                param.IsAffectedAllDownlines,
                 param.DownlineList,
                 param.Language,
                 param.LoginIP);

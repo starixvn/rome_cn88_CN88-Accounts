@@ -1,0 +1,73 @@
+﻿class UpdateReviewStatus {
+    $: JQueryStatic;
+    topWindow: Window;
+
+    $messageContainer: JQuery;
+    $formUpdateReviewStatus: JQuery;
+    $btnCancel: JQuery;
+
+    message: Message;
+
+    constructor($: JQueryStatic, topWindow: Window, message: Message) {
+        this.$ = $;
+        this.topWindow = topWindow;
+        this.message = message;
+    }
+
+    init(): void {
+        this.cacheDOMElements();
+        this.bindEvents();
+    }
+
+    cacheDOMElements(): void {
+        this.$messageContainer = this.$("#message-container");
+        this.$formUpdateReviewStatus = this.$("#formUpdateReviewStatus");
+        this.$btnCancel = this.$("#btnCancel");
+    }
+
+    bindEvents(): void {
+        this.$btnCancel.on("click touchend", () => {
+            this.topWindow["popupManager"].close();
+        });
+
+        this.$formUpdateReviewStatus.submit(this.onSubmit);
+    }
+
+    onSubmit = () => {
+        this.$.blockUI();
+
+        this.$.ajax({
+            type: "POST",
+            url: this.$formUpdateReviewStatus.attr("action"),
+            data: this.getParams(),
+            dataType: "json",
+            success: (data) => {
+                if (data.ErrCode) {
+                    data = { Code: data.ErrCode, Message: data.ErrMsg };
+                }
+
+                const result = new Result(data);
+
+                if (result.IsSuccessful) {
+                    this.topWindow["popupManager"].close();
+                } else {
+                    this.message.showMessage(this.$messageContainer, result);
+                }
+            },
+            complete: this.$.unblockUI
+        });
+    };
+
+    getParams() {
+        return {
+            custLevelId: this.$("#CustLevelId").val(),
+            selectedDownlineIds: this.$("#SelectedDownlineIds").val(),
+            isAffectedAllDownlines: this.$("#IsAffectedAllDownlines").val()
+        };
+    }
+}
+
+$(document).ready(() => {
+    const updateReviewStatus = new UpdateReviewStatus($, window.top, new Message());
+    updateReviewStatus.init();
+});

@@ -12,7 +12,7 @@
     @if (!Model.CustLevel.IsMemberLevel())
     {
         <div class="form-group">
-            <input type="radio" id="rd-selected-only" name="IsAffectedAllDownlines" value="false" />
+            <input type="radio" id="rd-selected-only" name="IsAffectedAllDownlines" value="false" checked="checked" />
             <label for="rd-selected-only">@Resources.SetToReviewdForSelectedAccountsOnly</label>
         </div>
         <div class="form-group">
@@ -20,9 +20,13 @@
             <label for="rd-affected-downlines">@Resources.SetToReviewdForSelectedAccountsAndAffectedDownlines</label>
         </div>
     }
+    @Html.Hidden("CustLevelId", Model.CustLevel.Value)
     @Html.Hidden(nameof(Model.SelectedDownlineIds), Model.SelectedDownlineIds)
     <div class="list-button">
         <input type="submit" class="btn-submit" value="@Resources.Submit" />
-        <input type="button" class="btn-cancel" value="@Resources.Cancel" />
+        <input type="button" class="btn-cancel" id="btnCancel" value="@Resources.Cancel" />
     </div>
 </form>
+@section Scripts{
+    @StaticResources.RenderScripts("~/Features/ProblemAccount/bundles/update-review-status")
+}

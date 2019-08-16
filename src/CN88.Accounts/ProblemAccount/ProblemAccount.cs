@@ -12,6 +12,7 @@
 
         public ProblemAccount(
             int custId,
+            string uplineUsername,
             string username,
             string name,
             string nickname,
@@ -21,6 +22,7 @@
             bool isReviewed)
         {
             CustId = custId;
+            UplineUsername = uplineUsername;
             Username = username;
             Name = name;
             Nickname = nickname;
@@ -31,6 +33,8 @@
         }
 
         public int CustId { get; }
+
+        public string UplineUsername { get; }
 
         public string Username { get; }
 

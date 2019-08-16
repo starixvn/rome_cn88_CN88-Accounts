@@ -186,4 +186,7 @@
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
   </data>
+  <data name="Username" xml:space="preserve">
+    <value>帐户</value>
+  </data>
 </root>

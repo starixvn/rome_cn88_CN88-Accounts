@@ -230,8 +230,12 @@
       <DependentUpon>index.js</DependentUpon>
     </Content>
     <Content Include="Features\ProblemAccount\bundles\update-review-status.css" />
+    <Content Include="Features\ProblemAccount\bundles\update-review-status.js" />
     <Content Include="Features\ProblemAccount\bundles\update-review-status.min.css">
       <DependentUpon>update-review-status.css</DependentUpon>
+    </Content>
+    <Content Include="Features\ProblemAccount\bundles\update-review-status.min.js">
+      <DependentUpon>update-review-status.js</DependentUpon>
     </Content>
     <Content Include="Features\ProblemAccount\Styles\problem-account.css">
       <DependentUpon>problem-account.scss</DependentUpon>
@@ -374,8 +378,10 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Features\ProblemAccount\Scripts\src\problem-account.ts" />
+    <TypeScriptCompile Include="Features\ProblemAccount\Scripts\src\update-review-status.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\core.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\daterange-picker.ts" />
+    <TypeScriptCompile Include="Features\Shared\Scripts\src\message.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\pager.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\single-selection-dropdown.ts" />
     <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />

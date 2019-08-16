@@ -7,6 +7,7 @@
             int subAccId,
             byte roleId,
             bool isAllDownline,
+            bool isAffectedAllDownlines,
             string downlineList,
             string language,
             string loginIP)
@@ -15,6 +16,7 @@
             SubAccId = subAccId;
             RoleId = roleId;
             IsAllDownline = isAllDownline;
+            IsAffectedAllDownlines = isAffectedAllDownlines;
             DownlineList = downlineList;
             Language = language;
             LoginIP = loginIP;
@@ -27,6 +29,8 @@
         public byte RoleId { get; }
 
         public bool IsAllDownline { get; }
+
+        public bool IsAffectedAllDownlines { get; }
 
         public string DownlineList { get; }
 

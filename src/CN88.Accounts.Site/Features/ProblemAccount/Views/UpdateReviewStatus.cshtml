@@ -27,6 +27,7 @@
         <input type="button" class="btn-cancel" id="btnCancel" value="@Resources.Cancel" />
     </div>
 </form>
+@Html.Hidden("SuccessMessage", Resources.UpdateSuccessfully)
 @section Scripts{
     @StaticResources.RenderScripts("~/Features/ProblemAccount/bundles/update-review-status")
 }

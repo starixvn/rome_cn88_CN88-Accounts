@@ -72,9 +72,6 @@
         this.$reportForm.submit(this.onSubmit);
         this.$tblProblemAccount.find(".status-link").click(this.onStatusLinkClick);
         this.$excelIcon.click(() => { this.$exportExcelForm.submit(); });
-        this.topWindow["popupManager"].onClosing = () => {
-            this.topWindow.$("#main").attr("src", (index, attr) => { return attr; });
-        };
         this.$checkboxSelectAll.change(this.onCheckboxSelectAllChange);
         this.$downlineCheckboxs.on("click touchend", this.onDownlineCheckboxesClick);
         this.$btnReview.on("click touchend", this.onSetToReviewClick);
@@ -127,7 +124,7 @@
         };
         const url = `${this.updateReviewStatusUrl}?${this.$.param(params)}`;
 
-        this.openPopup(url, this.resoures.setReviewedStatus);
+        this.openPopup(url, this.resoures.setReviewedStatus, "", 500, 300);
     };
 
     getSelectedDownlines() {

@@ -237,4 +237,7 @@
   <data name="Username" xml:space="preserve">
     <value>Username</value>
   </data>
+  <data name="UpdateSuccessfully" xml:space="preserve">
+    <value>Update Successfully!</value>
+  </data>
 </root>

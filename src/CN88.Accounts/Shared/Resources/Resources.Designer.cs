@@ -394,6 +394,15 @@ namespace CN88.Accounts.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update Successfully!.
+        /// </summary>
+        public static string UpdateSuccessfully {
+            get {
+                return ResourceManager.GetString("UpdateSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Username.
         /// </summary>
         public static string Username {

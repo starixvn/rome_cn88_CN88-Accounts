@@ -8,6 +8,7 @@
 @model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.IndexViewModel
 <div class="note">
     <span class="start">*</span>@Resources.ProblemAccountNote
+    <span id="icon-excel" class="icon-excel" title="@Resources.ExportToExcel" data-toggle="tooltip" data-placement="bottom"></span>
 </div>
 <ul id="nav-tabs" class="nav @(Model.IsMobile ? "nav-tabs" : "nav-tabs-style2")" role="tablist">
     <li class="@(Model.CustLevel.IsMasterLevel() ? "active" : string.Empty)" role="presentation">

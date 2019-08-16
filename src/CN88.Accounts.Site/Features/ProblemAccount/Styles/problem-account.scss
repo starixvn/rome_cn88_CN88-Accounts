@@ -1,10 +1,22 @@
 ﻿.content-page {
     padding: 15px 15px 0;
-    width: 1500px;
 }
 
 .note {
     margin-bottom: 15px;
+
+    .icon-excel {
+        position: absolute;
+        right: 16px;
+        top: 49px;
+    }
+
+    .tooltip.bottom {
+        margin-top: 0;
+        .tooltip-inner {
+            width: 110px;
+        }
+    }
 }
 
 .btn-review {

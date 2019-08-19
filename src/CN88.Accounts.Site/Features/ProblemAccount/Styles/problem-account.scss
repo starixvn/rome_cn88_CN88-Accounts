@@ -30,4 +30,14 @@
     .col-no {
         width: 50px;
     }
+
+    .col-numberofaccounts {
+        .icon-info:hover {
+            cursor: pointer;
+        }
+    }
+
+    .col-action {
+        max-width: 100px;
+    }
 }

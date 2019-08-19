@@ -8,17 +8,17 @@
 <div id="message-container" class="message-container"></div>
 <form id="formUpdateReviewStatus" action="@Url.Action("UpdateReviewStatus", "ProblemAccount")" method="post" class="form-horizontal">
     @Html.AntiForgeryToken()
-    <p>@string.Format(Resources.SetReviewedConfirmMessage, Model.SelectedDownlineUsernames)</p>
+    <p class="review-content">@string.Format(Resources.SetReviewedConfirmMessage, Model.SelectedDownlineUsernames)</p>
     @if (!Model.CustLevel.IsMemberLevel())
     {
-        <div class="form-group">
+        <label for="rd-selected-only" class="review-options">
             <input type="radio" id="rd-selected-only" name="IsAffectedAllDownlines" value="false" checked="checked" />
-            <label for="rd-selected-only">@Resources.SetToReviewdForSelectedAccountsOnly</label>
-        </div>
-        <div class="form-group">
+            @Resources.SetToReviewdForSelectedAccountsOnly
+        </label>
+        <label for="rd-affected-downlines" class="review-options">
             <input type="radio" id="rd-affected-downlines" name="IsAffectedAllDownlines" value="true" />
-            <label for="rd-affected-downlines">@Resources.SetToReviewdForSelectedAccountsAndAffectedDownlines</label>
-        </div>
+            @Resources.SetToReviewdForSelectedAccountsAndAffectedDownlines
+        </label>
     }
     @Html.Hidden("CustLevelId", Model.CustLevel.Value)
     @Html.Hidden(nameof(Model.SelectedDownlineIds), Model.SelectedDownlineIds)

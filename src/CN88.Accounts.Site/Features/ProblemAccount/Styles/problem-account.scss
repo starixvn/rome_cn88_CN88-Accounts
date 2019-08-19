@@ -37,7 +37,12 @@
         }
     }
 
-    .col-action {
-        max-width: 100px;
+    .col-action,
+    .col-reviewstatus {
+        width: 100px;
+    }
+
+    .col-datenotified {
+        width: 200px;
     }
 }

@@ -10,6 +10,7 @@
     public abstract class ExcelBaseHandler
     {
         private const int bodyStartIndex = 2;
+        private const int bodyEndIndex = 3;
         private Func<string, string> mapPath;
 
         protected internal Func<string, string> MapPath
@@ -28,7 +29,8 @@
                    noInfomationText: Resources.NoInformationIsAvailable,
                    titleStartIndex: -1,
                    headerStartIndex: 1,
-                   bodyStartIndex: bodyStartIndex);
+                   bodyStartIndex: bodyStartIndex,
+                   bodyEndIndex: bodyEndIndex);
 
         protected internal virtual string ExcelTemplatePath(UserLevel viewerLevel)
             => GetExcelTemplatePath(viewerLevel.DisplayName);

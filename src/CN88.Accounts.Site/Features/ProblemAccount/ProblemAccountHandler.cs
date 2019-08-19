@@ -1,5 +1,6 @@
 ﻿namespace CN88.Accounts.Site.Features.ProblemAccount
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using CN88.Accounts.ProblemAccount;
     using CN88.Accounts.ProblemAccount.Params;
@@ -88,30 +89,51 @@
                 message.PageSize);
 
         private Mapper<ProblemAccount> GetBodyRowMapper(Web.Models.UserLevel userLevel)
-        {
-            var mapper = new Mapper<ProblemAccount>()
+            => BodyRowMapperByLevel[userLevel];
+
+        private IDictionary<Web.Models.UserLevel, Mapper<ProblemAccount>> BodyRowMapperByLevel
+            => new Dictionary<Web.Models.UserLevel, Mapper<ProblemAccount>>
+            {
+                [Web.Models.UserLevel.Master] = GetMasterBodyRowMapper(),
+                [Web.Models.UserLevel.Agent] = GetAgentBodyRowMapper(),
+                [Web.Models.UserLevel.Member] = GetMemberBodyRowMapper()
+            };
+
+        private Mapper<ProblemAccount> GetMasterBodyRowMapper()
+            => new Mapper<ProblemAccount>()
                 .Map(A, _ => currentRowIndex++)
                 .Map(B, data => data.Username)
                 .Map(C, data => data.Name)
-                .Map(D, data => data.Nickname);
+                .Map(D, data => data.Nickname)
+                .Map(E, data => data.NumberOfDownline)
+                .Map(F, data => data.StatusName)
+                .Map(G, data => data.CreatedDate)
+                .Map(H, data => data.ReviewStatus);
 
-            if (userLevel.IsMasterLevel() || userLevel.IsAgentLevel())
-            {
-                mapper.Map(E, data => data.NumberOfDownline);
-                mapper.Map(F, data => data.StatusName);
-                mapper.Map(G, data => data.CreatedDate);
-                mapper.Map(H, data => data.ReviewStatus);
-            }
-            else
-            {
-                mapper.Map(E, data => data.StatusName);
-                mapper.Map(F, data => data.CreatedDate);
-                mapper.Map(G, data => data.ReviewStatus);
-            }
 
-            return mapper;
-        }
 
+        private Mapper<ProblemAccount> GetAgentBodyRowMapper()
+            => new Mapper<ProblemAccount>()
+                .Map(A, _ => currentRowIndex++)
+                .Map(B, data => data.UplineUsername)
+                .Map(C, data => data.Username)
+                .Map(D, data => data.Name)
+                .Map(E, data => data.Nickname)
+                .Map(F, data => data.NumberOfDownline)
+                .Map(G, data => data.StatusName)
+                .Map(H, data => data.CreatedDate)
+                .Map(I, data => data.ReviewStatus);
+
+        private Mapper<ProblemAccount> GetMemberBodyRowMapper()
+            => new Mapper<ProblemAccount>()
+                .Map(A, _ => currentRowIndex++)
+                .Map(B, data => data.UplineUsername)
+                .Map(C, data => data.Username)
+                .Map(D, data => data.Name)
+                .Map(E, data => data.Nickname)
+                .Map(F, data => data.StatusName)
+                .Map(G, data => data.CreatedDate)
+                .Map(H, data => data.ReviewStatus);
 
     }
 }

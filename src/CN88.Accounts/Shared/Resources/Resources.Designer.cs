@@ -304,7 +304,7 @@ namespace CN88.Accounts.Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to set to Reviewed for {0}.
+        ///   Looks up a localized string similar to Are you sure you want to set to Reviewed for {0}?.
         /// </summary>
         public static string SetReviewedConfirmMessage {
             get {

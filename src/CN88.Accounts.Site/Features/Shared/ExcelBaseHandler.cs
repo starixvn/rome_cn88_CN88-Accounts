@@ -4,7 +4,7 @@
     using System.IO;
     using System.Web.Hosting;
     using CN88.Accounts.Shared.Resources;
-    using CN88.Web.Models;
+    using CN88.Common.Models;
     using ONEbook.SpreadSheets;
 
     public abstract class ExcelBaseHandler

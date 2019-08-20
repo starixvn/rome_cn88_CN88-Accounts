@@ -1,4 +1,4 @@
-﻿.content-page {
+﻿body {
     padding: 15px 15px 0;
 }
 
@@ -13,6 +13,7 @@
 
     .tooltip.bottom {
         margin-top: 0;
+
         .tooltip-inner {
             width: 110px;
         }
@@ -44,5 +45,24 @@
 
     .col-datenotified {
         width: 200px;
+    }
+}
+
+// Phone
+body.phone {
+    background-color: #fff;
+    font-size: 10.5px;
+    padding: 10px 0;
+
+    .tab-header {
+        width: 100%;
+        display: table;
+        line-height: 25px;
+        padding-top: 4px;
+
+        [class^="icon-filter"] {
+            float: right;
+            display: inline-block;
+        }
     }
 }

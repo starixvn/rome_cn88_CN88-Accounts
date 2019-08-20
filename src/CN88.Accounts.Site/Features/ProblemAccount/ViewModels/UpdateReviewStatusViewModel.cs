@@ -5,21 +5,23 @@
     using System.Linq;
     using CN88.Accounts.Shared.Resources;
     using CN88.Accounts.Site.Features.ProblemAccount.Requests;
-    using CN88.Web.Models;
+    using CN88.Common.Models;
 
     public class UpdateReviewStatusViewModel
     {
+        private const int numberOfDisplayDownlines = 10;
+
         public UpdateReviewStatusViewModel(UpdateReviewStatusQuery query)
         {
             CustLevel = query.CustLevel;
             SelectedDownlineIds = query.SelectedDownlineIds;
             SelectedDownlineUsernames = query.SelectedDownlineUsernames.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
-            DisplayShowAllAccountOption = SelectedDownlineUsernames.Count() > 5;
-            Top10DownlineUsernames = SelectedDownlineUsernames.Take(5);
+            DisplayShowAllAccountOption = SelectedDownlineUsernames.Count() > numberOfDisplayDownlines;
+            TopDownlineUsernames = SelectedDownlineUsernames.Take(numberOfDisplayDownlines);
             if (DisplayShowAllAccountOption)
             {
-                MoreDownlineUsernames = SelectedDownlineUsernames.Skip(5);
+                MoreDownlineUsernames = SelectedDownlineUsernames.Skip(numberOfDisplayDownlines);
             }
         }
 
@@ -31,10 +33,10 @@
 
         public bool DisplayShowAllAccountOption { get; }
 
-        public IEnumerable<string> Top10DownlineUsernames { get; }
+        public IEnumerable<string> TopDownlineUsernames { get; }
 
         public IEnumerable<string> MoreDownlineUsernames { get; }
 
-        public string ConfirmMessage => $"{Resources.SetReviewedConfirmMessage} {string.Join(", ", Top10DownlineUsernames)}";
+        public string ConfirmMessage => $"{Resources.SetReviewedConfirmMessage} {string.Join(", ", TopDownlineUsernames)}";
     }
 }

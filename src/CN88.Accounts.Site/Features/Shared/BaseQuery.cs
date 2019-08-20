@@ -1,7 +1,7 @@
 ﻿namespace CN88.Accounts.Site.Features.Shared
 {
     using CN88.Accounts.Shared.Models;
-    using CN88.Web.Models;
+    using CN88.Common.Models;
 
     public class BaseQuery
     {

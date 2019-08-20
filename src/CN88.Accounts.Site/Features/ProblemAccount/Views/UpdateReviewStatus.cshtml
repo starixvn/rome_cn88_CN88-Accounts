@@ -5,39 +5,42 @@
     @StaticResources.RenderStyles("~/Features/ProblemAccount/bundles/update-review-status")
 }
 @model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.UpdateReviewStatusViewModel
-<div id="message-container" class="message-container"></div>
-<form id="formUpdateReviewStatus" action="@Url.Action("UpdateReviewStatus", "ProblemAccount")" method="post" class="form-horizontal">
-    @Html.AntiForgeryToken()
-    <div class="review-content">
-        @if (Model.DisplayShowAllAccountOption)
+<div class="content-page">
+    <div id="message-container" class="message-container"></div>
+    <form id="formUpdateReviewStatus" action="@Url.Action("UpdateReviewStatus", "ProblemAccount")" method="post" class="form-horizontal">
+        @Html.AntiForgeryToken()
+        <div class="review-content">
+            @if (Model.DisplayShowAllAccountOption)
+            {
+                @Html.Raw(Model.ConfirmMessage)<span class="more-ellipses">...</span><div class="more-content">
+                    <span>@($", {string.Join(", ", Model.MoreDownlineUsernames)}")</span>?&nbsp;
+                    <a href="" class="more-link">@Resources.ShowAllAccount</a>
+                </div>
+            }
+            else
+            {
+                @Html.Raw($"{Model.ConfirmMessage}?")
+            }
+        </div>
+        @if (!Model.CustLevel.IsMemberLevel())
         {
-            @Html.Raw(Model.ConfirmMessage)<span class="more-ellipses">...</span><div class="more-content"><span>@($", {string.Join(", ", Model.MoreDownlineUsernames)}")</span>?&nbsp;
-                <a href="" class="more-link">@Resources.ShowAllAccount</a>
-            </div>
+            <label for="rd-selected-only" class="review-options">
+                <input type="radio" id="rd-selected-only" name="IsAffectedAllDownlines" value="false" checked="checked" />
+                @Resources.SetToReviewdForSelectedAccountsOnly
+            </label>
+            <label for="rd-affected-downlines" class="review-options">
+                <input type="radio" id="rd-affected-downlines" name="IsAffectedAllDownlines" value="true" />
+                @Resources.SetToReviewdForSelectedAccountsAndAffectedDownlines
+            </label>
         }
-        else
-        {
-            @Html.Raw($"{Model.ConfirmMessage}?")
-        }
-    </div>
-    @if (!Model.CustLevel.IsMemberLevel())
-    {
-        <label for="rd-selected-only" class="review-options">
-            <input type="radio" id="rd-selected-only" name="IsAffectedAllDownlines" value="false" checked="checked" />
-            @Resources.SetToReviewdForSelectedAccountsOnly
-        </label>
-        <label for="rd-affected-downlines" class="review-options">
-            <input type="radio" id="rd-affected-downlines" name="IsAffectedAllDownlines" value="true" />
-            @Resources.SetToReviewdForSelectedAccountsAndAffectedDownlines
-        </label>
-    }
-    @Html.Hidden("CustLevelId", Model.CustLevel.Value)
-    @Html.Hidden(nameof(Model.SelectedDownlineIds), Model.SelectedDownlineIds)
-    <div class="list-button">
-        <input type="submit" class="btn-submit" value="@Resources.Submit" />
-        <input type="button" class="btn-cancel" id="btnCancel" value="@Resources.Cancel" />
-    </div>
-</form>
+        @Html.Hidden("CustLevelId", Model.CustLevel.Value)
+        @Html.Hidden(nameof(Model.SelectedDownlineIds), Model.SelectedDownlineIds)
+        <div class="list-button">
+            <input type="submit" class="btn-submit" value="@Resources.Submit" />
+            <input type="button" class="btn-cancel" id="btnCancel" value="@Resources.Cancel" />
+        </div>
+    </form>
+</div>
 @Html.Hidden("SuccessMessage", Resources.UpdateSuccessfully)
 @section Scripts{
     @StaticResources.RenderScripts("~/Features/ProblemAccount/bundles/update-review-status")

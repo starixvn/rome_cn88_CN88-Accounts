@@ -9,7 +9,7 @@
             int subAccId,
             bool isAllDownline,
             string uplineUsername,
-            byte searchRoleId,
+            byte custLevelId,
             string searchUsername,
             byte reviewStatus,
             DateTime fromDate,
@@ -21,7 +21,7 @@
             SubAccId = subAccId;
             IsAllDownline = isAllDownline;
             UplineUsername = uplineUsername;
-            SearchRoleId = searchRoleId;
+            CustLevelId = custLevelId;
             SearchUsername = searchUsername;
             ReviewStatus = reviewStatus;
             FromDate = fromDate;
@@ -38,7 +38,7 @@
 
         public string UplineUsername { get; }
 
-        public byte SearchRoleId { get; }
+        public byte CustLevelId { get; }
 
         public string SearchUsername { get; }
 

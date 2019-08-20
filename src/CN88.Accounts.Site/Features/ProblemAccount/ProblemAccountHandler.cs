@@ -4,12 +4,12 @@
     using System.Threading.Tasks;
     using CN88.Accounts.ProblemAccount;
     using CN88.Accounts.ProblemAccount.Params;
-    using CN88.Accounts.Shared.Models;
     using CN88.Accounts.Shared.Resources;
     using CN88.Accounts.Site.Features.ProblemAccount.Requests;
     using CN88.Accounts.Site.Features.ProblemAccount.ViewModels;
     using CN88.Accounts.Site.Features.Shared;
     using CN88.Accounts.Site.Features.Shared.ViewModels;
+    using CN88.Common.Models;
     using CN88.Web.Helpers;
     using MediatR;
     using ONEbook.SpreadSheets;
@@ -41,7 +41,7 @@
             var param = CreateParam(message);
             var problemAccounts = await problemAccountService.GetProblemAccounts(param);
 
-            return new IndexViewModel(message, browserHelper.IsMobile(), browserHelper, problemAccounts);
+            return new IndexViewModel(message, browserHelper.IsMobile(), problemAccounts);
         }
 
         public UpdateReviewStatusViewModel Handle(UpdateReviewStatusQuery message)
@@ -92,15 +92,15 @@
                 message.PageIndex,
                 message.PageSize);
 
-        private Mapper<ProblemAccount> GetBodyRowMapper(Web.Models.UserLevel userLevel)
+        private Mapper<ProblemAccount> GetBodyRowMapper(UserLevel userLevel)
             => BodyRowMapperByLevel[userLevel];
 
-        private IDictionary<Web.Models.UserLevel, Mapper<ProblemAccount>> BodyRowMapperByLevel
-            => new Dictionary<Web.Models.UserLevel, Mapper<ProblemAccount>>
+        private IDictionary<UserLevel, Mapper<ProblemAccount>> BodyRowMapperByLevel
+            => new Dictionary<UserLevel, Mapper<ProblemAccount>>
             {
-                [Web.Models.UserLevel.Master] = GetMasterBodyRowMapper(),
-                [Web.Models.UserLevel.Agent] = GetAgentBodyRowMapper(),
-                [Web.Models.UserLevel.Member] = GetMemberBodyRowMapper()
+                [UserLevel.Master] = GetMasterBodyRowMapper(),
+                [UserLevel.Agent] = GetAgentBodyRowMapper(),
+                [UserLevel.Member] = GetMemberBodyRowMapper()
             };
 
         private Mapper<ProblemAccount> GetMasterBodyRowMapper()
@@ -138,7 +138,5 @@
                 .Map(F, data => data.StatusName)
                 .Map(G, data => data.CreatedDate)
                 .Map(H, data => data.ReviewStatus);
-
-
     }
 }

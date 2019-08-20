@@ -47,8 +47,6 @@
         e.preventDefault();
         this.$.blockUI();
 
-        const params = this.getParams();
-
         this.$.ajax({
             type: "POST",
             url: this.$formUpdateReviewStatus.attr("action"),

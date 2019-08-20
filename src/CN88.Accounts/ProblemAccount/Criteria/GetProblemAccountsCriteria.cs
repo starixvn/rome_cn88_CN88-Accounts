@@ -59,7 +59,7 @@
             => "CS_ProblemAccount_CustomerList";
 
         public override bool IsValid()
-            => CustId > 0 && 0 < SearchRoleId && SearchRoleId < 4;
+            => CustId > 0 && SubAccId >= 0 && SearchRoleId > 0;
 
     }
 }

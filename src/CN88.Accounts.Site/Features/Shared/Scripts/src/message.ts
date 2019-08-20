@@ -9,7 +9,7 @@ class Result {
     IsFailed: boolean;
     IsWarning: boolean;
 
-    constructor(data?: any) {
+    constructor(data?) {
         this.Code = data.Code;
         this.Message = data.Message || "";
         this.IsSuccessful = this.Code === 0;

@@ -3,16 +3,16 @@
     using System.Net;
     using System.Threading.Tasks;
     using System.Web.Mvc;
-    using CN88.Accounts.Shared.Models;
     using CN88.Accounts.Shared.Resources;
     using CN88.Accounts.Site.Features.Shared.ViewModels;
+    using CN88.Common.Models;
     using CN88.Web.Controllers;
     using MediatR;
 
     public abstract class SiteBaseController : CN88BaseController
     {
         private const string InvalidExcelFileName = "Invalid";
-        private const string NoInformationPageViewPath = "~/Shared/Views/NoInformation.cshtml";
+        private const string NoInformationPageViewPath = "~/Features/Shared/Views/NoInformation.cshtml";
 
         protected readonly IMediator mediator;
 

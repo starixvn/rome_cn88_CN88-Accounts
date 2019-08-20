@@ -252,4 +252,7 @@
   <data name="OK" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="DateNotifiedFrom" xml:space="preserve">
+    <value>Date Notified From</value>
+  </data>
 </root>

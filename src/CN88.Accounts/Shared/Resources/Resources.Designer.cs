@@ -106,6 +106,15 @@ namespace CN88.Accounts.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date Notified From.
+        /// </summary>
+        public static string DateNotifiedFrom {
+            get {
+                return ResourceManager.GetString("DateNotifiedFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Export to Excel.
         /// </summary>
         public static string ExportToExcel {

@@ -9,7 +9,7 @@
     using CN88.Accounts.Shared.Resources;
     using CN88.Accounts.Site.Features.ProblemAccount.Requests;
     using CN88.Accounts.Site.Features.Shared.ViewModels;
-    using CN88.Web.Models;
+    using CN88.Common.Models;
 
     public class FilterViewModel
     {

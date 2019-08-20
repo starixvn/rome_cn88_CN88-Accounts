@@ -55,8 +55,11 @@
     <Reference Include="Alpha.SubAccount, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Alpha.SubAccount.1.0.0.1\lib\net40\Alpha.SubAccount.dll</HintPath>
     </Reference>
+    <Reference Include="CN88.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CN88.Common.1.0.0-beta2\lib\net461\CN88.Common.dll</HintPath>
+    </Reference>
     <Reference Include="CN88.Web, Version=1.0.1.6, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CN88.Web.1.0.1.6-ProblemAccounts-02\lib\net461\CN88.Web.dll</HintPath>
+      <HintPath>..\..\packages\CN88.Web.1.0.1.6-ProblemAccounts-04\lib\net461\CN88.Web.dll</HintPath>
     </Reference>
     <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
@@ -237,21 +240,17 @@
     <Content Include="Features\ProblemAccount\bundles\update-review-status.min.js">
       <DependentUpon>update-review-status.js</DependentUpon>
     </Content>
-    <Content Include="Features\ProblemAccount\Styles\problem-account.css">
-      <DependentUpon>problem-account.scss</DependentUpon>
+    <Content Include="Features\ProblemAccount\Styles\index.css">
+      <DependentUpon>index.scss</DependentUpon>
     </Content>
-    <Content Include="Features\ProblemAccount\Styles\problem-account.min.css">
-      <DependentUpon>problem-account.css</DependentUpon>
+    <Content Include="Features\ProblemAccount\Styles\index.min.css">
+      <DependentUpon>index.css</DependentUpon>
     </Content>
     <Content Include="Features\ProblemAccount\Styles\update-review-status.css">
       <DependentUpon>update-review-status.scss</DependentUpon>
     </Content>
     <Content Include="Features\ProblemAccount\Styles\update-review-status.min.css">
       <DependentUpon>update-review-status.css</DependentUpon>
-    </Content>
-    <Content Include="Features\Shared\bundles\accounts.css" />
-    <Content Include="Features\Shared\bundles\accounts.min.css">
-      <DependentUpon>accounts.css</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -288,7 +287,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\AuthorizationSection.config" />
-    <Content Include="Features\ProblemAccount\Styles\problem-account.scss" />
+    <Content Include="Features\ProblemAccount\Styles\index.scss" />
     <Content Include="compilerconfig.json" />
     <Content Include="bundleconfig.json" />
     <Content Include="App_Code\DateRangePicker.cshtml" />
@@ -324,51 +323,51 @@
     <Content Include="typings\globals\jquery\typings.json" />
     <Content Include="typings\globals\moment\typings.json" />
     <Content Include="typings\globals\storejs\typings.json" />
-    <None Include="Web.AppSettings.backupMNL.config">
+    <Content Include="Web.AppSettings.backupMNL.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.backupMNLNap.config">
+    </Content>
+    <Content Include="Web.AppSettings.backupMNLNap.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.local.config">
+    </Content>
+    <Content Include="Web.AppSettings.local.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.napinternal.config">
+    </Content>
+    <Content Include="Web.AppSettings.napinternal.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
+    </Content>
     <None Include="Web.AppSettings.pro.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </None>
-    <None Include="Web.AppSettings.sit.config">
+    <Content Include="Web.AppSettings.sit.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.AppSettings.uat.config">
+    </Content>
+    <Content Include="Web.AppSettings.uat.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.backupMNL.config">
+    </Content>
+    <Content Include="Web.backupMNL.config">
       <DependentUpon>Web.local.config</DependentUpon>
-    </None>
-    <None Include="Web.backupMNLNap.config">
+    </Content>
+    <Content Include="Web.backupMNLNap.config">
       <DependentUpon>Web.local.config</DependentUpon>
-    </None>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <None Include="Web.napinternal.config">
+    <Content Include="Web.napinternal.config">
       <DependentUpon>Web.local.config</DependentUpon>
-    </None>
-    <None Include="Web.pro.config">
+    </Content>
+    <Content Include="Web.pro.config">
       <DependentUpon>Web.local.config</DependentUpon>
-    </None>
-    <None Include="Web.sit.config">
+    </Content>
+    <Content Include="Web.sit.config">
       <DependentUpon>Web.local.config</DependentUpon>
-    </None>
+    </Content>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <None Include="Web.uat.config">
+    <Content Include="Web.uat.config">
       <DependentUpon>Web.local.config</DependentUpon>
-    </None>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -8,7 +8,7 @@
             byte roleId,
             bool isAllDownline,
             bool isAffectedAllDownlines,
-            string downlineList,
+            string selectedDownlineIds,
             string language,
             string loginIP)
         {
@@ -17,7 +17,7 @@
             RoleId = roleId;
             IsAllDownline = isAllDownline;
             IsAffectedAllDownlines = isAffectedAllDownlines;
-            DownlineList = downlineList;
+            SelectedDownlineIds = selectedDownlineIds;
             Language = language;
             LoginIP = loginIP;
         }
@@ -32,7 +32,7 @@
 
         public bool IsAffectedAllDownlines { get; }
 
-        public string DownlineList { get; }
+        public string SelectedDownlineIds { get; }
 
         public string Language { get; }
 

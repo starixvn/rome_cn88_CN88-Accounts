@@ -21,15 +21,26 @@
             this.query = query;
             IsMobile = isMobile;
             PageData = pagedData;
+            CanUpdateReviewStatus = query.AccountManagementEditView && query.SelectedReviewStatus != ReviewStatusConstants.Reviewed;
         }
 
         public bool IsMobile { get; }
+
+        public bool CanUpdateReviewStatus { get; }
 
         public UserLevel CustLevel => query.CustLevel;
 
         public PagedData<ProblemAccount> PageData { get; }
 
-        public int NumberOfColumns => CustLevel.IsMasterLevel() || CustLevel.IsMemberLevel() ? 9 : 10;
+        public int NumberOfColumns
+        {
+            get
+            {
+                var numberOfColumns = CustLevel.IsMasterLevel() || CustLevel.IsMemberLevel() ? 9 : 10;
+
+                return CanUpdateReviewStatus ? numberOfColumns : numberOfColumns - 1;
+            }
+        }
 
         public FilterViewModel FilterViewModel => new FilterViewModel(query);
 

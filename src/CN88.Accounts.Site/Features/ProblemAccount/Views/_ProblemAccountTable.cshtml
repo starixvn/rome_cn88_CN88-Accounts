@@ -1,5 +1,8 @@
 ﻿@model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.IndexViewModel
-<input type="button" id="btnReview" name="btnReview" class="btn-submit btn-review" value="@Resources.SetToReviewed" />
+@if (Model.CanUpdateReviewStatus)
+{
+    <input type="button" id="btnReview" name="btnReview" class="btn-submit btn-review" value="@Resources.SetToReviewed" />
+}
 <table id="tblProblemAccount" class="tbl-style2 table-problem-account">
     <thead>
         <tr>
@@ -26,9 +29,12 @@
             <th class="col-status text-center">@Resources.Status</th>
             <th class="col-datenotified">@Resources.DateNotified</th>
             <th class="col-reviewstatus">@Resources.ReviewStatus</th>
-            <th class="text-center col-action">
-                <input type="checkbox" id="SelectAll" name="SelectAll" value="" />
-            </th>
+            @if (Model.CanUpdateReviewStatus)
+            {
+                <th class="text-center col-action">
+                    <input type="checkbox" id="SelectAll" name="SelectAll" value="" />
+                </th>
+            }
         </tr>
     </thead>
     @if (Model.PageData.Any())
@@ -64,12 +70,15 @@
                     </td>
                     <td>@account.CreatedDate</td>
                     <td>@account.ReviewStatus</td>
-                    <td class="text-center">
-                        @if (!account.IsReviewed)
-                        {
-                            <input type="checkbox" name="@account.CustId" value="@account.CustId" data-username="@account.Username" />
-                        }
-                    </td>
+                    @if (Model.CanUpdateReviewStatus)
+                    {
+                        <td class="text-center">
+                            @if (!account.IsReviewed)
+                            {
+                                <input type="checkbox" name="@account.CustId" value="@account.CustId" data-username="@account.Username" />
+                            }
+                        </td>
+                    }
                 </tr>
                 index++;
             }

@@ -76,7 +76,7 @@
         return {
             custLevelId: this.$("#CustLevelId").val(),
             selectedDownlineIds: this.$("#SelectedDownlineIds").val(),
-            isAffectedAllDownlines: this.$("#IsAffectedAllDownlines").val()
+            isAffectedAllDownlines: this.$("input[name='IsAffectedAllDownlines']:checked").val()
         };
     }
 }

@@ -260,6 +260,7 @@
     <Compile Include="App_Start\DependencyConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Features\ProblemAccount\Requests\ProblemAccountExcelQuery.cs" />
+    <Compile Include="Features\ProblemAccount\Requests\UpdateReviewStatusBaseQuery.cs" />
     <Compile Include="Features\ProblemAccount\Requests\UpdateReviewStatusCommand.cs" />
     <Compile Include="Features\ProblemAccount\Requests\UpdateReviewStatusQuery.cs" />
     <Compile Include="Features\ProblemAccount\ViewModels\FilterViewModel.cs" />

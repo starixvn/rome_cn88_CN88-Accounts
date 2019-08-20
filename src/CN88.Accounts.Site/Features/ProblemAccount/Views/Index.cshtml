@@ -1,4 +1,6 @@
 ﻿@{
+    /**/
+
     Layout = "~/Features/Shared/Views/_Layout.cshtml";
 }
 @section Styles{
@@ -30,6 +32,9 @@
 </div>
 @Html.Hidden(nameof(Resources.UpdateStatus), Resources.UpdateStatus)
 @Html.Hidden(nameof(Resources.SetReviewedStatus), Resources.SetReviewedStatus)
+@Html.Hidden("OK", Resources.OK)
+@Html.Hidden("SystemMessage", Resources.SystemMessage)
+@Html.Hidden("SetToReviewedValidationMessage", Resources.SetToReviewedValidationMessage)
 @Html.Hidden("UpdateReviewStatusUrl", Url.Action("UpdateReviewStatus", "ProblemAccount"))
 @section Scripts{
     @StaticResources.RenderScripts("~/Features/ProblemAccount/bundles/index")

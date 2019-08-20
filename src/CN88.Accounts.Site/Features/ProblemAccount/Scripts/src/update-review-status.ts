@@ -33,11 +33,21 @@
         });
 
         this.$formUpdateReviewStatus.submit(this.onSubmit);
+
+        this.$(".more-link").click(function () {
+            $(this).parent().prev().toggle();
+            $(this).prev().toggle();
+            $(this).remove();
+
+            return false;
+        });
     }
 
     onSubmit = (e: JQueryEventObject) => {
         e.preventDefault();
         this.$.blockUI();
+
+        const params = this.getParams();
 
         this.$.ajax({
             type: "POST",

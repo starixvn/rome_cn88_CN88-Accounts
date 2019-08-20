@@ -18,9 +18,12 @@
     custLevelId: number;
     updateReviewStatusUrl: string;
 
-    resoures = {
+    resources = {
+        ok: "",
         updateStatus: "",
-        setReviewedStatus: ""
+        setReviewedStatus: "",
+        systemMessage: "",
+        setToReviewedValidationMessage: ""
     };
 
     constructor(
@@ -61,8 +64,11 @@
         this.$checkboxSelectAll = this.$("#SelectAll");
         this.$downlineCheckboxs = this.$("#tblProblemAccount tbody tr td input[type='checkbox']");
 
-        this.resoures.updateStatus = this.$("#UpdateStatus").val();
-        this.resoures.setReviewedStatus = this.$("#SetReviewedStatus").val();
+        this.resources.ok = this.$("#OK").val();
+        this.resources.updateStatus = this.$("#UpdateStatus").val();
+        this.resources.setReviewedStatus = this.$("#SetReviewedStatus").val();
+        this.resources.systemMessage = this.$("#SystemMessage").val();
+        this.resources.setToReviewedValidationMessage = this.$("#SetToReviewedValidationMessage").val();
 
         this.custLevelId = parseInt(this.$("#CustLevelId").val());
         this.updateReviewStatusUrl = this.$("#UpdateReviewStatusUrl").val();
@@ -106,7 +112,7 @@
 
         const $link = this.$(e.currentTarget);
         const url = $link.attr("href");
-        const title = `${this.resoures.updateStatus} - ${$link.data("username")}`;
+        const title = `${this.resources.updateStatus} - ${$link.data("username")}`;
 
         this.openPopup(url, title, "modal modal-status");
     };
@@ -122,9 +128,21 @@
             selectedDownlineIds: seleledDownlines.custIds,
             selectedDownlineUsernames: seleledDownlines.usernames
         };
+
+        if (!params.selectedDownlineIds) {
+            const bootboxWidth = 400;
+            this.topWindow["popupManager"].bootboxAlert(
+                this.resources.systemMessage,
+                this.resources.setToReviewedValidationMessage,
+                null,
+                bootboxWidth,
+                this.resources.ok);
+
+            return;
+        }
         const url = `${this.updateReviewStatusUrl}?${this.$.param(params)}`;
 
-        this.openPopup(url, this.resoures.setReviewedStatus, "", 500, 300);
+        this.openPopup(url, this.resources.setReviewedStatus, "", 550, 250);
     };
 
     getSelectedDownlines() {
@@ -142,7 +160,7 @@
 
         return {
             custIds: selectedCustIds.join(","),
-            usernames: selectedUsernames.join(", ")
+            usernames: selectedUsernames.join(",")
         };
     }
 

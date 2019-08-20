@@ -8,7 +8,21 @@
 <div id="message-container" class="message-container"></div>
 <form id="formUpdateReviewStatus" action="@Url.Action("UpdateReviewStatus", "ProblemAccount")" method="post" class="form-horizontal">
     @Html.AntiForgeryToken()
-    <p class="review-content">@string.Format(Resources.SetReviewedConfirmMessage, Model.SelectedDownlineUsernames)</p>
+    <p class="review-content">
+        @if (Model.DisplayShowAllAccountOption)
+        {
+            @Html.Raw(Model.ConfirmMessage)
+            <span class="more-ellipses">...</span>
+            <span class="more-content">
+                <span>@($", {string.Join(", ", Model.MoreDownlineUsernames)}")</span>?&nbsp;
+                <a href="" class="more-link">@Resources.ShowAllAccount</a>
+            </span>
+        }
+        else
+        {
+            @Html.Raw($"{Model.ConfirmMessage}?")
+        }
+    </p>
     @if (!Model.CustLevel.IsMemberLevel())
     {
         <label for="rd-selected-only" class="review-options">

@@ -17,6 +17,7 @@
 
     public class ProblemAccountHandler : ExcelBaseHandler,
         IAsyncRequestHandler<ProblemAccountQuery, IndexViewModel>,
+        IRequestHandler<UpdateReviewStatusQuery, UpdateReviewStatusViewModel>,
         IAsyncRequestHandler<UpdateReviewStatusCommand, Result>,
         IAsyncRequestHandler<ProblemAccountExcelQuery, ExcelFileViewModel>
     {
@@ -42,6 +43,9 @@
 
             return new IndexViewModel(message, browserHelper.IsMobile(), browserHelper, problemAccounts);
         }
+
+        public UpdateReviewStatusViewModel Handle(UpdateReviewStatusQuery message)
+            => new UpdateReviewStatusViewModel(message);
 
         public async Task<Result> Handle(UpdateReviewStatusCommand message)
         {
@@ -134,6 +138,7 @@
                 .Map(F, data => data.StatusName)
                 .Map(G, data => data.CreatedDate)
                 .Map(H, data => data.ReviewStatus);
+
 
     }
 }

@@ -142,7 +142,7 @@
         }
         const url = `${this.updateReviewStatusUrl}?${this.$.param(params)}`;
 
-        this.openPopup(url, this.resources.setReviewedStatus, "", 550, 250);
+        this.openPopup(url, this.resources.setReviewedStatus, "", 550, 300);
     };
 
     getSelectedDownlines() {

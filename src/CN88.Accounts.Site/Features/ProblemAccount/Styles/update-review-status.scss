@@ -1,13 +1,20 @@
-﻿.content-page {
+﻿body {
+    padding-bottom: 48px;
+}
+
+.content-page {
     padding: 16px 20px;
 }
 
 .review-content {
     line-height: 20px;
+    margin-bottom: 10px;
 }
 
 .list-button {
-    padding-top: 20px;
+    position: fixed;
+    right: 20px;
+    bottom: 16px;
 
     [class^='btn'] {
         float: right;
@@ -31,6 +38,8 @@
 }
 
 .more-content {
+    display: inline;
+
     span {
         display: none;
     }

@@ -1,4 +1,6 @@
-﻿body {
+﻿$font-size-mobile-input: 16px;
+
+body {
     padding: 15px 15px 0;
 }
 
@@ -38,13 +40,17 @@
         }
     }
 
-    .col-action,
+    .col-review-action,
     .col-reviewstatus {
         width: 100px;
     }
 
     .col-datenotified {
         width: 200px;
+    }
+
+    .col-review-action input[type="checkbox"] {
+        margin-right: 0;
     }
 }
 
@@ -63,6 +69,77 @@ body.phone {
         [class^="icon-filter"] {
             float: right;
             display: inline-block;
+        }
+
+        .btn-review {
+            float: right;
+            margin-right: 10px;
+        }
+    }
+
+    .filter {
+        padding: 12px 0;
+
+        .form-group {
+            .control {
+                width: 100%;
+                margin: 0;
+            }
+
+            .btn-submit {
+                width: 100%;
+            }
+        }
+
+        .upline-username,
+        .search-username {
+            font-size: $font-size-mobile-input;
+        }
+    }
+
+    .tab-content {
+        padding: 12px;
+    }
+
+    .table-problem-account {
+        margin-bottom: 12px;
+
+        .username-wrapper {
+            min-width: 58px;
+            word-break: break-all;
+
+            .nickname {
+                margin-top: 5px;
+                color: #865800;
+                font-style: italic;
+            }
+
+            .name {
+                margin-top: 5px;
+                color: #3B3B3B;
+                font-size: 9.5px;
+                font-style: italic;
+            }
+        }
+
+        &.tbl-master .username-wrapper {
+            min-width: 124px;
+        }
+
+
+        tbody > tr.fixed-row.stack-expanded,
+        tbody > tr.stack-row {
+            border-bottom: none;
+        }
+
+        .col-reviewstatus {
+            min-width: 90px;
+            width: auto;
+        }
+
+        .col-review-action {
+            min-width: 34px;
+            width: auto;
         }
     }
 }

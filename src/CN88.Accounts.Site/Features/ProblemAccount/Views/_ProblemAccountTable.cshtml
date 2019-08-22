@@ -1,8 +1,4 @@
 ﻿@model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.IndexViewModel
-@if (Model.CanUpdateReviewStatus)
-{
-    <input type="button" id="btnReview" name="btnReview" class="btn-submit btn-review" value="@Resources.SetToReviewed" />
-}
 <table id="tblProblemAccount" class="tbl-style2 table-problem-account">
     <thead>
         <tr>
@@ -31,7 +27,7 @@
             <th class="col-reviewstatus">@Resources.ReviewStatus</th>
             @if (Model.CanUpdateReviewStatus)
             {
-                <th class="text-center col-action">
+                <th class="text-center col-review-action">
                     <input type="checkbox" id="SelectAll" name="SelectAll" value="" />
                 </th>
             }
@@ -72,10 +68,10 @@
                     <td>@account.ReviewStatus</td>
                     @if (Model.CanUpdateReviewStatus)
                     {
-                        <td class="text-center">
+                        <td class="text-center col-review-action">
                             @if (!account.IsReviewed)
                             {
-                                <input type="checkbox" name="@account.CustId" value="@account.CustId" data-username="@account.Username" />
+                                <input class="chk-downline" type="checkbox" name="@account.CustId" value="@account.CustId" data-username="@account.Username" />
                             }
                         </td>
                     }

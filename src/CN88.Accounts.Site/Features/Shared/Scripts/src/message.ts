@@ -9,12 +9,12 @@ class Result {
     IsFailed: boolean;
     IsWarning: boolean;
 
-    constructor(data?) {
-        this.Code = data.Code;
-        this.Message = data.Message || "";
+    constructor(code: number, message: string) {
+        this.Code = code;
+        this.Message = message || "";
         this.IsSuccessful = this.Code === 0;
         this.IsFailed = !this.IsSuccessful;
-        this.IsWarning = data.Code === Result.warningCode;
+        this.IsWarning = code === Result.warningCode;
     }
 }
 

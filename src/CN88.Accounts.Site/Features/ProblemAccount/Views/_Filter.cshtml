@@ -9,12 +9,12 @@
     {
         <div class="form-group">
             <label>@Resources.ResourceManager.GetString(Model.CustLevel.GetDirectUplineLevel().DisplayName)</label>
-            <input type="text" id="UplineUsername" name="UplineUsername" class="control" value="@Model.UplineUsername" />
+            <input type="text" id="UplineUsername" name="UplineUsername" class="control upline-username" value="@Model.UplineUsername" />
         </div>
     }
     <div class="form-group">
         <label>@Resources.UsernameOrNameContains</label>
-        <input type="text" id="SearchUsername" name="SearchUsername" class="control" value="@Model.SearchUsername" />
+        <input type="text" id="SearchUsername" name="SearchUsername" class="control search-username" value="@Model.SearchUsername" />
     </div>
     <div class="form-group">
         <input type="submit" class="btn-submit" value="@Resources.Submit" />

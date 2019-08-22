@@ -12,7 +12,7 @@
     public abstract class SiteBaseController : CN88BaseController
     {
         private const string InvalidExcelFileName = "Invalid";
-        private const string NoInformationPageViewPath = "~/Features/Shared/Views/NoInformation.cshtml";
+        private const string NoInformationPageViewName = "NoInformation";
 
         protected readonly IMediator mediator;
 
@@ -21,10 +21,15 @@
             this.mediator = mediator;
         }
 
+        protected async Task<ActionResult> ViewAsync<TResponse>(IRequest<TResponse> message, string viewName)
+            => (message as BaseQuery).IsValid()
+                ? View(viewName, await mediator.Send(message))
+                : View(NoInformationPageViewName);
+
         protected async Task<ActionResult> ViewAsync<TResponse>(IRequest<TResponse> message)
             => (message as BaseQuery).IsValid()
                 ? View(await mediator.Send(message))
-                : View(NoInformationPageViewPath);
+                : View(NoInformationPageViewName);
 
         protected async Task<ActionResult> JsonDataAsync<TResponse>(
             IRequest<TResponse> message,

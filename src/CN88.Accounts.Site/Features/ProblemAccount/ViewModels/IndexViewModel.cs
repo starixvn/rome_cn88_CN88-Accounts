@@ -13,11 +13,9 @@
 
         public IndexViewModel(
             ProblemAccountQuery query,
-            bool isMobile,
             PagedData<ProblemAccount> pagedData)
         {
             this.query = query;
-            IsMobile = isMobile;
             PageData = pagedData;
             CanUpdateReviewStatus = query.AccountManagementEditView && query.SelectedReviewStatus != ReviewStatusConstants.Reviewed;
         }

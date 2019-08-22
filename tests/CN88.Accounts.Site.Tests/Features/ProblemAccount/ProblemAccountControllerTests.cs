@@ -2,6 +2,7 @@
 using CN88.Accounts.Site.Features.ProblemAccount;
 using CN88.Accounts.Site.Features.ProblemAccount.Requests;
 using CN88.Accounts.Site.Features.Shared.ViewModels;
+using CN88.Web.Helpers;
 using MediatR;
 using NSubstitute;
 using Xunit;
@@ -22,7 +23,7 @@ namespace CN88.Accounts.Site.Tests.Features.ProblemAccount
             viewer.Language.Returns("en-US");
 
             mediator = Substitute.For<IMediator>();
-            problemAccountController = new ProblemAccountController(mediator);
+            problemAccountController = new ProblemAccountController(mediator, Substitute.For<BrowserHelper>());
         }
 
 

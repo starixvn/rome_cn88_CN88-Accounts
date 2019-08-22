@@ -53,11 +53,7 @@
             data: this.getParams(),
             dataType: "json",
             success: (data) => {
-                if (data.ErrCode) {
-                    data = { Code: data.ErrCode, Message: data.ErrMsg };
-                }
-
-                const result = new Result(data);
+                const result = new Result(data.ErrCode, data.ErrMsg);
 
                 if (result.IsSuccessful) {
                     this.message.showSuccess(this.$messageContainer, this.successMessage);

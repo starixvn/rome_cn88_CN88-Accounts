@@ -10,7 +10,6 @@
     using CN88.Accounts.Site.Features.Shared;
     using CN88.Accounts.Site.Features.Shared.ViewModels;
     using CN88.Common.Models;
-    using CN88.Web.Helpers;
     using MediatR;
     using ONEbook.SpreadSheets;
     using static ONEbook.SpreadSheets.Column;
@@ -22,16 +21,13 @@
         IAsyncRequestHandler<ProblemAccountExcelQuery, ExcelFileViewModel>
     {
         private int currentRowIndex = 1;
-        private readonly BrowserHelper browserHelper;
         private readonly ProblemAccountService problemAccountService;
         private readonly Workbook<ProblemAccount> workbook;
 
         public ProblemAccountHandler(
-            BrowserHelper browserHelper,
             ProblemAccountService problemAccountService,
             Workbook<ProblemAccount> workbook)
         {
-            this.browserHelper = browserHelper;
             this.problemAccountService = problemAccountService;
             this.workbook = workbook;
         }
@@ -41,7 +37,7 @@
             var param = CreateParam(message);
             var problemAccounts = await problemAccountService.GetProblemAccounts(param);
 
-            return new IndexViewModel(message, browserHelper.IsMobile(), problemAccounts);
+            return new IndexViewModel(message, problemAccounts);
         }
 
         public UpdateReviewStatusViewModel Handle(UpdateReviewStatusQuery message)

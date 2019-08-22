@@ -6,7 +6,6 @@ using CN88.Accounts.Shared.Models;
 using CN88.Accounts.Site.Features.ProblemAccount;
 using CN88.Accounts.Site.Features.ProblemAccount.Requests;
 using CN88.Accounts.Site.Features.ProblemAccount.ViewModels;
-using CN88.Web.Helpers;
 using KellermanSoftware.CompareNetObjects;
 using NSubstitute;
 using ONEbook.SpreadSheets;
@@ -17,7 +16,6 @@ namespace CN88.Accounts.Site.Tests.Features.ProblemAccount
     public class ProblemAccountHandlerTests
     {
         private readonly IUser viewer;
-        private readonly BrowserHelper browserHelper;
         private readonly ProblemAccountService problemAccountService;
         private readonly Workbook<Accounts.ProblemAccount.ProblemAccount> workbook;
         private readonly ProblemAccountHandler problemAccountHandler;
@@ -30,10 +28,9 @@ namespace CN88.Accounts.Site.Tests.Features.ProblemAccount
             viewer.Name.Returns("ViewerName");
             viewer.Language.Returns("en-US");
 
-            browserHelper = Substitute.For<BrowserHelper>();
             problemAccountService = Substitute.For<ProblemAccountService>();
             workbook = Substitute.For<Workbook<Accounts.ProblemAccount.ProblemAccount>>();
-            problemAccountHandler = new ProblemAccountHandler(browserHelper, problemAccountService, workbook);
+            problemAccountHandler = new ProblemAccountHandler(problemAccountService, workbook);
             compareLogic = new CompareLogic();
         }
 
@@ -67,7 +64,6 @@ namespace CN88.Accounts.Site.Tests.Features.ProblemAccount
         {
             // Arrange
             var message = new ProblemAccountQuery(viewer);
-            browserHelper.IsMobile().Returns(false);
 
             var problemAccounts = new List<Accounts.ProblemAccount.ProblemAccount>
             {
@@ -77,7 +73,7 @@ namespace CN88.Accounts.Site.Tests.Features.ProblemAccount
             problemAccountService.GetProblemAccounts(Arg.Any<GetProblemAccountsParam>())
                 .Returns(Task.FromResult(pagedData));
 
-            var expectedResult = new IndexViewModel(message, browserHelper.IsMobile(), pagedData);
+            var expectedResult = new IndexViewModel(message, pagedData);
 
             // Act
             var actualResult = problemAccountHandler.Handle(message).GetAwaiter().GetResult();

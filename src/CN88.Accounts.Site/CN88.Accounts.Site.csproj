@@ -224,6 +224,10 @@
     <Content Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </Content>
+    <Content Include="Features\ProblemAccount\bundles\index-mobile.js" />
+    <Content Include="Features\ProblemAccount\bundles\index-mobile.min.js">
+      <DependentUpon>index-mobile.js</DependentUpon>
+    </Content>
     <Content Include="Features\ProblemAccount\bundles\index.css" />
     <Content Include="Features\ProblemAccount\bundles\index.js" />
     <Content Include="Features\ProblemAccount\bundles\index.min.css">
@@ -302,6 +306,9 @@
     <Content Include="Features\ProblemAccount\ExcelTemplates\Member.xls" />
     <Content Include="Features\ProblemAccount\Views\UpdateReviewStatus.cshtml" />
     <Content Include="Features\ProblemAccount\Styles\update-review-status.scss" />
+    <Content Include="Features\ProblemAccount\Views\IndexMobile.cshtml" />
+    <Content Include="Features\ProblemAccount\Views\_TabItems.cshtml" />
+    <Content Include="Features\ProblemAccount\Views\_ProblemAccountTableMobile.cshtml" />
     <None Include="packages.config" />
     <Content Include="Features\Shared\Views\_Layout.cshtml" />
     <Content Include="Features\Web.config">
@@ -377,10 +384,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Features\ProblemAccount\Scripts\src\base-problem-account.ts" />
+    <TypeScriptCompile Include="Features\ProblemAccount\Scripts\src\problem-account-mobile.ts" />
     <TypeScriptCompile Include="Features\ProblemAccount\Scripts\src\problem-account.ts" />
     <TypeScriptCompile Include="Features\ProblemAccount\Scripts\src\update-review-status.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\core.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\daterange-picker.ts" />
+    <TypeScriptCompile Include="Features\Shared\Scripts\src\filter-toggle.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\message.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\pager.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\single-selection-dropdown.ts" />

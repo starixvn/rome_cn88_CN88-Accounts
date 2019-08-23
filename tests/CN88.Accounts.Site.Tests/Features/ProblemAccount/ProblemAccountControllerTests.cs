@@ -13,6 +13,7 @@ namespace CN88.Accounts.Site.Tests.Features.ProblemAccount
     {
         private readonly IUser viewer;
         private readonly IMediator mediator;
+        private readonly BrowserHelper browserHelper;
         private readonly ProblemAccountController problemAccountController;
 
         public ProblemAccountControllerTests()
@@ -23,7 +24,8 @@ namespace CN88.Accounts.Site.Tests.Features.ProblemAccount
             viewer.Language.Returns("en-US");
 
             mediator = Substitute.For<IMediator>();
-            problemAccountController = new ProblemAccountController(mediator, Substitute.For<BrowserHelper>());
+            browserHelper = Substitute.For<BrowserHelper>();
+            problemAccountController = new ProblemAccountController(mediator, browserHelper);
         }
 
 
@@ -32,6 +34,20 @@ namespace CN88.Accounts.Site.Tests.Features.ProblemAccount
         {
             // Arrange
             var message = new ProblemAccountQuery(viewer);
+
+            // Act
+            problemAccountController.Index(message).ConfigureAwait(false);
+
+            // Assert
+            mediator.Received().Send(message);
+        }
+
+        [Fact]
+        public void Index_MessageIsValidAndIsMobile_CallsMediatorSendProblemAccountQuery()
+        {
+            // Arrange
+            var message = new ProblemAccountQuery(viewer);
+            browserHelper.IsMobile().Returns(true);
 
             // Act
             problemAccountController.Index(message).ConfigureAwait(false);

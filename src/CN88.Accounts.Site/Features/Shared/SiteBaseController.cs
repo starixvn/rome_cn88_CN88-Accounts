@@ -38,7 +38,6 @@
                 ? Json(await mediator.Send(message), jsonRequestBehavior)
                 : Json(new Result((int)HttpStatusCode.Forbidden, Resources.NotAuthorized));
 
-
         protected async Task<FileContentResult> ExcelView(IRequest<ExcelFileViewModel> message)
             => (message as BaseQuery).IsValid()
                 ? GetExcelContent(await mediator.Send(message))

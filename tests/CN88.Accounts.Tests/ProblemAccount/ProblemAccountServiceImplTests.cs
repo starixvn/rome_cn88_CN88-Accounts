@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using CN88.Accounts.ProblemAccount;
 using CN88.Accounts.ProblemAccount.Criteria;
 using CN88.Accounts.ProblemAccount.Params;
+using CN88.Accounts.Shared.Models;
 using Fanex.Data.Repository;
+using KellermanSoftware.CompareNetObjects;
 using NSubstitute;
 using Xunit;
 
@@ -45,6 +48,24 @@ namespace CN88.Accounts.Tests.ProblemAccount
                         && c.PageSize == param.PageSize));
         }
 
+        [Fact]
+        public void GetProblemAccounts_Always_ReturnsCorrectResult()
+        {
+            // Arrange
+            var param = new GetProblemAccountsParam(1, 0, true, string.Empty, 3, string.Empty, 0, DateTime.Now, DateTime.Now, 1, 10);
+            var problemAccounts = new List<Accounts.ProblemAccount.ProblemAccount>
+            {
+                new Accounts.ProblemAccount.ProblemAccount(1,"UplineUsername","Username","Name","Nickname",5,1,DateTime.Now,false)
+            };
+            dynamicRepository.FetchAsync<Accounts.ProblemAccount.ProblemAccount>(Arg.Any<GetProblemAccountsCriteria>()).Returns(problemAccounts);
+            var expectedResult = new PagedData<Accounts.ProblemAccount.ProblemAccount>(problemAccounts, 1, 10, 0);
+
+            // Act
+            var actualResult = problemAccountService.GetProblemAccounts(param).GetAwaiter().GetResult();
+
+            // Assert
+            Assert.True(new CompareLogic().Compare(expectedResult, actualResult).AreEqual);
+        }
 
         [Fact]
         public void UpdateReviewStatus_Always_CallsDynamicRepositoryExecuteAsync()

@@ -35,7 +35,7 @@
     </thead>
     @if (Model.PageData.Any())
     {
-        var index = 1;
+        var index = Model.StartIndex;
         <tbody>
             @foreach (var account in Model.PageData.DataSource)
             {

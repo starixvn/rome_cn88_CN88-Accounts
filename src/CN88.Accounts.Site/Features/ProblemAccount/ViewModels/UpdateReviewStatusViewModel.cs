@@ -19,10 +19,7 @@
 
             DisplayShowAllAccountOption = SelectedDownlineUsernames.Count() > numberOfDisplayDownlines;
             TopDownlineUsernames = SelectedDownlineUsernames.Take(numberOfDisplayDownlines);
-            if (DisplayShowAllAccountOption)
-            {
-                MoreDownlineUsernames = SelectedDownlineUsernames.Skip(numberOfDisplayDownlines);
-            }
+            MoreDownlineUsernames = SelectedDownlineUsernames.Skip(numberOfDisplayDownlines);
         }
 
         public UserLevel CustLevel { get; }

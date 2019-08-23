@@ -36,7 +36,6 @@
     </thead>
     @if (Model.PageData.Any())
     {
-        var index = 1;
         <tbody>
             @foreach (var account in Model.PageData.DataSource)
             {
@@ -78,7 +77,6 @@
                     }
                     <td>@account.CreatedDate</td>
                 </tr>
-                index++;
             }
         </tbody>
     }

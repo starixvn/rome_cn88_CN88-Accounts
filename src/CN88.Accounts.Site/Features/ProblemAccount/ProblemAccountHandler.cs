@@ -65,8 +65,8 @@
 
             var fileContent = workbook
                 .UseTemplate(GetTemplateInfo(message.CustLevel))
-                .Body(problemAccounts.DataSource, GetBodyRowMapper(message.CustLevel))
                 .Header(Resources.ResourceManager.GetString)
+                .Body(problemAccounts.DataSource, GetBodyRowMapper(message.CustLevel))
                 .ExportToBytes();
 
             return new ExcelFileViewModel("Problem Account", fileContent);

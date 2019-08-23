@@ -43,6 +43,8 @@
         public PagerViewModel PagerViewModel
             => new PagerViewModel(PageData.PageIndex, PageData.PageSize, PageData.TotalRecords);
 
+        public int StartIndex => PageData.PageSize * (PageData.PageIndex - 1) + 1;
+
         public string BuildDownlineLink(string uplineUsername, string currentLink)
             => Shared.Helpers.UrlHelper.ReplaceOrAddQueryStringParamsFunc(
                 currentLink,

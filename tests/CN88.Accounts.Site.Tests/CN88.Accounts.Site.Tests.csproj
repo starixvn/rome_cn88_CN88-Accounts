@@ -160,6 +160,7 @@
   <ItemGroup>
     <Compile Include="Features\ProblemAccount\ProblemAccountControllerTests.cs" />
     <Compile Include="Features\ProblemAccount\ProblemAccountHandlerTests.cs" />
+    <Compile Include="Features\Shared\QueryEntityModelBinderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

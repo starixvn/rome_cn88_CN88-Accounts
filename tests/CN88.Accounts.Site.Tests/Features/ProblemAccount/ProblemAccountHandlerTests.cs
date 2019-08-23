@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using CN88.Accounts.ProblemAccount;
 using CN88.Accounts.ProblemAccount.Params;
 using CN88.Accounts.Shared.Models;
+using CN88.Accounts.Shared.Resources;
 using CN88.Accounts.Site.Features.ProblemAccount;
 using CN88.Accounts.Site.Features.ProblemAccount.Requests;
 using CN88.Accounts.Site.Features.ProblemAccount.ViewModels;
@@ -30,7 +31,12 @@ namespace CN88.Accounts.Site.Tests.Features.ProblemAccount
 
             problemAccountService = Substitute.For<ProblemAccountService>();
             workbook = Substitute.For<Workbook<Accounts.ProblemAccount.ProblemAccount>>();
-            problemAccountHandler = new ProblemAccountHandler(problemAccountService, workbook);
+            problemAccountHandler = new ProblemAccountHandler(problemAccountService, workbook)
+            {
+                MapPath = (path) => path,
+                IsFileExist = (path) => true
+            };
+
             compareLogic = new CompareLogic();
         }
 
@@ -86,9 +92,11 @@ namespace CN88.Accounts.Site.Tests.Features.ProblemAccount
         public void HandleUpdateReviewStatusQuery_Always_ReturnsCorrectViewModel()
         {
             // Arrange
-            var message = new UpdateReviewStatusQuery(viewer);
-            message.SelectedDownlineIds = "1,2";
-            message.SelectedDownlineUsernames = "username1,username2";
+            var message = new UpdateReviewStatusQuery(viewer)
+            {
+                SelectedDownlineIds = "1,2",
+                SelectedDownlineUsernames = "username1,username2"
+            };
             var expectedResult = new UpdateReviewStatusViewModel(message);
 
             // Act
@@ -118,6 +126,53 @@ namespace CN88.Accounts.Site.Tests.Features.ProblemAccount
                         && p.SelectedDownlineIds == message.SelectedDownlineIds
                         && p.Language == message.LanguageKey
                         && p.LoginIP == message.IP));
+        }
+
+        [Fact]
+        public void HandleProblemAccountExcelQuery_Always_CallsGetProblemAccounts()
+        {
+            // Arrange
+            var message = new ProblemAccountExcelQuery(viewer);
+
+            // Act
+            problemAccountHandler.Handle(message).ConfigureAwait(false);
+
+            // Assert
+            problemAccountService.Received().GetProblemAccounts(
+                Arg.Is<GetProblemAccountsParam>(
+                    p => p.CustId == message.ViewerId
+                        && p.SubAccId == message.SubAccountId
+                        && p.IsAllDownline == message.IsAllDownline
+                        && p.UplineUsername == message.UplineUsername
+                        && p.CustLevelId == message.CustLevelId
+                        && p.SearchUsername == message.SearchUsername
+                        && p.ReviewStatus == message.SelectedReviewStatus
+                        && p.FromDate == message.FromDate
+                        && p.ToDate == message.ToDate
+                        && p.PageIndex == message.PageIndex
+                        && p.PageSize == message.PageSize));
+        }
+
+        [Fact]
+        public void Handle_Workbook_UseTemplate()
+        {
+            // Arrange
+            var message = new ProblemAccountExcelQuery(viewer)
+            {
+                CustLevelId = 3
+            };
+
+            // Act
+            problemAccountHandler.Handle(message).ConfigureAwait(false);
+
+            // Assert
+            workbook.Received().UseTemplate(Arg.Is<TemplateInfo>(
+                t => t.TemplatePath == $"~/Features/ProblemAccount/ExcelTemplates/{message.CustLevel.DisplayName}.xls"
+                && t.NoInfomationText == Resources.NoInformationIsAvailable
+                && t.TitleStartIndex == -1 - 1
+                && t.HeaderStartIndex == 1 - 1
+                && t.BodyStartIndex == 2 - 1
+                && t.BodyEndIndex == 3 - 1));
         }
     }
 }

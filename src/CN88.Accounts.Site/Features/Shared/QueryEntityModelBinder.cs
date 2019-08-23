@@ -15,13 +15,13 @@
         {
             if (modelType != null && modelType.GetConstructor(IUserType) != null)
             {
-                return CreateInstanceOfAssignableReportBaseQuery(modelType);
+                return CreateInstanceOfAssignableBaseQuery(modelType);
             }
 
             return CallBaseCreateModel(controllerContext, bindingContext, modelType);
         }
 
-        protected virtual object CreateInstanceOfAssignableReportBaseQuery(Type modelType)
+        protected virtual object CreateInstanceOfAssignableBaseQuery(Type modelType)
             => Activator.CreateInstance(modelType, DependencyResolver.Current.GetService<IUser>());
 
         protected virtual object CallBaseCreateModel(

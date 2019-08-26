@@ -55,7 +55,6 @@ class SingleSelectionDropdownComponent {
     };
 
     updateSelectedValue = () => {
-        this.selectedValue = this.getSelectedItem();
         this.$hiddenInput.val(this.selectedValue);
     };
 

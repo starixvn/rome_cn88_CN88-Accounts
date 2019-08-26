@@ -37,9 +37,5 @@
         public bool AccountManagementEditView => userSession.SubPageAccess.UpdateAccount;
 
         public bool AccountManagementViewOnly => userSession.SubPageAccess.ViewMemberInfo;
-
-        public bool IsAdminCanViewVNIP => userSession.IsAdminCanViewVNIP;
-
-        public int AdminId => userSession.AdminId;
     }
 }

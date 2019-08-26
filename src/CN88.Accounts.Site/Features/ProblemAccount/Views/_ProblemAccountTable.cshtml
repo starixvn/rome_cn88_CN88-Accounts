@@ -1,4 +1,5 @@
-﻿@model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.IndexViewModel
+﻿@using CN88.Accounts.Shared.Extensions
+@model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.IndexViewModel
 <table id="tblProblemAccount" class="tbl-style2 table-problem-account">
     <thead>
         <tr>
@@ -64,7 +65,7 @@
                     <td align="center">
                         <a class="link status-link" data-username="@account.Username" href="@Model.BuildStatusLink(account.CustId,account.Status)">@account.StatusName</a>
                     </td>
-                    <td>@account.CreatedDate</td>
+                    <td>@account.CreatedDate.ToLongDateWithHyphen()</td>
                     <td>@account.ReviewStatus</td>
                     @if (Model.CanUpdateReviewStatus)
                     {

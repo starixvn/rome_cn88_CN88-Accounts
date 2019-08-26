@@ -5,7 +5,7 @@
         public formId = "report-form",
         public pageIndexId = "PageIndex",
         public pageSizeId = "PageSize",
-        public pageList: number[] = [10, 20, 50, 100]) {
+        public pageList = cn88Accounts.defaultPageList) {
     }
 }
 

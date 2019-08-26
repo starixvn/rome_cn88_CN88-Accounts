@@ -35,3 +35,4 @@ _ReSharper*/
 packages/
 node_modules/
 *.orig
+/_Chutzpah.coverage.html

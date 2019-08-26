@@ -51,7 +51,7 @@
                 GetDownlineLinkRouteValues(uplineUsername));
 
         public string BuildStatusLink(int custId, byte statusId)
-            => Shared.Helpers.UrlHelper.AddQueryStringParams(
+            => Shared.Helpers.UrlHelper.AddQueryStringParamsFunc(
                 Shared.Helpers.UrlHelper.MapFeaturesPath("~/CustomerList/StatusPopup"),
                 new Dictionary<string, object>
                 {

@@ -13,6 +13,6 @@
         public string SelectedDownlineIds { get; set; }
 
         public override bool IsValid()
-            => base.IsValid() && !string.IsNullOrWhiteSpace(SelectedDownlineIds);
+            => base.IsValid() && !IsInternal && !string.IsNullOrWhiteSpace(SelectedDownlineIds);
     }
 }

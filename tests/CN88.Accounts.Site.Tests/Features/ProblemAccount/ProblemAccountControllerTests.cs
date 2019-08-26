@@ -1,7 +1,7 @@
-﻿using CN88.Accounts.Shared.Models;
-using CN88.Accounts.Site.Features.ProblemAccount;
+﻿using CN88.Accounts.Site.Features.ProblemAccount;
 using CN88.Accounts.Site.Features.ProblemAccount.Requests;
 using CN88.Accounts.Site.Features.Shared.ViewModels;
+using CN88.Accounts.Site.Tests.Fixtures;
 using CN88.Web.Helpers;
 using MediatR;
 using NSubstitute;
@@ -9,19 +9,17 @@ using Xunit;
 
 namespace CN88.Accounts.Site.Tests.Features.ProblemAccount
 {
+    [Collection("UserCollection")]
     public class ProblemAccountControllerTests
     {
-        private readonly IUser viewer;
         private readonly IMediator mediator;
         private readonly BrowserHelper browserHelper;
+        private readonly UserFixture userFixture;
         private readonly ProblemAccountController problemAccountController;
 
-        public ProblemAccountControllerTests()
+        public ProblemAccountControllerTests(UserFixture userFixture)
         {
-            viewer = Substitute.For<IUser>();
-            viewer.Id.Returns(1);
-            viewer.Name.Returns("ViewerName");
-            viewer.Language.Returns("en-US");
+            this.userFixture = userFixture;
 
             mediator = Substitute.For<IMediator>();
             browserHelper = Substitute.For<BrowserHelper>();
@@ -33,7 +31,7 @@ namespace CN88.Accounts.Site.Tests.Features.ProblemAccount
         public void Index_MessageIsValid_CallsMediatorSendProblemAccountQuery()
         {
             // Arrange
-            var message = new ProblemAccountQuery(viewer);
+            var message = new ProblemAccountQuery(userFixture.User);
 
             // Act
             problemAccountController.Index(message).ConfigureAwait(false);
@@ -46,7 +44,7 @@ namespace CN88.Accounts.Site.Tests.Features.ProblemAccount
         public void Index_MessageIsValidAndIsMobile_CallsMediatorSendProblemAccountQuery()
         {
             // Arrange
-            var message = new ProblemAccountQuery(viewer);
+            var message = new ProblemAccountQuery(userFixture.User);
             browserHelper.IsMobile().Returns(true);
 
             // Act
@@ -61,7 +59,7 @@ namespace CN88.Accounts.Site.Tests.Features.ProblemAccount
         public void Excel_MessageIsValid_CallsMediatorSendProblemAccountExcelQuery()
         {
             // Arrange
-            var message = new ProblemAccountExcelQuery(viewer);
+            var message = new ProblemAccountExcelQuery(userFixture.User);
 
             // Act
             problemAccountController.Excel(message).ConfigureAwait(false);
@@ -74,7 +72,7 @@ namespace CN88.Accounts.Site.Tests.Features.ProblemAccount
         public void UpdateReviewStatus_MessageIsValid_CallsMediatorSendUpdateReviewStatusQuery()
         {
             // Arrange
-            var message = new UpdateReviewStatusQuery(viewer);
+            var message = new UpdateReviewStatusQuery(userFixture.User);
             message.SelectedDownlineIds = "1,2";
 
             // Act
@@ -88,7 +86,7 @@ namespace CN88.Accounts.Site.Tests.Features.ProblemAccount
         public void UpdateReviewStatus_MessageIsValid_CallsMediatorSendUpdateReviewStatusCommand()
         {
             // Arrange
-            var message = new UpdateReviewStatusCommand(viewer);
+            var message = new UpdateReviewStatusCommand(userFixture.User);
             message.SelectedDownlineIds = "1,2";
 
             // Act

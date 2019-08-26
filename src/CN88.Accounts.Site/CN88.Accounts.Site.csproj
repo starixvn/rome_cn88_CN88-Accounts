@@ -256,12 +256,36 @@
     <Content Include="Features\ProblemAccount\Styles\update-review-status.min.css">
       <DependentUpon>update-review-status.css</DependentUpon>
     </Content>
+    <Content Include="Features\Shared\Scripts\tests\libs\bootstrap-datetimepicker.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\bootstrap-modal.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\cookie.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\datepicker.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\jasmine-jquery.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\jasmine.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\jquery-blockui.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\jquery.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\moment.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\multiselect.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\nexDatePicker.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\pagination\jquery.draggable.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\pagination\jquery.linkbutton.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\pagination\jquery.pagination.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\pagination\jquery.parser.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\pagination\jquery.resizable.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\shortcut.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\store.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\tooltip.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\DependencyConfig.cs" />
-    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\DependencyConfig.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
+    <Compile Include="App_Start\RouteConfig.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
+    <Compile Include="Features\ProblemAccount\Handler\ProblemAccountExcelHandler.cs" />
     <Compile Include="Features\ProblemAccount\Requests\ProblemAccountExcelQuery.cs" />
     <Compile Include="Features\ProblemAccount\Requests\UpdateReviewStatusBaseQuery.cs" />
     <Compile Include="Features\ProblemAccount\Requests\UpdateReviewStatusCommand.cs" />
@@ -269,9 +293,11 @@
     <Compile Include="Features\ProblemAccount\ViewModels\FilterViewModel.cs" />
     <Compile Include="Features\ProblemAccount\ViewModels\UpdateReviewStatusViewModel.cs" />
     <Compile Include="Features\Shared\ExcelBaseHandler.cs" />
-    <Compile Include="Features\Shared\FeatureFoldersRazorViewEngine.cs" />
+    <Compile Include="Features\Shared\FeatureFoldersRazorViewEngine.cs">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
     <Compile Include="Features\ProblemAccount\ProblemAccountController.cs" />
-    <Compile Include="Features\ProblemAccount\ProblemAccountHandler.cs" />
+    <Compile Include="Features\ProblemAccount\Handler\ProblemAccountHandler.cs" />
     <Compile Include="Features\ProblemAccount\Requests\ProblemAccountQuery.cs" />
     <Compile Include="Features\ProblemAccount\ViewModels\IndexViewModel.cs" />
     <Compile Include="Features\Shared\Helpers\UrlHelper.cs" />
@@ -281,6 +307,7 @@
     <Compile Include="Features\Shared\ViewModels\SingleSelectionViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+      <SonarQubeExclude>true</SonarQubeExclude>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -309,6 +336,7 @@
     <Content Include="Features\ProblemAccount\Views\IndexMobile.cshtml" />
     <Content Include="Features\ProblemAccount\Views\_TabItems.cshtml" />
     <Content Include="Features\ProblemAccount\Views\_ProblemAccountTableMobile.cshtml" />
+    <Content Include="Features\chutzpah.json" />
     <None Include="packages.config" />
     <Content Include="Features\Shared\Views\_Layout.cshtml" />
     <Content Include="Features\Web.config">
@@ -388,12 +416,23 @@
     <TypeScriptCompile Include="Features\ProblemAccount\Scripts\src\problem-account-mobile.ts" />
     <TypeScriptCompile Include="Features\ProblemAccount\Scripts\src\problem-account.ts" />
     <TypeScriptCompile Include="Features\ProblemAccount\Scripts\src\update-review-status.ts" />
-    <TypeScriptCompile Include="Features\Shared\Scripts\src\core.ts" />
+    <TypeScriptCompile Include="Features\Shared\Scripts\src\core.ts">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Features\Shared\Scripts\src\daterange-picker.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\filter-toggle.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\message.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\pager.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\single-selection-dropdown.ts" />
+    <TypeScriptCompile Include="Features\Shared\Scripts\tests\app\daterange-picker-tests.ts">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Features\Shared\Scripts\tests\app\pager-tests.ts">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Features\Shared\Scripts\tests\app\single-selection-dropdown-tests.ts">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\cleave.js\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\cleave.js\options\creditCard.d.ts" />
@@ -444,6 +483,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\..\packages\Fanex.Chutzpah.4.3.3\build\Fanex.Chutzpah.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Fanex.Chutzpah.4.3.3\build\Fanex.Chutzpah.targets'))" />
   </Target>
   <PropertyGroup>
     <PostBuildEvent>
@@ -454,8 +494,9 @@
       assets.build
       if not exist "$(WebProjectOutputDir)\bin\Roslyn" md "$(WebProjectOutputDir)\bin\Roslyn"
       start /MIN xcopy /s /y /R "$(OutDir)roslyn\*.*" "$(WebProjectOutputDir)\bin\Roslyn"
-</PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
+  <Import Project="..\..\packages\Fanex.Chutzpah.4.3.3\build\Fanex.Chutzpah.targets" Condition="Exists('..\..\packages\Fanex.Chutzpah.4.3.3\build\Fanex.Chutzpah.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

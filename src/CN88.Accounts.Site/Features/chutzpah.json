@@ -1,0 +1,49 @@
+﻿{
+  "Framework": "jasmine",
+  "EnableCodeCoverage": "true",
+  "Compile": {
+    "Mode": "External",
+    "Extensions": [ ".ts" ]
+  },
+  "CodeCoverageExcludes": [
+    "*\\libs\\*"
+  ],
+  "CodeCoverageIgnores": [
+    "*\\tests\\*"
+  ],
+  "CodeCoverageExecutionMode": "Manual",
+  "TestHarnessLocationMode": "SettingsFileAdjacent",
+  "References": [
+    { "Path": "Shared/Scripts/tests/libs/jquery.js" },
+    { "Path": "Shared/Scripts/tests/libs/jquery-blockui.js" },
+    { "Path": "Shared/Scripts/tests/libs/jasmine.js" },
+    { "Path": "Shared/Scripts/tests/libs/jasmine-jquery.js" },
+    { "Path": "Shared/Scripts/tests/libs/bootstrap-modal.js" },
+    { "Path": "Shared/Scripts/tests/libs/moment.js" },
+    { "Path": "Shared/Scripts/tests/libs/datepicker.js" },
+    { "Path": "Shared/Scripts/tests/libs/bootstrap-datetimepicker.js" },
+    { "Path": "Shared/Scripts/tests/libs/nexDatePicker.js" },
+    { "Path": "Shared/Scripts/tests/libs/multiselect.js" },
+    { "Path": "Shared/Scripts/tests/libs/cookie.js" },
+    { "Path": "Shared/Scripts/tests/libs/store.js" },
+    { "Path": "Shared/Scripts/tests/libs/shortcut.js" },
+    { "Path": "Shared/Scripts/tests/libs/pagination/jquery.draggable.js" },
+    { "Path": "Shared/Scripts/tests/libs/pagination/jquery.resizable.js" },
+    { "Path": "Shared/Scripts/tests/libs/pagination/jquery.parser.js" },
+    { "Path": "Shared/Scripts/tests/libs/pagination/jquery.linkbutton.js" },
+    { "Path": "Shared/Scripts/tests/libs/pagination/jquery.pagination.js" },
+
+    { "Path": "Shared/Scripts/src/core.ts" },
+    { "Path": "Shared/Scripts/src/daterange-picker.ts" },
+    { "Path": "Shared/Scripts/src/filter-toggle.ts" },
+    { "Path": "Shared/Scripts/src/message.ts" },
+    { "Path": "Shared/Scripts/src/pager.ts" },
+    { "Path": "Shared/Scripts/src/single-selection-dropdown.ts" }
+  ],
+  "Tests": [
+    {
+      "Path": "Shared/Scripts/tests/app",
+      "Excludes": [ "**.js.map" ]
+    }
+  ]
+}

@@ -1,12 +1,11 @@
-﻿namespace CN88.Accounts.Site.Features.ProblemAccount
+﻿namespace CN88.Accounts.Site.Features.ProblemAccount.Handler
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using CN88.Accounts.ProblemAccount;
-    using CN88.Accounts.ProblemAccount.Params;
+    using CN88.Accounts.Shared.Extensions;
     using CN88.Accounts.Shared.Resources;
     using CN88.Accounts.Site.Features.ProblemAccount.Requests;
-    using CN88.Accounts.Site.Features.ProblemAccount.ViewModels;
     using CN88.Accounts.Site.Features.Shared;
     using CN88.Accounts.Site.Features.Shared.ViewModels;
     using CN88.Common.Models;
@@ -14,17 +13,13 @@
     using ONEbook.SpreadSheets;
     using static ONEbook.SpreadSheets.Column;
 
-    public class ProblemAccountHandler : ExcelBaseHandler,
-        IAsyncRequestHandler<ProblemAccountQuery, IndexViewModel>,
-        IRequestHandler<UpdateReviewStatusQuery, UpdateReviewStatusViewModel>,
-        IAsyncRequestHandler<UpdateReviewStatusCommand, Result>,
-        IAsyncRequestHandler<ProblemAccountExcelQuery, ExcelFileViewModel>
+    public class ProblemAccountExcelHandler : ExcelBaseHandler, IAsyncRequestHandler<ProblemAccountExcelQuery, ExcelFileViewModel>
     {
         private int currentRowIndex = 1;
         private readonly ProblemAccountService problemAccountService;
         private readonly Workbook<ProblemAccount> workbook;
 
-        public ProblemAccountHandler(
+        public ProblemAccountExcelHandler(
             ProblemAccountService problemAccountService,
             Workbook<ProblemAccount> workbook)
         {
@@ -32,35 +27,9 @@
             this.workbook = workbook;
         }
 
-        public async Task<IndexViewModel> Handle(ProblemAccountQuery message)
-        {
-            var param = CreateParam(message);
-            var problemAccounts = await problemAccountService.GetProblemAccounts(param);
-
-            return new IndexViewModel(message, problemAccounts);
-        }
-
-        public UpdateReviewStatusViewModel Handle(UpdateReviewStatusQuery message)
-            => new UpdateReviewStatusViewModel(message);
-
-        public async Task<Result> Handle(UpdateReviewStatusCommand message)
-        {
-            var param = new UpdateReviewStatusParam(
-                message.ViewerId,
-                message.SubAccountId,
-                message.CustLevelId,
-                message.IsAllDownline,
-                message.IsAffectedAllDownlines,
-                message.SelectedDownlineIds,
-                message.LanguageKey,
-                message.IP);
-
-            return await problemAccountService.UpdateReviewStatus(param);
-        }
-
         public async Task<ExcelFileViewModel> Handle(ProblemAccountExcelQuery message)
         {
-            var param = CreateParam(message);
+            var param = ProblemAccountHandler.CreateParam(message);
             var problemAccounts = await problemAccountService.GetProblemAccounts(param);
 
             var fileContent = workbook
@@ -69,24 +38,10 @@
                 .Body(problemAccounts.DataSource, GetBodyRowMapper(message.CustLevel))
                 .ExportToBytes();
 
-            return new ExcelFileViewModel("Problem Account", fileContent);
+            return new ExcelFileViewModel(GetExcelFileName(message), fileContent);
         }
 
         protected override string GetExcelTemplateDir() => "~/Features/ProblemAccount/ExcelTemplates";
-
-        private static GetProblemAccountsParam CreateParam(ProblemAccountQuery message)
-            => new GetProblemAccountsParam(
-                message.ViewerId,
-                message.SubAccountId,
-                message.IsAllDownline,
-                message.UplineUsername,
-                message.CustLevelId,
-                message.SearchUsername,
-                message.SelectedReviewStatus,
-                message.FromDate,
-                message.ToDate,
-                message.PageIndex,
-                message.PageSize);
 
         private Mapper<ProblemAccount> GetBodyRowMapper(UserLevel userLevel)
             => BodyRowMapperByLevel[userLevel];
@@ -110,8 +65,6 @@
                 .Map(G, data => data.CreatedDate)
                 .Map(H, data => data.ReviewStatus);
 
-
-
         private Mapper<ProblemAccount> GetAgentBodyRowMapper()
             => new Mapper<ProblemAccount>()
                 .Map(A, _ => currentRowIndex++)
@@ -134,5 +87,8 @@
                 .Map(F, data => data.StatusName)
                 .Map(G, data => data.CreatedDate)
                 .Map(H, data => data.ReviewStatus);
+
+        private static string GetExcelFileName(ProblemAccountExcelQuery message)
+            => $"{Resources.ProblemAccount} {message.FromDate.ToShortDateWithHyphen()} --> {message.ToDate.ToShortDateWithHyphen()} - {Resources.ResourceManager.GetString(message.CustLevel.DisplayName)}";
     }
 }

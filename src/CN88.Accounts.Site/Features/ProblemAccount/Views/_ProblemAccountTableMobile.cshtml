@@ -1,4 +1,5 @@
-﻿@model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.IndexViewModel
+﻿@using CN88.Accounts.Shared.Extensions
+@model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.IndexViewModel
 <table id="tblProblemAccount" class="tbl-style2 table-problem-account @($"tbl-{Model.CustLevel.DisplayName.ToLowerInvariant()}")">
     <thead>
         <tr>
@@ -75,7 +76,7 @@
                     {
                         <td class="text-center">@account.NumberOfDownline</td>
                     }
-                    <td>@account.CreatedDate</td>
+                    <td>@account.CreatedDate.ToLongDateWithHyphen()</td>
                 </tr>
             }
         </tbody>

@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using CN88.Accounts.ProblemAccount;
-using CN88.Accounts.ProblemAccount.Criteria;
-using CN88.Accounts.ProblemAccount.Params;
-using CN88.Accounts.Shared.Models;
-using Fanex.Data.Repository;
-using KellermanSoftware.CompareNetObjects;
-using NSubstitute;
-using Xunit;
-
-namespace CN88.Accounts.Tests.ProblemAccount
+﻿namespace CN88.Accounts.Tests.ProblemAccount
 {
+    using System;
+    using System.Collections.Generic;
+    using CN88.Accounts.ProblemAccount;
+    using CN88.Accounts.ProblemAccount.Criteria;
+    using CN88.Accounts.ProblemAccount.Params;
+    using CN88.Accounts.Shared.Models;
+    using Fanex.Data.Repository;
+    using KellermanSoftware.CompareNetObjects;
+    using NSubstitute;
+    using Xunit;
+
     public class ProblemAccountServiceImplTests
     {
         private readonly IDynamicRepository dynamicRepository;
@@ -22,7 +22,6 @@ namespace CN88.Accounts.Tests.ProblemAccount
             problemAccountService = new ProblemAccountServiceImpl(dynamicRepository);
         }
 
-
         [Fact]
         public void GetProblemAccounts_Always_CallsDynamicRepositoryFecthAsync()
         {
@@ -33,7 +32,7 @@ namespace CN88.Accounts.Tests.ProblemAccount
             problemAccountService.GetProblemAccounts(param).ConfigureAwait(false);
 
             // Assert
-            dynamicRepository.Received().FetchAsync<Accounts.ProblemAccount.ProblemAccount>(
+            dynamicRepository.Received().FetchAsync<ProblemAccount>(
                 Arg.Is<GetProblemAccountsCriteria>(
                     c => c.CustId == param.CustId
                         && c.SubAccId == param.SubAccId
@@ -53,12 +52,12 @@ namespace CN88.Accounts.Tests.ProblemAccount
         {
             // Arrange
             var param = new GetProblemAccountsParam(1, 0, true, string.Empty, 3, string.Empty, 0, DateTime.Now, DateTime.Now, 1, 10);
-            var problemAccounts = new List<Accounts.ProblemAccount.ProblemAccount>
+            var problemAccounts = new List<ProblemAccount>
             {
-                new Accounts.ProblemAccount.ProblemAccount(1,"UplineUsername","Username","Name","Nickname",5,1,DateTime.Now,false)
+                new ProblemAccount(1,"UplineUsername","Username","Name","Nickname",5,1,DateTime.Now,false)
             };
-            dynamicRepository.FetchAsync<Accounts.ProblemAccount.ProblemAccount>(Arg.Any<GetProblemAccountsCriteria>()).Returns(problemAccounts);
-            var expectedResult = new PagedData<Accounts.ProblemAccount.ProblemAccount>(problemAccounts, 1, 10, 0);
+            dynamicRepository.FetchAsync<ProblemAccount>(Arg.Any<GetProblemAccountsCriteria>()).Returns(problemAccounts);
+            var expectedResult = new PagedData<ProblemAccount>(problemAccounts, 1, 10, 0);
 
             // Act
             var actualResult = problemAccountService.GetProblemAccounts(param).GetAwaiter().GetResult();

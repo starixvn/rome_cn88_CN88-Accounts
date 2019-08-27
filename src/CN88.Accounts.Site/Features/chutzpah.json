@@ -27,6 +27,8 @@
     { "Path": "Shared/Scripts/tests/libs/cookie.js" },
     { "Path": "Shared/Scripts/tests/libs/store.js" },
     { "Path": "Shared/Scripts/tests/libs/shortcut.js" },
+    { "Path": "Shared/Scripts/tests/libs/tooltip.js" },
+    { "Path": "Shared/Scripts/tests/libs/popup-manager.js" },
     { "Path": "Shared/Scripts/tests/libs/pagination/jquery.draggable.js" },
     { "Path": "Shared/Scripts/tests/libs/pagination/jquery.resizable.js" },
     { "Path": "Shared/Scripts/tests/libs/pagination/jquery.parser.js" },
@@ -38,11 +40,18 @@
     { "Path": "Shared/Scripts/src/filter-toggle.ts" },
     { "Path": "Shared/Scripts/src/message.ts" },
     { "Path": "Shared/Scripts/src/pager.ts" },
-    { "Path": "Shared/Scripts/src/single-selection-dropdown.ts" }
+    { "Path": "Shared/Scripts/src/single-selection-dropdown.ts" },
+    { "Path": "ProblemAccount/Scripts/src/update-review-status.ts" },
+    { "Path": "ProblemAccount/Scripts/src/base-problem-account.ts" },
+    { "Path": "ProblemAccount/Scripts/src/problem-account.ts" }
   ],
   "Tests": [
     {
       "Path": "Shared/Scripts/tests/app",
+      "Excludes": [ "**.js.map" ]
+    },
+    {
+      "Path": "ProblemAccount/Scripts/tests",
       "Excludes": [ "**.js.map" ]
     }
   ]

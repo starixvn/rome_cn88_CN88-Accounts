@@ -16,8 +16,10 @@
     }
 
     init(): void {
+        this.$.blockUI();
         this.cacheDOMElements();
         this.bindEvents();
+        this.$.unblockUI();
     }
 
     cacheDOMElements(): void {

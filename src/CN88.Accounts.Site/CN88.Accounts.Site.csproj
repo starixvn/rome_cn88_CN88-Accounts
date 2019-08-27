@@ -272,6 +272,7 @@
     <Content Include="Features\Shared\Scripts\tests\libs\pagination\jquery.pagination.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\pagination\jquery.parser.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\pagination\jquery.resizable.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\popup-manager.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\shortcut.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\store.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\tooltip.js" />
@@ -416,6 +417,12 @@
     <TypeScriptCompile Include="Features\ProblemAccount\Scripts\src\problem-account-mobile.ts" />
     <TypeScriptCompile Include="Features\ProblemAccount\Scripts\src\problem-account.ts" />
     <TypeScriptCompile Include="Features\ProblemAccount\Scripts\src\update-review-status.ts" />
+    <TypeScriptCompile Include="Features\ProblemAccount\Scripts\tests\problem-account-tests.ts">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Features\ProblemAccount\Scripts\tests\update-review-status-tests.ts">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Features\Shared\Scripts\src\core.ts">
       <SonarQubeExclude>true</SonarQubeExclude>
     </TypeScriptCompile>

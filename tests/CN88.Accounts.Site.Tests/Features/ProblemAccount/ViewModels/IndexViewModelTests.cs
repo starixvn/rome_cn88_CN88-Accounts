@@ -35,7 +35,6 @@
         {
             // Arrange
             var uplineUsername = "UplineUsername";
-            var currentLink = "CurrentLink";
             var expectedRouteValues = new Dictionary<string, object>
             {
                 [nameof(uplineUsername)] = uplineUsername,
@@ -46,11 +45,11 @@
             };
 
             // Act
-            indexViewModel.BuildDownlineLink(uplineUsername, currentLink);
+            indexViewModel.BuildDownlineLink(uplineUsername);
 
             // Assert
-            UrlHelper.ReplaceOrAddQueryStringParamsFunc.Received().Invoke(
-                currentLink,
+            UrlHelper.AddQueryStringParamsFunc.Received().Invoke(
+                "AccountsPath",
                 Arg.Is<Dictionary<string, object>>(routeValues => compareLogic.Compare(expectedRouteValues, routeValues).AreEqual));
         }
 

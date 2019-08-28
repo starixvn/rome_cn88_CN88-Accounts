@@ -49,9 +49,9 @@
 
         public int StartIndex => PageData.PageSize * (PageData.PageIndex - 1) + 1;
 
-        public string BuildDownlineLink(string uplineUsername, string currentLink)
-            => Shared.Helpers.UrlHelper.ReplaceOrAddQueryStringParamsFunc(
-                currentLink,
+        public string BuildDownlineLink(string uplineUsername)
+            => Shared.Helpers.UrlHelper.AddQueryStringParamsFunc(
+                Shared.Helpers.UrlHelper.MapAccountsPath("~/ProblemAccount/Index"),
                 GetDownlineLinkRouteValues(uplineUsername));
 
         public string BuildStatusLink(int custId, byte statusId)

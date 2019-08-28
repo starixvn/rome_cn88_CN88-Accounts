@@ -53,7 +53,7 @@
                             }
                             else
                             {
-                                <a class="downline-link" href="@Model.BuildDownlineLink(account.Username, Request.Url.Query)">@account.Username</a>
+                                <a class="downline-link" href="@Model.BuildDownlineLink(account.Username)">@account.Username</a>
                             }
                             <div class="nickname">@(string.IsNullOrWhiteSpace(account.Nickname) ? "---" : account.Nickname)</div>
                             <div class="name">@(string.IsNullOrWhiteSpace(account.Name) ? "---" : account.Name)</div>

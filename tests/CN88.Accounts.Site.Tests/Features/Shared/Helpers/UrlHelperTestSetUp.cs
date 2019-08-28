@@ -11,6 +11,8 @@
         {
             UrlHelper.MapFeaturesPath = Substitute.For<Func<string, string>>();
             UrlHelper.MapFeaturesPath(Arg.Any<string>()).Returns("FeaturesPath");
+            UrlHelper.MapAccountsPath = Substitute.For<Func<string, string>>();
+            UrlHelper.MapAccountsPath(Arg.Any<string>()).Returns("AccountsPath");
 
             UrlHelper.AddQueryStringParamsFunc = Substitute.For<Func<string, IDictionary<string, object>, string>>();
             UrlHelper.ReplaceOrAddQueryStringParamsFunc = Substitute.For<Func<string, IDictionary<string, object>, string>>();

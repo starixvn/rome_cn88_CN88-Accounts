@@ -21,11 +21,18 @@
     describe("_init", () => {
         beforeEach(() => {
             // arrange
+            spyOn(jQueryFake, "blockUI").and.callThrough();
+            spyOn(jQueryFake, "unblockUI").and.callThrough();
             spyOn(updateReviewStatus, "cacheDOMElements").and.callThrough();
             spyOn(updateReviewStatus, "bindEvents");
 
             // act
             updateReviewStatus.init();
+        });
+
+        it("_Calls blockUI", () => {
+            // assert
+            expect(jQueryFake.blockUI).toHaveBeenCalled();
         });
 
         it("_Calls cacheDOMElements", () => {
@@ -36,6 +43,11 @@
         it("_Calls bindEvents", () => {
             // assert
             expect(updateReviewStatus.bindEvents).toHaveBeenCalled();
+        });
+
+        it("_Calls unblockUI", () => {
+            // assert
+            expect(jQueryFake.unblockUI).toHaveBeenCalled();
         });
     });
 

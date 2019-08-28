@@ -28,6 +28,8 @@
 
         public byte ViewerLevelId => viewer.LevelId;
 
+        public byte ViewerStatusId => viewer.StatusId;
+
         public virtual UserLevel ViewerLevel => Enumeration.FromValue<UserLevel>(ViewerLevelId);
 
         public int SubAccountId => viewer.SubAccountId;

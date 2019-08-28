@@ -60,7 +60,14 @@
                         </div>
                     </td>
                     <td align="center">
-                        <a class="link status-link" data-username="@account.Username" href="@Model.BuildStatusLink(account.CustId,account.Status)">@account.StatusName</a>
+                        @if (Model.HasUpdatePermission)
+                        {
+                            <a class="link status-link" data-username="@account.Username" href="@Model.BuildStatusLink(account.CustId, account.Status)">@account.StatusName</a>
+                        }
+                        else
+                        {
+                            @account.StatusName
+                        }
                     </td>
                     <td>@account.ReviewStatus</td>
                     @if (Model.CanUpdateReviewStatus)

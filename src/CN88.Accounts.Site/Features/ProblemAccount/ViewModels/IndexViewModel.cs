@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using CN88.Accounts.ProblemAccount;
+    using CN88.Accounts.Shared.Constants;
     using CN88.Accounts.Shared.Models;
     using CN88.Accounts.Site.Features.ProblemAccount.Requests;
     using CN88.Accounts.Site.Features.Shared.ViewModels;
@@ -17,10 +18,13 @@
         {
             this.query = query;
             PageData = pagedData;
-            CanUpdateReviewStatus = query.AccountManagementEditView && query.SelectedReviewStatus != ReviewStatusConstants.Reviewed;
+            HasUpdatePermission = query.ViewerStatusId == CustomerStatusConstants.Active && query.AccountManagementEditView;
+            CanUpdateReviewStatus = HasUpdatePermission && query.SelectedReviewStatus != ReviewStatusConstants.Reviewed;
         }
 
         public bool IsMobile { get; }
+
+        public bool HasUpdatePermission { get; }
 
         public bool CanUpdateReviewStatus { get; }
 

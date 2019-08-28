@@ -32,6 +32,8 @@
 
         public bool IsAllDownline => userSession.GetProperty<bool>("ISALLDOWNLINE");
 
+        public byte StatusId => userSession.GetProperty<byte>("CUSTOMERSTATUS");
+
         public string IP => userSession.UserLoginIp;
 
         public bool AccountManagementEditView => userSession.SubPageAccess.UpdateAccount;

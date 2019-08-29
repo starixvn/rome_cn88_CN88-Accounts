@@ -53,7 +53,7 @@
                 message.IsAllDownline,
                 message.UplineUsername,
                 message.CustLevelId,
-                message.SearchUsername,
+                message.CustName,
                 message.SelectedReviewStatus,
                 message.FromDate,
                 message.ToDate,

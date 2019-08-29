@@ -10,6 +10,9 @@
         public BaseQuery(IUser viewer)
         {
             this.viewer = viewer;
+
+            CustId = viewer.Id;
+            CustLevelId = viewer.LevelId;
         }
 
         public int CustId { get; set; }
@@ -24,8 +27,6 @@
 
         public string ViewerName => viewer.Name;
 
-        public string NickName => viewer.NickName;
-
         public byte ViewerLevelId => viewer.LevelId;
 
         public byte ViewerStatusId => viewer.StatusId;
@@ -33,8 +34,6 @@
         public virtual UserLevel ViewerLevel => Enumeration.FromValue<UserLevel>(ViewerLevelId);
 
         public int SubAccountId => viewer.SubAccountId;
-
-        public bool IsSubAccount => viewer.IsSubAccount;
 
         public bool IsAllDownline => viewer.IsAllDownline;
 

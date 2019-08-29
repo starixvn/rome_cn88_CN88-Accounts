@@ -46,7 +46,7 @@
                         && p.IsAllDownline == message.IsAllDownline
                         && p.UplineUsername == message.UplineUsername
                         && p.CustLevelId == message.CustLevelId
-                        && p.SearchUsername == message.SearchUsername
+                        && p.SearchUsername == message.CustName
                         && p.ReviewStatus == message.SelectedReviewStatus
                         && p.FromDate == message.FromDate
                         && p.ToDate == message.ToDate

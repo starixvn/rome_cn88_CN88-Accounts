@@ -1,4 +1,4 @@
-﻿abstract class BaseProblemAccount {
+﻿class BaseProblemAccount {
     $: JQueryStatic;
     topWindow: Window;
     dateRangePicker: DateRangePickerComponent;

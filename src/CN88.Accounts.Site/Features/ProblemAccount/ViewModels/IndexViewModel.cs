@@ -73,6 +73,5 @@
                 [nameof(query.SelectedReviewStatus)] = query.SelectedReviewStatus,
                 [nameof(query.CustLevelId)] = query.CustLevel.GetDirectDownLineLevel().Value
             };
-
     }
 }

@@ -1,5 +1,7 @@
 ﻿class ProblemAccountMobile extends BaseProblemAccount {
     filterToggle: ToggleHandler;
+    $tblProblemAccount: JQuery;
+    $body: JQuery;
 
     constructor(
         $: JQueryStatic,
@@ -14,9 +16,12 @@
     }
 
     cacheDOMElements(): void {
-        this.$("#tblProblemAccount").stacktable();
+        this.$tblProblemAccount = this.$("#tblProblemAccount");
+        this.$body = this.$("body");
+
+        this.$tblProblemAccount.stacktable();
         this.filterToggle.render(new ToggleHandlerOption("filter-toggle-icon", "report-form", "tblProblemAccount-stack,#note,#pager"));
-        this.$("body").backtop();
+        this.$body.backtop();
 
         super.cacheDOMElements();
     }

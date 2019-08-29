@@ -7,6 +7,7 @@
     using AutoFixture;
     using CN88.Accounts.ProblemAccount;
     using CN88.Accounts.ProblemAccount.Params;
+    using CN88.Accounts.Shared;
     using CN88.Accounts.Shared.Extensions;
     using CN88.Accounts.Shared.Models;
     using CN88.Accounts.Shared.Resources;
@@ -79,7 +80,7 @@
                         && p.IsAllDownline == message.IsAllDownline
                         && p.UplineUsername == message.UplineUsername
                         && p.CustLevelId == message.CustLevelId
-                        && p.SearchUsername == message.SearchUsername
+                        && p.SearchUsername == message.CustName
                         && p.ReviewStatus == message.SelectedReviewStatus
                         && p.FromDate == message.FromDate
                         && p.ToDate == message.ToDate
@@ -170,6 +171,73 @@
 
             // Act & Assert
             Assert.Throws<FileNotFoundException>(() => problemAccountExcelHandler.GetExcelTemplatePath("Agent"));
+        }
+
+        [Fact]
+        public void GetBodyRowMapper_MasterLevel_ReturnsCorrectMapper()
+        {
+            // Arrange
+            SystemTime.Today = new DateTime(2019, 8, 29);
+            message.CustLevelId = 3;
+            var data = new ProblemAccount(1, "UplineUsername", "Username", "Name", "Nickname", 5, 1, SystemTime.Today, false);
+
+            // Act
+            var actualMapper = problemAccountExcelHandler.GetBodyRowMapper(message.CustLevel);
+
+            // Assert
+            Assert.True((int)actualMapper.Mappings[Column.A](data) == 1
+                && (string)actualMapper.Mappings[Column.B](data) == "Username"
+                && (string)actualMapper.Mappings[Column.C](data) == "Name"
+                && (string)actualMapper.Mappings[Column.D](data) == "Nickname"
+                && (int)actualMapper.Mappings[Column.E](data) == 5
+                && (string)actualMapper.Mappings[Column.F](data) == "Inactive"
+                && (DateTime)actualMapper.Mappings[Column.G](data) == SystemTime.Today
+                && (string)actualMapper.Mappings[Column.H](data) == "Not Reviewed");
+        }
+
+        [Fact]
+        public void GetBodyRowMapper_AgentLevel_ReturnsCorrectMapper()
+        {
+            // Arrange
+            SystemTime.Today = new DateTime(2019, 8, 29);
+            message.CustLevelId = 2;
+            var data = new ProblemAccount(1, "UplineUsername", "Username", "Name", "Nickname", 5, 1, SystemTime.Today, false);
+
+            // Act
+            var actualMapper = problemAccountExcelHandler.GetBodyRowMapper(message.CustLevel);
+
+            // Assert
+            Assert.True((int)actualMapper.Mappings[Column.A](data) == 1
+                 && (string)actualMapper.Mappings[Column.B](data) == "UplineUsername"
+                && (string)actualMapper.Mappings[Column.C](data) == "Username"
+                && (string)actualMapper.Mappings[Column.D](data) == "Name"
+                && (string)actualMapper.Mappings[Column.E](data) == "Nickname"
+                && (int)actualMapper.Mappings[Column.F](data) == 5
+                && (string)actualMapper.Mappings[Column.G](data) == "Inactive"
+                && (DateTime)actualMapper.Mappings[Column.H](data) == SystemTime.Today
+                && (string)actualMapper.Mappings[Column.I](data) == "Not Reviewed");
+        }
+
+        [Fact]
+        public void GetBodyRowMapper_MemberLevel_ReturnsCorrectMapper()
+        {
+            // Arrange
+            SystemTime.Today = new DateTime(2019, 8, 29);
+            message.CustLevelId = 1;
+            var data = new ProblemAccount(1, "UplineUsername", "Username", "Name", "Nickname", 5, 1, SystemTime.Today, false);
+
+            // Act
+            var actualMapper = problemAccountExcelHandler.GetBodyRowMapper(message.CustLevel);
+
+            // Assert
+            Assert.True((int)actualMapper.Mappings[Column.A](data) == 1
+                && (string)actualMapper.Mappings[Column.B](data) == "UplineUsername"
+                && (string)actualMapper.Mappings[Column.C](data) == "Username"
+                && (string)actualMapper.Mappings[Column.D](data) == "Name"
+                && (string)actualMapper.Mappings[Column.E](data) == "Nickname"
+                && (string)actualMapper.Mappings[Column.F](data) == "Inactive"
+                && (DateTime)actualMapper.Mappings[Column.G](data) == SystemTime.Today
+                && (string)actualMapper.Mappings[Column.H](data) == "Not Reviewed");
         }
     }
 }

@@ -23,6 +23,10 @@
             userSession.IsSubAcc.Returns(true);
             userSession.UserLoginIp.Returns("127.0.0.1");
             userSession.GetProperty<bool>("ISALLDOWNLINE").Returns(true);
+            userSession.GetProperty<byte>("CUSTOMERSTATUS").Returns((byte)1);
+
+            var pageAccess = new PageAccess() { UpdateAccount = true };
+            userSession.SubPageAccess.Returns(pageAccess);
 
             // Act
             var user = new User(userSession);
@@ -39,7 +43,9 @@
                 && user.SubAccountId == 3
                 && user.IsSubAccount
                 && user.IP == "127.0.0.1"
-                && user.IsAllDownline);
+                && user.IsAllDownline
+                && user.StatusId == 1
+                && user.AccountManagementEditView);
         }
     }
 }

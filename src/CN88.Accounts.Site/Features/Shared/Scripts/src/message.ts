@@ -24,10 +24,10 @@ class Message {
 
         if (result.IsSuccessful) {
             this.showSuccess($target, result.Message);
-        } else if (result.IsFailed) {
-            this.showError($target, result.Message);
         } else if (result.IsWarning) {
             this.showWarn($target, result.Message);
+        } else if (result.IsFailed) {
+            this.showError($target, result.Message);
         }
     }
 

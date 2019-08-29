@@ -27,7 +27,5 @@
         byte StatusId { get; }
 
         bool AccountManagementEditView { get; }
-
-        bool AccountManagementViewOnly { get; }
     }
 }

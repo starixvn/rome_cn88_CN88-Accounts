@@ -54,18 +54,20 @@
             url: this.$formUpdateReviewStatus.attr("action"),
             data: this.getParams(),
             dataType: "json",
-            success: (data) => {
-                const result = new Result(data.ErrCode, data.ErrMsg);
-
-                if (result.IsSuccessful) {
-                    this.message.showSuccess(this.$messageContainer, this.successMessage);
-                    this.topWindow["indexManager"].closePopupAndReloadMainIframe();
-                } else {
-                    this.message.showMessage(this.$messageContainer, result);
-                }
-            },
+            success: this.submitSuccess,
             complete: this.$.unblockUI
         });
+    };
+
+    submitSuccess = (data) => {
+        const result = new Result(data.ErrCode, data.ErrMsg);
+
+        if (result.IsSuccessful) {
+            this.message.showSuccess(this.$messageContainer, this.successMessage);
+            this.topWindow["indexManager"].closePopupAndReloadMainIframe();
+        } else {
+            this.message.showMessage(this.$messageContainer, result);
+        }
     };
 
     getParams() {

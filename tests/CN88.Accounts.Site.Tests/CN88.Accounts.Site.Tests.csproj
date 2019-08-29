@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>618</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -170,6 +171,7 @@
     <Compile Include="Features\ProblemAccount\ProblemAccountControllerTests.cs" />
     <Compile Include="Features\ProblemAccount\Handlers\ProblemAccountHandlerTests.cs" />
     <Compile Include="Features\ProblemAccount\ViewModels\IndexViewModelTests.cs" />
+    <Compile Include="Features\Shared\BaseQueryTests.cs" />
     <Compile Include="Features\Shared\Helpers\UrlHelperTests.cs" />
     <Compile Include="Features\Shared\QueryEntityModelBinderTests.cs" />
     <Compile Include="Features\Shared\Helpers\UrlHelperTestSetUp.cs" />

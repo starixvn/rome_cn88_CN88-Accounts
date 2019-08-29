@@ -43,7 +43,7 @@
 
         protected override string GetExcelTemplateDir() => "~/Features/ProblemAccount/ExcelTemplates";
 
-        private Mapper<ProblemAccount> GetBodyRowMapper(UserLevel userLevel)
+        internal Mapper<ProblemAccount> GetBodyRowMapper(UserLevel userLevel)
             => BodyRowMapperByLevel[userLevel];
 
         private IDictionary<UserLevel, Mapper<ProblemAccount>> BodyRowMapperByLevel

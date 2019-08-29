@@ -13,7 +13,7 @@
     }
     <div class="form-group">
         <label>@Resources.UsernameOrNameContains</label>
-        <input type="text" id="SearchUsername" name="SearchUsername" class="control search-username" value="@Model.SearchUsername" />
+        <input type="text" id="CustName" name="CustName" class="control search-username" value="@Model.CustName" />
     </div>
     <div class="form-group">
         <input type="submit" class="btn-submit" value="@Resources.Submit" />
@@ -26,9 +26,9 @@
     @Html.Hidden("SelectedReviewStatus", Model.ReviewStatusSelection.SelectedId)
     @if (Model.CustLevel.IsAgentLevel() || Model.CustLevel.IsMemberLevel())
     {
-        @Html.Hidden("UplineUsername", Model.UplineUsername)
+        @Html.Hidden(nameof(Model.UplineUsername), Model.UplineUsername)
     }
-    @Html.Hidden("SearchUsername", Model.SearchUsername)
+    @Html.Hidden(nameof(Model.CustName), Model.CustName)
 </form>
 @helper RenderHiddenFeilds()
 {

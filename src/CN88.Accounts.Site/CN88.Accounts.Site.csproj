@@ -244,6 +244,9 @@
     <Content Include="Features\ProblemAccount\bundles\update-review-status.min.js">
       <DependentUpon>update-review-status.js</DependentUpon>
     </Content>
+    <Content Include="Features\ProblemAccount\Scripts\tests\templates\problem-account-template.html">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </Content>
     <Content Include="Features\ProblemAccount\Styles\index.css">
       <DependentUpon>index.scss</DependentUpon>
     </Content>
@@ -256,6 +259,7 @@
     <Content Include="Features\ProblemAccount\Styles\update-review-status.min.css">
       <DependentUpon>update-review-status.css</DependentUpon>
     </Content>
+    <Content Include="Features\Shared\Scripts\tests\libs\backtop.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\bootstrap-datetimepicker.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\bootstrap-modal.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\cookie.js" />
@@ -274,6 +278,7 @@
     <Content Include="Features\Shared\Scripts\tests\libs\pagination\jquery.resizable.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\popup-manager.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\shortcut.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\stacktable.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\store.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\tooltip.js" />
     <Content Include="Global.asax" />
@@ -417,10 +422,16 @@
     <TypeScriptCompile Include="Features\ProblemAccount\Scripts\src\problem-account-mobile.ts" />
     <TypeScriptCompile Include="Features\ProblemAccount\Scripts\src\problem-account.ts" />
     <TypeScriptCompile Include="Features\ProblemAccount\Scripts\src\update-review-status.ts" />
-    <TypeScriptCompile Include="Features\ProblemAccount\Scripts\tests\problem-account-tests.ts">
+    <TypeScriptCompile Include="Features\ProblemAccount\Scripts\tests\app\base-problem-account-tests.ts">
       <SonarQubeExclude>true</SonarQubeExclude>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Features\ProblemAccount\Scripts\tests\update-review-status-tests.ts">
+    <TypeScriptCompile Include="Features\ProblemAccount\Scripts\tests\app\problem-account-mobile-tests.ts">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Features\ProblemAccount\Scripts\tests\app\problem-account-tests.ts">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Features\ProblemAccount\Scripts\tests\app\update-review-status-tests.ts">
       <SonarQubeExclude>true</SonarQubeExclude>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Features\Shared\Scripts\src\core.ts">
@@ -434,7 +445,16 @@
     <TypeScriptCompile Include="Features\Shared\Scripts\tests\app\daterange-picker-tests.ts">
       <SonarQubeExclude>true</SonarQubeExclude>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Features\Shared\Scripts\tests\app\filter-toggle-tests.ts">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Features\Shared\Scripts\tests\app\message-tests.ts">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Features\Shared\Scripts\tests\app\pager-tests.ts">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Features\Shared\Scripts\tests\app\result-tests.ts">
       <SonarQubeExclude>true</SonarQubeExclude>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Features\Shared\Scripts\tests\app\single-selection-dropdown-tests.ts">

@@ -4,8 +4,7 @@
     const message = new Message();
     let updateReviewStatus: UpdateReviewStatus;
 
-    beforeEach(() => {
-        setFixtures(`<div id="message-container" class="message-container"></div>
+    let template = `<div id="message-container" class="message-container"></div>
                     <form id="formUpdateReviewStatus" action="/site-accounts/(S(vhfwrkn04fojn4gnndzxiqpk))/ProblemAccount/UpdateReviewStatus" method="post" class="form-horizontal">
                         <input id="CustLevelId" name="CustLevelId" type="hidden" value="3">
                         <input id="SelectedDownlineIds" name="SelectedDownlineIds" type="hidden" value="35709671,35709674">
@@ -14,18 +13,22 @@
                             <input type="button" class="btn-cancel" id="btnCancel" value="Cancel">
                         </div>
                     </form>
-                    <input id="SuccessMessage" name="SuccessMessage" type="hidden" value="Update Successfully!">`);
+                    <input id="SuccessMessage" name="SuccessMessage" type="hidden" value="Update Successfully!">`;
+
+    beforeEach(() => {
+        // arrange
+        setFixtures(template);
+
         updateReviewStatus = new UpdateReviewStatus(jQueryFake, topWindow, message);
+
+        spyOn(jQueryFake, "blockUI").and.callThrough();
+        spyOn(jQueryFake, "unblockUI").and.callThrough();
+        spyOn(updateReviewStatus, "cacheDOMElements").and.callThrough();
+        spyOn(updateReviewStatus, "bindEvents");
     });
 
     describe("_init", () => {
         beforeEach(() => {
-            // arrange
-            spyOn(jQueryFake, "blockUI").and.callThrough();
-            spyOn(jQueryFake, "unblockUI").and.callThrough();
-            spyOn(updateReviewStatus, "cacheDOMElements").and.callThrough();
-            spyOn(updateReviewStatus, "bindEvents");
-
             // act
             updateReviewStatus.init();
         });

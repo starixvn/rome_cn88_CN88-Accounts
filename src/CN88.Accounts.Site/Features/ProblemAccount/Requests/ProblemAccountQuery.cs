@@ -33,8 +33,6 @@
 
         public string UplineUsername { get; set; }
 
-        public string SearchUsername { get; set; }
-
         public int PageIndex { get; set; }
 
         public int PageSize { get; set; }
@@ -42,6 +40,7 @@
         public override bool IsValid()
             => base.IsValid()
             && FromDate <= ToDate
-            && CustLevel.IsNotSuperLevel();
+            && ViewerLevel.IsSuperLevel()
+            && ViewerLevel.IsUplineOf(CustLevel);
     }
 }

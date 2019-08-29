@@ -15,7 +15,6 @@
             UrlHelper.MapAccountsPath(Arg.Any<string>()).Returns("AccountsPath");
 
             UrlHelper.AddQueryStringParamsFunc = Substitute.For<Func<string, IDictionary<string, object>, string>>();
-            UrlHelper.ReplaceOrAddQueryStringParamsFunc = Substitute.For<Func<string, IDictionary<string, object>, string>>();
         }
     }
 }

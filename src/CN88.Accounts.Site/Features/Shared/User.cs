@@ -37,7 +37,5 @@
         public string IP => userSession.UserLoginIp;
 
         public bool AccountManagementEditView => userSession.SubPageAccess.UpdateAccount;
-
-        public bool AccountManagementViewOnly => userSession.SubPageAccess.ViewMemberInfo;
     }
 }

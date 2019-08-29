@@ -36,41 +36,38 @@ class ToggleHandler {
             this.$sourceElement.hide();
         }
 
-        this.$filterToggleIcon.on("click touchend", (e) => {
-            e.preventDefault();
-            const isCollapsed = this.$filterToggleIcon.hasClass(this.iconFilterDownClass);
-
-            if (isCollapsed) {
-                this.$sourceElement
-                    .slideDown(this.sourceSlideDuration);
-                this.$targetElement
-                    .slideUp(this.targetSlideDuration);
-                this.$filterToggleIcon
-                    .removeClass(this.iconFilterDownClass)
-                    .addClass(this.iconFilterUpClass);
-            }
-            else {
-                this.$sourceElement.slideUp(this.sourceSlideDuration);
-                this.$targetElement
-                    .slideDown(this.targetSlideDuration);
-                this.$filterToggleIcon
-                    .removeClass(this.iconFilterUpClass)
-                    .addClass(this.iconFilterDownClass);
-            }
-        });
+        this.$filterToggleIcon.on("click touchend", this.onFilterToggleIconClick);
     };
 
-    hideFilter = () => {
+    onFilterToggleIconClick = (e: JQueryEventObject) => {
+        e.preventDefault();
         const isCollapsed = this.$filterToggleIcon.hasClass(this.iconFilterDownClass);
-        if (isCollapsed) {
-            return;
-        }
 
-        this.$sourceElement.slideUp(this.sourceSlideDuration);
+        if (isCollapsed) {
+            this.expandToggle();
+        }
+        else {
+            this.collapseToggle();
+        }
+    };
+
+    expandToggle(): void {
+        this.$sourceElement
+            .slideDown(this.sourceSlideDuration);
+        this.$targetElement
+            .slideUp(this.targetSlideDuration);
+        this.$filterToggleIcon
+            .removeClass(this.iconFilterDownClass)
+            .addClass(this.iconFilterUpClass);
+    }
+
+    collapseToggle(): void {
+        this.$sourceElement
+            .slideUp(this.sourceSlideDuration);
         this.$targetElement
             .slideDown(this.targetSlideDuration);
         this.$filterToggleIcon
             .removeClass(this.iconFilterUpClass)
             .addClass(this.iconFilterDownClass);
-    };
+    }
 }

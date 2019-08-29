@@ -16,7 +16,7 @@
         public FilterViewModel(ProblemAccountQuery query)
         {
             UplineUsername = query.UplineUsername;
-            SearchUsername = query.SearchUsername;
+            CustName = query.CustName;
             CustLevel = query.CustLevel;
 
             DateRangePicker = new DateRangePickerViewModel(
@@ -34,7 +34,7 @@
 
         public string UplineUsername { get; }
 
-        public string SearchUsername { get; }
+        public string CustName { get; }
 
         public UserLevel CustLevel { get; }
 

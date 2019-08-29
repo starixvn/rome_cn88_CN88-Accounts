@@ -34,6 +34,8 @@
     { "Path": "Shared/Scripts/tests/libs/pagination/jquery.parser.js" },
     { "Path": "Shared/Scripts/tests/libs/pagination/jquery.linkbutton.js" },
     { "Path": "Shared/Scripts/tests/libs/pagination/jquery.pagination.js" },
+    { "Path": "Shared/Scripts/tests/libs/stacktable.js" },
+    { "Path": "Shared/Scripts/tests/libs/backtop.js" },
 
     { "Path": "Shared/Scripts/src/core.ts" },
     { "Path": "Shared/Scripts/src/daterange-picker.ts" },
@@ -43,7 +45,8 @@
     { "Path": "Shared/Scripts/src/single-selection-dropdown.ts" },
     { "Path": "ProblemAccount/Scripts/src/update-review-status.ts" },
     { "Path": "ProblemAccount/Scripts/src/base-problem-account.ts" },
-    { "Path": "ProblemAccount/Scripts/src/problem-account.ts" }
+    { "Path": "ProblemAccount/Scripts/src/problem-account.ts" },
+    { "Path": "ProblemAccount/Scripts/src/problem-account-mobile.ts" }
   ],
   "Tests": [
     {
@@ -51,7 +54,7 @@
       "Excludes": [ "**.js.map" ]
     },
     {
-      "Path": "ProblemAccount/Scripts/tests",
+      "Path": "ProblemAccount/Scripts/tests/app",
       "Excludes": [ "**.js.map" ]
     }
   ]

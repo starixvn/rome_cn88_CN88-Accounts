@@ -10,7 +10,7 @@
             byte roleId,
             bool isAllDownline,
             bool isAffectedAllDownlines,
-            string downlineList,
+            string customerList,
             string language,
             string loginIP)
         {
@@ -19,7 +19,7 @@
             RoleId = roleId;
             IsAllDownline = isAllDownline;
             IsAffectedAllDownlines = isAffectedAllDownlines;
-            DownlineList = downlineList;
+            CustomerList = customerList;
             Language = language;
             LoginIP = loginIP;
         }
@@ -34,7 +34,7 @@
 
         public bool IsAffectedAllDownlines { get; }
 
-        public string DownlineList { get; }
+        public string CustomerList { get; }
 
         public string Language { get; }
 
@@ -47,6 +47,6 @@
         public override string GetSettingKey() => "CS_ProblemAccount_ReviewStatusUpd";
 
         public override bool IsValid()
-            => UserId > 0 && SubAccId >= 0 && !string.IsNullOrWhiteSpace(DownlineList);
+            => UserId > 0 && SubAccId >= 0 && !string.IsNullOrWhiteSpace(CustomerList);
     }
 }

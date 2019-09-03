@@ -223,7 +223,7 @@
     <value>You are not authorized on this function.</value>
   </data>
   <data name="SetReviewedConfirmMessage" xml:space="preserve">
-    <value>Are you sure you want to set to Reviewed for {0}</value>
+    <value>Are you sure you want to set to Reviewed for</value>
   </data>
   <data name="SetToReviewdForSelectedAccountsOnly" xml:space="preserve">
     <value>Set to Reviewed for selected accounts only.</value>
@@ -236,5 +236,23 @@
   </data>
   <data name="Username" xml:space="preserve">
     <value>Username</value>
+  </data>
+  <data name="UpdateSuccessfully" xml:space="preserve">
+    <value>Update Successfully!</value>
+  </data>
+  <data name="ShowAllAccount" xml:space="preserve">
+    <value>Show all account</value>
+  </data>
+  <data name="SetToReviewedValidationMessage" xml:space="preserve">
+    <value>You do not have any Problem Accounts selected. Please select a Problem Account or select "All"</value>
+  </data>
+  <data name="SystemMessage" xml:space="preserve">
+    <value>System Message</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="DateNotifiedFrom" xml:space="preserve">
+    <value>Date Notified From</value>
   </data>
 </root>

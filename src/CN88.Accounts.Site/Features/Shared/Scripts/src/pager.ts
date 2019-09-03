@@ -5,7 +5,7 @@
         public formId = "report-form",
         public pageIndexId = "PageIndex",
         public pageSizeId = "PageSize",
-        public pageList: number[] = [10, 50, 100, 500]) {
+        public pageList = cn88Accounts.defaultPageList) {
     }
 }
 
@@ -83,7 +83,6 @@ class PagerComponent {
 
     isShow = () => {
         // total records less than min page size => do not need to show pager
-        //return this.pageList[0] <= this.totalRecords;
-        return true;
+        return this.pageList[0] <= this.totalRecords;
     };
 }

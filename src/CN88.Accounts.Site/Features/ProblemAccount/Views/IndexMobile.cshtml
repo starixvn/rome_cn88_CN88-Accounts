@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Features/Shared/Views/_Layout.cshtml";
+    ViewBag.Title = Resources.ProblemAccount;
+}
+@section Styles{
+    @StaticResources.RenderStyles("~/Features/ProblemAccount/bundles/index")
+}
+@model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.IndexViewModel
+<ul id="nav-tabs" class="nav nav-tabs" role="tablist">
+    @Html.Partial("_TabItems", Model.CustLevel)
+</ul>
+<div class="tab-content">
+    <div class="tab-pane fade in active" role="tabpanel">
+        <div class="tab-header">
+            <span class="icon-filter-down" id="filter-toggle-icon"></span>
+            @if (Model.CanUpdateReviewStatus)
+            {
+                <input type="button" id="btnReview" name="btnReview" class="btn-submit btn-review" value="@Resources.SetToReviewed" />
+            }
+        </div>
+        @Html.Partial("_Filter", Model.FilterViewModel)
+        <div id="note" class="note">
+            <span class="start">*</span>@Resources.ProblemAccountNote
+        </div>
+        @Html.Partial("_ProblemAccountTableMobile")
+        @Pager.Render(Model.PagerViewModel)
+    </div>
+</div>
+@Html.Hidden(nameof(Resources.UpdateStatus), Resources.UpdateStatus)
+@Html.Hidden(nameof(Resources.SetReviewedStatus), Resources.SetReviewedStatus)
+@Html.Hidden(nameof(Resources.OK), Resources.OK)
+@Html.Hidden(nameof(Resources.SystemMessage), Resources.SystemMessage)
+@Html.Hidden(nameof(Resources.SetToReviewedValidationMessage), Resources.SetToReviewedValidationMessage)
+@Html.Hidden("UpdateReviewStatusUrl", Url.Action("UpdateReviewStatus", "ProblemAccount"))
+@section Scripts{
+    @StaticResources.RenderScripts("~/Features/ProblemAccount/bundles/index-mobile")
+}

@@ -106,6 +106,15 @@ namespace CN88.Accounts.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date Notified From.
+        /// </summary>
+        public static string DateNotifiedFrom {
+            get {
+                return ResourceManager.GetString("DateNotifiedFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Export to Excel.
         /// </summary>
         public static string ExportToExcel {
@@ -214,6 +223,15 @@ namespace CN88.Accounts.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        public static string OK {
+            get {
+                return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Page.
         /// </summary>
         public static string Page {
@@ -304,7 +322,7 @@ namespace CN88.Accounts.Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to set to Reviewed for {0}.
+        ///   Looks up a localized string similar to Are you sure you want to set to Reviewed for.
         /// </summary>
         public static string SetReviewedConfirmMessage {
             get {
@@ -349,6 +367,24 @@ namespace CN88.Accounts.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You do not have any Problem Accounts selected. Please select a Problem Account or select &quot;All&quot;.
+        /// </summary>
+        public static string SetToReviewedValidationMessage {
+            get {
+                return ResourceManager.GetString("SetToReviewedValidationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show all account.
+        /// </summary>
+        public static string ShowAllAccount {
+            get {
+                return ResourceManager.GetString("ShowAllAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Status.
         /// </summary>
         public static string Status {
@@ -376,6 +412,15 @@ namespace CN88.Accounts.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to System Message.
+        /// </summary>
+        public static string SystemMessage {
+            get {
+                return ResourceManager.GetString("SystemMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To.
         /// </summary>
         public static string To {
@@ -390,6 +435,15 @@ namespace CN88.Accounts.Shared.Resources {
         public static string UpdateStatus {
             get {
                 return ResourceManager.GetString("UpdateStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Successfully!.
+        /// </summary>
+        public static string UpdateSuccessfully {
+            get {
+                return ResourceManager.GetString("UpdateSuccessfully", resourceCulture);
             }
         }
         

@@ -8,9 +8,7 @@
     @RenderSection("Styles", required: false)
 </head>
 <body @Html.Raw(CN88.Web.Helpers.BrowserManager.BuildMobileHtmlClass())>
-    <div class="content-page">
-        @RenderBody()
-    </div>
+    @RenderBody()
     @StaticResources.AssetScripts.RenderCommon("/bundles/common/common")
     @StaticResources.AssetScripts.Render("/bundles/site-accounts/default")
     @RenderSection("Scripts", required: false)

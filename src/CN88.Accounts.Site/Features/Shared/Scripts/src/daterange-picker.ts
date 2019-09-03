@@ -29,7 +29,7 @@ class DateRangePickerComponent {
             },
             selectedItem: dateRangePicker.data("selecteddaterange"),
             minDate: new Date(minDate),
-            maxDate: maxDate === "" ? null : maxDate,
+            maxDate: maxDate === "" ? null : new Date(maxDate),
             currentDate: new Date(currentDate),
             onSelectDatePicker: () => {
                 if (this.options.onChange) {

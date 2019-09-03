@@ -1,0 +1,95 @@
+﻿@using CN88.Accounts.Shared.Extensions
+@model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.IndexViewModel
+<table id="tblProblemAccount" class="tbl-style2 table-problem-account @($"tbl-{Model.CustLevel.DisplayName.ToLowerInvariant()}")">
+    <thead>
+        <tr>
+            @if (Model.CustLevel.IsAgentLevel())
+            {
+                <th class="col-uplineusername">@Resources.Master</th>
+            }
+            @if (Model.CustLevel.IsMemberLevel())
+            {
+                <th class="col-uplineusername">@Resources.Agent</th>
+            }
+            <th class="col-username">
+                <div>@Resources.Username</div>
+                <div>@Resources.Nickname</div>
+                <div>@Resources.Name</div>
+            </th>
+            <th class="col-status text-center">@Resources.Status</th>
+            <th class="col-reviewstatus">@Resources.ReviewStatus</th>
+            @if (Model.CanUpdateReviewStatus)
+            {
+                <th class="text-center col-review-action">
+                    <input type="checkbox" id="SelectAll" name="SelectAll" value="" />
+                </th>
+            }
+            @if (Model.CustLevel.IsMasterLevel())
+            {
+                <th class="col-numberofaccounts text-center" data-stack-column="true">@Resources.ProblemAgentAccounts <span class="icon-info" data-toggle="tooltip" title="@Resources.ProblemAgentAccountsTooltip" /></th>
+            }
+            @if (Model.CustLevel.IsAgentLevel())
+            {
+                <th class="col-numberofaccounts text-center" data-stack-column="true">@Resources.ProblemMemberAccounts <span class="icon-info" data-toggle="tooltip" title="@Resources.ProblemMemberAccountsTooltip" /></th>
+            }
+            <th class="col-datenotified" data-stack-column="true">@Resources.DateNotified</th>
+        </tr>
+    </thead>
+    @if (Model.PageData.Any())
+    {
+        <tbody>
+            @foreach (var account in Model.PageData.DataSource)
+            {
+                <tr>
+                    @if (Model.CustLevel.IsAgentLevel() || Model.CustLevel.IsMemberLevel())
+                    {
+                        <td class="username-wrapper">@account.UplineUsername</td>
+                    }
+                    <td>
+                        <div class="username-wrapper">
+                            @if (Model.CustLevel.IsMemberLevel())
+                            {
+                                @account.Username
+                            }
+                            else
+                            {
+                                <a class="downline-link" href="@Model.BuildDownlineLink(account.Username)">@account.Username</a>
+                            }
+                            <div class="nickname">@(string.IsNullOrWhiteSpace(account.Nickname) ? "---" : account.Nickname)</div>
+                            <div class="name">@(string.IsNullOrWhiteSpace(account.Name) ? "---" : account.Name)</div>
+                        </div>
+                    </td>
+                    <td align="center">
+                        @if (Model.HasUpdatePermission)
+                        {
+                            <a class="link status-link" data-username="@account.Username" href="@Model.BuildStatusLink(account.CustId, account.Status)">@account.StatusName</a>
+                        }
+                        else
+                        {
+                            @account.StatusName
+                        }
+                    </td>
+                    <td>@account.ReviewStatus</td>
+                    @if (Model.CanUpdateReviewStatus)
+                    {
+                        <td class="text-center col-review-action">
+                            @if (!account.IsReviewed)
+                            {
+                                <input class="chk-downline" type="checkbox" name="@account.CustId" value="@account.CustId" data-username="@account.Username" />
+                            }
+                        </td>
+                    }
+                    @if (Model.CustLevel.IsMasterLevel() || Model.CustLevel.IsAgentLevel())
+                    {
+                        <td class="text-center">@account.NumberOfDownline</td>
+                    }
+                    <td>@account.CreatedDate.ToLongDateWithHyphen()</td>
+                </tr>
+            }
+        </tbody>
+    }
+    else
+    {
+        @NoInformationTable.Render(6)
+    }
+</table>

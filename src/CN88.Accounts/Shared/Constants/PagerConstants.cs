@@ -2,6 +2,6 @@
 {
     public static class PagerConstants
     {
-        public const int DefaultPageSize = 50;
+        public const int DefaultPageSize = 20;
     }
 }

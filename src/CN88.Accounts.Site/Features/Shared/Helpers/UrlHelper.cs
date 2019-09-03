@@ -4,18 +4,25 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
+    using System.Web;
     using CN88.Web.Helpers;
 
     public static class UrlHelper
     {
         [ThreadStatic]
+        private static Func<string, string> mapAccountsPath;
+
+        [ThreadStatic]
         private static Func<string, string> mapFeaturesPath;
 
         [ThreadStatic]
-        private static Func<string, IDictionary<string, object>, string> replaceOrAddQueryStringParamsFunc;
-
-        [ThreadStatic]
         private static Func<string, IDictionary<string, object>, string> addQueryStringParamsFunc;
+
+        public static Func<string, string> MapAccountsPath
+        {
+            get { return mapAccountsPath ?? HttpContext.Current.Response.ApplyAppPathModifier; }
+            internal set { mapAccountsPath = value; }
+        }
 
         public static Func<string, string> MapFeaturesPath
         {
@@ -28,13 +35,6 @@
             get { return addQueryStringParamsFunc ?? AddQueryStringParams; }
 
             internal set { addQueryStringParamsFunc = value; }
-        }
-
-        public static Func<string, IDictionary<string, object>, string> ReplaceOrAddQueryStringParamsFunc
-        {
-            get { return replaceOrAddQueryStringParamsFunc ?? ReplaceOrAddQueryStringParams; }
-
-            internal set { replaceOrAddQueryStringParamsFunc = value; }
         }
 
         internal static string AddQueryStringParams(string link, IDictionary<string, object> routeValues)

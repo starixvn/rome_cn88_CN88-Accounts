@@ -4,9 +4,13 @@
 
     public static class DateTimeExtensions
     {
-        private const string ShortDate = "yyyy-MM-dd";
+        private const string ShortDateWithHyphen = "yyyy-MM-dd";
+        private const string LongDateWithHyphen = "yyyy-MM-dd HH:mm:ss";
 
-        public static string ToShortDate(this DateTime dateTime)
-            => dateTime.ToString(ShortDate);
+        public static string ToShortDateWithHyphen(this DateTime dateTime)
+            => dateTime.ToString(ShortDateWithHyphen);
+
+        public static string ToLongDateWithHyphen(this DateTime dateTime)
+            => dateTime.ToString(LongDateWithHyphen);
     }
 }

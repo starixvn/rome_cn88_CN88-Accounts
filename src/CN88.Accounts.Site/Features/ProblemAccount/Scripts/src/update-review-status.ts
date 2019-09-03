@@ -7,6 +7,7 @@
     $btnCancel: JQuery;
 
     message: Message;
+    successMessage: string;
 
     constructor($: JQueryStatic, topWindow: Window, message: Message) {
         this.$ = $;
@@ -15,14 +16,17 @@
     }
 
     init(): void {
+        this.$.blockUI();
         this.cacheDOMElements();
         this.bindEvents();
+        this.$.unblockUI();
     }
 
     cacheDOMElements(): void {
         this.$messageContainer = this.$("#message-container");
         this.$formUpdateReviewStatus = this.$("#formUpdateReviewStatus");
         this.$btnCancel = this.$("#btnCancel");
+        this.successMessage = this.$("#SuccessMessage").val();
     }
 
     bindEvents(): void {
@@ -31,9 +35,18 @@
         });
 
         this.$formUpdateReviewStatus.submit(this.onSubmit);
+
+        this.$(".more-link").click(function () {
+            $(this).parent().prev().toggle();
+            $(this).prev().toggle();
+            $(this).remove();
+
+            return false;
+        });
     }
 
-    onSubmit = () => {
+    onSubmit = (e: JQueryEventObject) => {
+        e.preventDefault();
         this.$.blockUI();
 
         this.$.ajax({
@@ -41,28 +54,27 @@
             url: this.$formUpdateReviewStatus.attr("action"),
             data: this.getParams(),
             dataType: "json",
-            success: (data) => {
-                if (data.ErrCode) {
-                    data = { Code: data.ErrCode, Message: data.ErrMsg };
-                }
-
-                const result = new Result(data);
-
-                if (result.IsSuccessful) {
-                    this.topWindow["popupManager"].close();
-                } else {
-                    this.message.showMessage(this.$messageContainer, result);
-                }
-            },
+            success: this.submitSuccess,
             complete: this.$.unblockUI
         });
+    };
+
+    submitSuccess = (data) => {
+        const result = new Result(data.ErrCode, data.ErrMsg);
+
+        if (result.IsSuccessful) {
+            this.message.showSuccess(this.$messageContainer, this.successMessage);
+            this.topWindow["indexManager"].closePopupAndReloadMainIframe();
+        } else {
+            this.message.showMessage(this.$messageContainer, result);
+        }
     };
 
     getParams() {
         return {
             custLevelId: this.$("#CustLevelId").val(),
             selectedDownlineIds: this.$("#SelectedDownlineIds").val(),
-            isAffectedAllDownlines: this.$("#IsAffectedAllDownlines").val()
+            isAffectedAllDownlines: this.$("input[name='IsAffectedAllDownlines']:checked").val()
         };
     }
 }

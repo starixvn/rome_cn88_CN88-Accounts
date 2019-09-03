@@ -24,12 +24,8 @@
 
         string IP { get; }
 
+        byte StatusId { get; }
+
         bool AccountManagementEditView { get; }
-
-        bool AccountManagementViewOnly { get; }
-
-        bool IsAdminCanViewVNIP { get; }
-
-        int AdminId { get; }
     }
 }

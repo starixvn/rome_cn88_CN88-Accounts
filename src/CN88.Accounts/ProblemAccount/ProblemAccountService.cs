@@ -4,6 +4,7 @@
     using CN88.Accounts.ProblemAccount.Criteria;
     using CN88.Accounts.ProblemAccount.Params;
     using CN88.Accounts.Shared.Models;
+    using CN88.Common.Models;
     using Fanex.Data.Repository;
 
     public interface ProblemAccountService
@@ -29,7 +30,7 @@
                 param.SubAccId,
                 param.IsAllDownline,
                 param.UplineUsername,
-                param.SearchRoleId,
+                param.CustLevelId,
                 param.SearchUsername,
                 param.ReviewStatus,
                 param.FromDate,
@@ -54,7 +55,7 @@
                 param.RoleId,
                 param.IsAllDownline,
                 param.IsAffectedAllDownlines,
-                param.DownlineList,
+                param.SelectedDownlineIds,
                 param.Language,
                 param.LoginIP);
 

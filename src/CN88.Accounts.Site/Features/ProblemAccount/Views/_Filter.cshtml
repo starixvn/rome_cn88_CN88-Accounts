@@ -2,24 +2,21 @@
 @model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.FilterViewModel
 <form class="form-inline filter" role="form" id="report-form">
     @RenderHiddenFeilds()
-    @DateRangePicker.Render(Model.DateRangePicker)
+    @DateRangePicker.Render(Model.DateRangePicker, Resources.DateNotifiedFrom)
     @RenderReviewStatusDropdown(Model.ReviewStatusSelection)
     @if (Model.CustLevel.IsAgentLevel() || Model.CustLevel.IsMemberLevel())
     {
         <div class="form-group">
             <label>@Resources.ResourceManager.GetString(Model.CustLevel.GetDirectUplineLevel().DisplayName)</label>
-            <input type="text" id="UplineUsername" name="UplineUsername" class="control" value="@Model.UplineUsername" />
+            <input type="text" id="UplineUsername" name="UplineUsername" class="control upline-username" value="@Model.UplineUsername" />
         </div>
     }
     <div class="form-group">
         <label>@Resources.UsernameOrNameContains</label>
-        <input type="text" id="SearchUsername" name="SearchUsername" class="control" value="@Model.SearchUsername" />
+        <input type="text" id="CustName" name="CustName" class="control search-username" value="@Model.CustName" />
     </div>
     <div class="form-group">
         <input type="submit" class="btn-submit" value="@Resources.Submit" />
-    </div>
-    <div class="form-group">
-        <span id="icon-excel" class="icon-excel" title="@Resources.ExportToExcel" data-toggle="tooltip" data-placement="bottom"></span>
     </div>
 </form>
 <form class="hide" role="form" id="export-excel-form" action="@Url.Action("Excel", "ProblemAccount")">
@@ -29,9 +26,9 @@
     @Html.Hidden("SelectedReviewStatus", Model.ReviewStatusSelection.SelectedId)
     @if (Model.CustLevel.IsAgentLevel() || Model.CustLevel.IsMemberLevel())
     {
-        @Html.Hidden("UplineUsername", Model.UplineUsername)
+        @Html.Hidden(nameof(Model.UplineUsername), Model.UplineUsername)
     }
-    @Html.Hidden("SearchUsername", Model.SearchUsername)
+    @Html.Hidden(nameof(Model.CustName), Model.CustName)
 </form>
 @helper RenderHiddenFeilds()
 {

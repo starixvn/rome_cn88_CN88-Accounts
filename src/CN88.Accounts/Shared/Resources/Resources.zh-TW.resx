@@ -189,4 +189,13 @@
   <data name="Username" xml:space="preserve">
     <value>帳戶</value>
   </data>
+  <data name="UpdateSuccessfully" xml:space="preserve">
+    <value>成功更新</value>
+  </data>
+  <data name="SystemMessage" xml:space="preserve">
+    <value>系統訊息</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>確定</value>
+  </data>
 </root>

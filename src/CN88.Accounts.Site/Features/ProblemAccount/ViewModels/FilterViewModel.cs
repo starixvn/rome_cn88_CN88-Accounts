@@ -9,14 +9,14 @@
     using CN88.Accounts.Shared.Resources;
     using CN88.Accounts.Site.Features.ProblemAccount.Requests;
     using CN88.Accounts.Site.Features.Shared.ViewModels;
-    using CN88.Web.Models;
+    using CN88.Common.Models;
 
     public class FilterViewModel
     {
         public FilterViewModel(ProblemAccountQuery query)
         {
             UplineUsername = query.UplineUsername;
-            SearchUsername = query.SearchUsername;
+            CustName = query.CustName;
             CustLevel = query.CustLevel;
 
             DateRangePicker = new DateRangePickerViewModel(
@@ -34,7 +34,7 @@
 
         public string UplineUsername { get; }
 
-        public string SearchUsername { get; }
+        public string CustName { get; }
 
         public UserLevel CustLevel { get; }
 

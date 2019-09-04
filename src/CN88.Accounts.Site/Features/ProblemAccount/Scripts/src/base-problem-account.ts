@@ -118,6 +118,7 @@
     };
 
     onSubmit = () => {
+        this.$("#PageIndex").val(1);
         this.reviewStatusDropdown.updateSelectedValue();
     };
 

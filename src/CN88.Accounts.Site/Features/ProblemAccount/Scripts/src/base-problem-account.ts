@@ -11,6 +11,7 @@
     $exportExcelForm: JQuery;
     $excelIcon: JQuery;
     $btnReview: JQuery;
+    $btnSubmit: JQuery;
     $checkboxSelectAll: JQuery;
     $downlineCheckboxs: JQuery;
 
@@ -53,6 +54,7 @@
         this.$exportExcelForm = this.$("#export-excel-form");
         this.$excelIcon = this.$("#icon-excel");
         this.$btnReview = this.$("#btnReview");
+        this.$btnSubmit = this.$("#btnSubmit");
         this.$checkboxSelectAll = this.$("#SelectAll");
         this.$downlineCheckboxs = this.$(".chk-downline");
 
@@ -81,6 +83,11 @@
         this.$checkboxSelectAll.click(this.onCheckboxSelectAllChange);
         this.$downlineCheckboxs.on("click touchend", this.onDownlineCheckboxesClick);
         this.$btnReview.on("click touchend", this.onSetToReviewClick);
+        this.$btnSubmit.on("click touchend", () => {
+            this.$("#PageIndex").val(1);
+            this.$reportForm.submit();
+        });
+
     }
 
     onCheckboxSelectAllChange = () => {
@@ -118,7 +125,6 @@
     };
 
     onSubmit = () => {
-        this.$("#PageIndex").val(1);
         this.reviewStatusDropdown.updateSelectedValue();
     };
 

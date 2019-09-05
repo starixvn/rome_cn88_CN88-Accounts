@@ -17,6 +17,7 @@
 
     custLevelId: number;
     updateReviewStatusUrl: string;
+    clicktouchendEvent = "click touchend";
 
     resources = {
         ok: "",
@@ -81,9 +82,9 @@
         this.$(".status-link").click(this.onStatusLinkClick);
         this.$excelIcon.click(() => { this.$exportExcelForm.submit(); });
         this.$checkboxSelectAll.click(this.onCheckboxSelectAllChange);
-        this.$downlineCheckboxs.on("click touchend", this.onDownlineCheckboxesClick);
-        this.$btnReview.on("click touchend", this.onSetToReviewClick);
-        this.$btnSubmit.on("click touchend", () => {
+        this.$downlineCheckboxs.on(this.clicktouchendEvent, this.onDownlineCheckboxesClick);
+        this.$btnReview.on(this.clicktouchendEvent, this.onSetToReviewClick);
+        this.$btnSubmit.on(this.clicktouchendEvent, () => {
             this.$("#PageIndex").val(1);
             this.$reportForm.submit();
         });

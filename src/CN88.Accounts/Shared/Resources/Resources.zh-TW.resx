@@ -198,4 +198,61 @@
   <data name="OK" xml:space="preserve">
     <value>確定</value>
   </data>
+  <data name="ProblemAccountNote" xml:space="preserve">
+    <value>本頁列出用戶下線裡有問題的帳戶</value>
+  </data>
+  <data name="Reviewed" xml:space="preserve">
+    <value>已審查</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="NotReviewed" xml:space="preserve">
+    <value>未審查</value>
+  </data>
+  <data name="DateNotified" xml:space="preserve">
+    <value>通報日期</value>
+  </data>
+  <data name="ProblemAgentAccounts" xml:space="preserve">
+    <value>問題代理商帳戶</value>
+  </data>
+  <data name="ProblemMemberAccounts" xml:space="preserve">
+    <value>問題會員帳戶</value>
+  </data>
+  <data name="ProblemAgentAccountsTooltip" xml:space="preserve">
+    <value>在選擇時間範圍內被新標記的帳戶即為問題代理商帳戶。</value>
+  </data>
+  <data name="ProblemMemberAccountsTooltip" xml:space="preserve">
+    <value>在所選報告期間內被新標記的帳戶即為問題會員帳戶。</value>
+  </data>
+  <data name="SetToReviewed" xml:space="preserve">
+    <value>設為已審查</value>
+  </data>
+  <data name="SetReviewedStatus" xml:space="preserve">
+    <value>設定審查狀態</value>
+  </data>
+  <data name="SetToReviewdForSelectedAccountsOnly" xml:space="preserve">
+    <value>選擇的帳號設為已審核</value>
+  </data>
+  <data name="SetToReviewdForSelectedAccountsAndAffectedDownlines" xml:space="preserve">
+    <value>將所選的帳戶及受影響的下線設為已審核</value>
+  </data>
+  <data name="ShowAllAccount" xml:space="preserve">
+    <value>顯示所有帳戶</value>
+  </data>
+  <data name="SetToReviewedValidationMessage" xml:space="preserve">
+    <value>未選問題帳戶。請選擇任一問題帳戶或"全部"。</value>
+  </data>
+  <data name="ReviewStatus" xml:space="preserve">
+    <value>審查狀態</value>
+  </data>
+  <data name="ProblemAccount" xml:space="preserve">
+    <value>問題帳戶</value>
+  </data>
+  <data name="DateNotifiedFrom" xml:space="preserve">
+    <value>通報日期 至</value>
+  </data>
+  <data name="SetReviewedConfirmMessage" xml:space="preserve">
+    <value>確定要將下列帳戶設為已審核</value>
+  </data>
 </root>

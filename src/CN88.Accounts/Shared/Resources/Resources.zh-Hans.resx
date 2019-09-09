@@ -198,4 +198,61 @@
   <data name="OK" xml:space="preserve">
     <value>確定</value>
   </data>
+  <data name="ProblemAccountNote" xml:space="preserve">
+    <value>本页列出用户下线里有问题的账户</value>
+  </data>
+  <data name="Reviewed" xml:space="preserve">
+    <value>已审查</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="NotReviewed" xml:space="preserve">
+    <value>未审查</value>
+  </data>
+  <data name="DateNotified" xml:space="preserve">
+    <value>通报日期</value>
+  </data>
+  <data name="ProblemAgentAccounts" xml:space="preserve">
+    <value>问题代理商账户</value>
+  </data>
+  <data name="ProblemMemberAccounts" xml:space="preserve">
+    <value>问题会员账户</value>
+  </data>
+  <data name="ProblemAgentAccountsTooltip" xml:space="preserve">
+    <value>在选取时间范围内被新标记的帐户即为问题代理商账户。</value>
+  </data>
+  <data name="ProblemMemberAccountsTooltip" xml:space="preserve">
+    <value>在选取时间范围内被新标记的帐户即为问题会员账户。</value>
+  </data>
+  <data name="SetToReviewed" xml:space="preserve">
+    <value>设为已审查</value>
+  </data>
+  <data name="SetReviewedStatus" xml:space="preserve">
+    <value>设定审查状态</value>
+  </data>
+  <data name="SetToReviewdForSelectedAccountsOnly" xml:space="preserve">
+    <value>只把所选的账户设为已审核</value>
+  </data>
+  <data name="SetToReviewdForSelectedAccountsAndAffectedDownlines" xml:space="preserve">
+    <value>将所选的账户及受影响的下线设为已审核</value>
+  </data>
+  <data name="ShowAllAccount" xml:space="preserve">
+    <value>显示所有帐户</value>
+  </data>
+  <data name="SetToReviewedValidationMessage" xml:space="preserve">
+    <value>未选问题账户。请选择任一问题账户或"全部"。</value>
+  </data>
+  <data name="ReviewStatus" xml:space="preserve">
+    <value>审查状态</value>
+  </data>
+  <data name="ProblemAccount" xml:space="preserve">
+    <value>问题账户</value>
+  </data>
+  <data name="DateNotifiedFrom" xml:space="preserve">
+    <value>通报日期 至</value>
+  </data>
+  <data name="SetReviewedConfirmMessage" xml:space="preserve">
+    <value>确定要将下列账户设为已审核</value>
+  </data>
 </root>

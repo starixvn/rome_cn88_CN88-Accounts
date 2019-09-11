@@ -50,16 +50,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Alpha.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Alpha.Logging.1.0.0-LogIntegrate-10\lib\net461\Alpha.Logging.dll</HintPath>
+      <HintPath>..\..\packages\Alpha.Logging.1.0.1\lib\net461\Alpha.Logging.dll</HintPath>
     </Reference>
     <Reference Include="Alpha.SubAccount, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Alpha.SubAccount.1.0.0.1\lib\net40\Alpha.SubAccount.dll</HintPath>
     </Reference>
     <Reference Include="CN88.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CN88.Common.1.0.0-beta2\lib\net461\CN88.Common.dll</HintPath>
+      <HintPath>..\..\packages\CN88.Common.1.0.0\lib\net461\CN88.Common.dll</HintPath>
     </Reference>
     <Reference Include="CN88.Web, Version=1.0.1.6, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CN88.Web.1.0.1.6-ProblemAccounts-05\lib\net461\CN88.Web.dll</HintPath>
+      <HintPath>..\..\packages\CN88.Web.1.0.1.6\lib\net461\CN88.Web.dll</HintPath>
     </Reference>
     <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>

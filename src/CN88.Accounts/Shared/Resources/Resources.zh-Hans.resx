@@ -255,4 +255,115 @@
   <data name="SetReviewedConfirmMessage" xml:space="preserve">
     <value>确定要将下列账户设为已审核</value>
   </data>
+  <data name="AccountDetails" xml:space="preserve">
+    <value>帐户详细</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>功能</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>确认密码</value>
+  </data>
+  <data name="ConfirmPasswordError" xml:space="preserve">
+    <value>密码未正确确认。</value>
+  </data>
+  <data name="CreatedDate" xml:space="preserve">
+    <value>创建日期</value>
+  </data>
+  <data name="EditSubAccount" xml:space="preserve">
+    <value>编辑子账户</value>
+  </data>
+  <data name="GeneralData" xml:space="preserve">
+    <value>基本资料</value>
+  </data>
+  <data name="NewPwdContainsUserNameOrNickNameError" xml:space="preserve">
+    <value>您的密码不得包含您的用户名或登入账号。</value>
+  </data>
+  <data name="NewSubAccount" xml:space="preserve">
+    <value>新子账户</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="PasswordWrongRuleError" xml:space="preserve">
+    <value>您的密码不符合最低安全要求。</value>
+  </data>
+  <data name="Permissions" xml:space="preserve">
+    <value>权限</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>报表</value>
+  </data>
+  <data name="RequiredPasswordError" xml:space="preserve">
+    <value>对不起，密码栏位不能为空！</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>更改密码</value>
+  </data>
+  <data name="ResetSecurityCode" xml:space="preserve">
+    <value>重置安全代码</value>
+  </data>
+  <data name="TotalBets" xml:space="preserve">
+    <value>即时注单</value>
+  </data>
+  <data name="ACManagement" xml:space="preserve">
+    <value>账户管理</value>
+  </data>
+  <data name="EditView" xml:space="preserve">
+    <value>编辑 &amp; 检视</value>
+  </data>
+  <data name="AccountManagement" xml:space="preserve">
+    <value>账户管理</value>
+  </data>
+  <data name="PasswordRule" xml:space="preserve">
+    <value>&lt;p&gt;密码必须是6-12个字符且没有空格，并且至少包含以下2个条件：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;大写字母[A-Z]&lt;/li&gt;&lt;li&gt;小写字母[a-z]&lt;/li&gt;&lt;li&gt;数字[0-9]&lt;/li&gt;&lt;li&gt;特殊字符（!,,#等...）&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;例如&lt;/strong&gt;：BCD!$#H, 4593abcd&lt;/p&gt;&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：您的密码输入的时候要注意字母的大小写&lt;/p&gt;</value>
+  </data>
+  <data name="RequiredNameError" xml:space="preserve">
+    <value>「名称」必填</value>
+  </data>
+  <data name="AccountSuccessfullyCreated" xml:space="preserve">
+    <value>成功创建账户</value>
+  </data>
+  <data name="ClickToUnlock" xml:space="preserve">
+    <value>解锁</value>
+  </data>
+  <data name="UnlockAccountConfirmMessage" xml:space="preserve">
+    <value>确认解除此账户锁定？</value>
+  </data>
+  <data name="UnlockSubAccount" xml:space="preserve">
+    <value>解锁子账户</value>
+  </data>
+  <data name="SubAccount" xml:space="preserve">
+    <value>子帐号</value>
+  </data>
+  <data name="ACM" xml:space="preserve">
+    <value>账户管理</value>
+  </data>
+  <data name="ManagedAccount" xml:space="preserve">
+    <value>管理账户</value>
+  </data>
+  <data name="SelectAllDownlineMessage" xml:space="preserve">
+    <value>您已勾选“全选”。点击“全选”会选择所有的帐号，包括以后所有新增的帐号。</value>
+  </data>
+  <data name="DeleteSubAccount" xml:space="preserve">
+    <value>删除子账户</value>
+  </data>
+  <data name="DeleteSubAccountConfirmMessage" xml:space="preserve">
+    <value>确定删除此账户?</value>
+  </data>
+  <data name="ManagedAccountValidationMessage" xml:space="preserve">
+    <value>你没有勾选"可管理帐号",请勾选其中一个或全选</value>
+  </data>
+  <data name="SelectAllDownlineTooltip" xml:space="preserve">
+    <value>勾选"全选" 所有帐号 (包括未来新增帐号）</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="Unlock" xml:space="preserve">
+    <value>解锁</value>
+  </data>
+  <data name="SaveAndNew" xml:space="preserve">
+    <value>保存与新增</value>
+  </data>
 </root>

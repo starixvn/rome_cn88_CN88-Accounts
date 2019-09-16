@@ -2,6 +2,10 @@
   "isActive": true,
   "siteMainApp": "/main",
   "paths": [
+    "SubAccount/New",
+    "SubAccount/Edit",
+    "SubAccount/Unlock",
+    "SubAccount/Delete",
     "ProblemAccount/UpdateReviewStatus"
   ],
   "sites": [

@@ -2,6 +2,10 @@
   "isActive": true,
   "siteMainApp": "/site-cn88",
   "paths": [
+    "SubAccount/New",
+    "SubAccount/Edit",
+    "SubAccount/Unlock",
+    "SubAccount/Delete",
     "ProblemAccount/UpdateReviewStatus"
   ],
   "sites": [

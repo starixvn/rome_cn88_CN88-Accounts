@@ -1,0 +1,170 @@
+﻿@using CN88.Accounts.Site.Features.SubAccount.ViewModels
+@{
+    Layout = "~/Features/Shared/Views/_Layout.cshtml";
+    ViewBag.Title = Resources.SubAccount;
+    var createdDateColIndex = Model.ShowAccountManagementPermission ? 7 : 5;
+}
+@section Styles {
+    @StaticResources.RenderStyles("~/Features/SubAccount/bundles/sub-account")
+}
+@section Scripts {
+    @StaticResources.RenderScripts("~/Features/SubAccount/bundles/sub-account")
+}
+@model IndexViewModel
+<div class="subacc-page">
+    <div id="message-container"></div>
+    @if (Model.ShowActionButtons)
+    {
+        <div>
+            <button class="btn-submit add-new" id="btnNewSubAccount">
+                <span class="icon-add"></span>@Resources.NewSubAccount
+            </button>
+        </div>
+    }
+    <table class="tbl-style2 tbl-subaccount"
+           id="tbl-subaccount"
+           data-totalrecords="@Model.SubAccounts.Count()"
+           data-sortedcolumn="UserName"
+           data-descendingsort="false">
+        <thead class="tableFloatingHeaderOriginal">
+            <tr>
+                <th class="header sorting" data-colindex="0" data-sortedname="UserName">
+                    <div class="username">@Resources.Username </div>
+                    <div class="hide-desktop">@Resources.Nickname</div>
+                    <div class="hide-desktop">@Resources.Name</div>
+                </th>
+                <th class="header sorting hide-mobile" data-colindex="1" data-sortedname="FirstName">@Resources.Name</th>
+                <th class="header sorting hide-mobile" data-colindex="2" data-sortedname="NickName">@Resources.Nickname</th>
+                <th class="text-center">@Resources.TotalBets</th>
+                @if (Model.ShowAccountManagementPermission)
+                {
+                    <th class="text-center hide-mobile">@Resources.ACManagement<br />@Resources.ViewOnly</th>
+                    <th class="text-center hide-mobile">@Resources.ACManagement<br />@Resources.EditView</th>
+                    <th class="text-center visible-mobile">@Resources.ACM<br />@Resources.ViewOnly</th>
+                    <th class="text-center visible-mobile">@Resources.ACM<br />@Resources.EditView</th>
+                }
+                <th class="text-center col-reports">@Resources.Reports</th>
+                <th class="header sorting hide-mobile" data-colindex="@createdDateColIndex" data-sortedname="CreateDateString">@Resources.CreatedDate</th>
+                @if (Model.ShowActionButtons)
+                {
+                    <th>@Resources.Action</th>
+                }
+            </tr>
+        </thead>
+        @if (Model.SubAccounts.Any())
+        {
+            <tbody>
+                @foreach (var item in Model.SubAccounts)
+                {
+                    var permission = item.Permissions;
+                    <tr>
+                        <td>
+                            <div class="username">
+                                @item.UserName
+                                <div class="nickname-mobile">@(string.IsNullOrWhiteSpace(item.NickName) ? "---" : item.NickName)</div>
+                                <div class="name-mobile">@(string.IsNullOrWhiteSpace(item.FirstName) ? "---" : WebUtility.HtmlDecode(item.FirstName))</div>
+                            </div>
+                        </td>
+                        <td class="hide-mobile">@WebUtility.HtmlDecode(item.FirstName)</td>
+                        <td class="hide-mobile">@item.NickName</td>
+                        <td class="text-center">@RenderPermissionCell(permission.ViewTotalBets)</td>
+                        @if (Model.ShowAccountManagementPermission)
+                        {
+                            <td class="text-center">@RenderPermissionCell(permission.ViewMemberInfo)</td>
+                            <td class="text-center">@RenderPermissionCell(permission.UpdateAccount)</td>
+                        }
+                        <td class="text-center">@RenderPermissionCell(permission.ViewReports)</td>
+                        <td class="hide-mobile">@item.CreateDateString</td>
+                        @if (Model.ShowActionButtons)
+                        {
+                            <td class="col-action" data-subaccid="@item.SubAccId" data-subaccname="@item.UserName">
+                            @if (Model.IsDevice)
+                            {
+                                <div class="dropdown visible-mobile">
+                                    <a class="dropdown-toggle" data-toggle="dropdown">
+                                        @if (item.Closed)
+                                        {
+                                            <span class="icon-user-unlock"></span>
+                                        }
+                                        else
+                                        {
+                                            <span class="icon-more-action"></span>
+                                        }
+                                    </a>
+                                    <ul id="dropdown-@item.SubAccId" class="dropdown-menu">
+                                        @RenderActionCell_Mobile(item.Closed)
+                                    </ul>
+                                </div>
+                            }
+                            else
+                            {
+                                @RenderActionCell(item.Closed)
+                            }
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        }
+        else
+        {
+            @NoInformationTable.Render(Model.TotalColumns)
+        }
+    </table>
+</div>
+@Html.AntiForgeryToken() @*AntiForgeryToken for unlock sub-account*@
+@Html.Hidden(nameof(Resources.NewSubAccount), Resources.NewSubAccount)
+@Html.Hidden(nameof(Resources.EditSubAccount), Resources.EditSubAccount)
+@Html.Hidden(nameof(Resources.ResetPassword), Resources.ResetPassword)
+@Html.Hidden(nameof(Resources.ResetSecurityCode), Resources.ResetSecurityCode)
+@Html.Hidden(nameof(Resources.UnlockAccountConfirmMessage), Resources.UnlockAccountConfirmMessage)
+@Html.Hidden(nameof(Resources.UnlockSubAccount), Resources.UnlockSubAccount)
+@Html.Hidden(nameof(Resources.DeleteSubAccountConfirmMessage), Resources.DeleteSubAccountConfirmMessage)
+@Html.Hidden(nameof(Resources.DeleteSubAccount), Resources.DeleteSubAccount)
+@Html.Hidden(nameof(Resources.OK), Resources.OK)
+@Html.Hidden(nameof(Resources.Cancel), Resources.Cancel)
+@Html.Hidden(nameof(Model.NewSubAccountLink), Model.NewSubAccountLink)
+@Html.Hidden(nameof(Model.EditSubAccountLink), Model.EditSubAccountLink)
+@Html.Hidden(nameof(Model.ResetPasswordLink), Model.ResetPasswordLink)
+@Html.Hidden(nameof(Model.ResetSecurityCodeLink), Model.ResetSecurityCodeLink)
+@Html.Hidden(nameof(Model.UnlockSubAccountLink), Model.UnlockSubAccountLink)
+@Html.Hidden(nameof(Model.DeleteSubAccountLink), Model.DeleteSubAccountLink)
+@Html.Hidden(nameof(Model.VerifySecurityCodeLink), Model.VerifySecurityCodeLink)
+@Html.Hidden(nameof(Model.IsDevice), Model.IsDevice)
+@Html.Hidden(nameof(createdDateColIndex), createdDateColIndex)
+@helper RenderPermissionCell(bool hasPermission)
+{
+    <span class="@(hasPermission ? "icon-success " : "icon-minus")"></span>
+}
+@helper RenderActionCell(bool isClosed)
+{
+    <span class="icon-pass hide-mobile" data-toggle="tooltip" data-placement="top" title="@Resources.ResetPassword"></span>
+    <span class="icon-security hide-mobile" data-toggle="tooltip" data-placement="top" title="@Resources.ResetSecurityCode"></span>
+    <span class="icon-edit hide-mobile" data-toggle="tooltip" data-placement="top" title="@Resources.EditSubAccount"></span>
+    <span class="icon-delete hide-mobile" data-toggle="tooltip" data-placement="top" title="@Resources.DeleteSubAccount"></span>
+    if (isClosed)
+    {
+        <span class="icon-unlock" data-toggle="tooltip" data-placement="top" title="@Resources.ClickToUnlock"></span>
+    }
+}
+@helper RenderActionCell_Mobile(bool isClosed)
+{
+    <li>
+        <span class="opt-pass">@Resources.ResetPassword</span>
+    </li>
+    <li>
+        <span class="opt-security">@Resources.ResetSecurityCode</span>
+    </li>
+    <li>
+        <span class="opt-edit">@Resources.EditSubAccount</span>
+    </li>
+    <li>
+        <span class="opt-delete">@Resources.DeleteSubAccount</span>
+    </li>
+    if (isClosed)
+    {
+        <li>
+            <span class="opt-unlock">@Resources.Unlock</span>
+        </li>
+    }
+}

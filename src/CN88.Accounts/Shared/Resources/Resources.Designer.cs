@@ -61,6 +61,60 @@ namespace CN88.Accounts.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account Details.
+        /// </summary>
+        public static string AccountDetails {
+            get {
+                return ResourceManager.GetString("AccountDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Management.
+        /// </summary>
+        public static string AccountManagement {
+            get {
+                return ResourceManager.GetString("AccountManagement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account successfully created..
+        /// </summary>
+        public static string AccountSuccessfullyCreated {
+            get {
+                return ResourceManager.GetString("AccountSuccessfullyCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ACM.
+        /// </summary>
+        public static string ACM {
+            get {
+                return ResourceManager.GetString("ACM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A/C Management.
+        /// </summary>
+        public static string ACManagement {
+            get {
+                return ResourceManager.GetString("ACManagement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Action.
+        /// </summary>
+        public static string Action {
+            get {
+                return ResourceManager.GetString("Action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Active.
         /// </summary>
         public static string Active {
@@ -97,6 +151,42 @@ namespace CN88.Accounts.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Click to unlock.
+        /// </summary>
+        public static string ClickToUnlock {
+            get {
+                return ResourceManager.GetString("ClickToUnlock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Password.
+        /// </summary>
+        public static string ConfirmPassword {
+            get {
+                return ResourceManager.GetString("ConfirmPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password was not correctly confirmed..
+        /// </summary>
+        public static string ConfirmPasswordError {
+            get {
+                return ResourceManager.GetString("ConfirmPasswordError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created Date.
+        /// </summary>
+        public static string CreatedDate {
+            get {
+                return ResourceManager.GetString("CreatedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date Notified.
         /// </summary>
         public static string DateNotified {
@@ -111,6 +201,42 @@ namespace CN88.Accounts.Shared.Resources {
         public static string DateNotifiedFrom {
             get {
                 return ResourceManager.GetString("DateNotifiedFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Sub Account.
+        /// </summary>
+        public static string DeleteSubAccount {
+            get {
+                return ResourceManager.GetString("DeleteSubAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this account?.
+        /// </summary>
+        public static string DeleteSubAccountConfirmMessage {
+            get {
+                return ResourceManager.GetString("DeleteSubAccountConfirmMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Sub Account.
+        /// </summary>
+        public static string EditSubAccount {
+            get {
+                return ResourceManager.GetString("EditSubAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit &amp; View.
+        /// </summary>
+        public static string EditView {
+            get {
+                return ResourceManager.GetString("EditView", resourceCulture);
             }
         }
         
@@ -133,11 +259,38 @@ namespace CN88.Accounts.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General Data.
+        /// </summary>
+        public static string GeneralData {
+            get {
+                return ResourceManager.GetString("GeneralData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Inactive.
         /// </summary>
         public static string Inactive {
             get {
                 return ResourceManager.GetString("Inactive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Managed Account.
+        /// </summary>
+        public static string ManagedAccount {
+            get {
+                return ResourceManager.GetString("ManagedAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You do not have any Managed Accounts selected.Please select a Managed Account or select&quot;All&quot;.
+        /// </summary>
+        public static string ManagedAccountValidationMessage {
+            get {
+                return ResourceManager.GetString("ManagedAccountValidationMessage", resourceCulture);
             }
         }
         
@@ -165,6 +318,24 @@ namespace CN88.Accounts.Shared.Resources {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your password must not contain your username or nickname..
+        /// </summary>
+        public static string NewPwdContainsUserNameOrNickNameError {
+            get {
+                return ResourceManager.GetString("NewPwdContainsUserNameOrNickNameError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Sub Account.
+        /// </summary>
+        public static string NewSubAccount {
+            get {
+                return ResourceManager.GetString("NewSubAccount", resourceCulture);
             }
         }
         
@@ -250,6 +421,42 @@ namespace CN88.Accounts.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;p&gt;Password must be between 6 to 12 characters without white-space and contain at least 2 of the following:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Uppercase letter [A-Z]&lt;/li&gt;&lt;li&gt;Lowercase letter [a-z]&lt;/li&gt;&lt;li&gt;Numeric [0-9]&lt;/li&gt;&lt;li&gt;Special character (!,,#,etc..)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;For example&lt;/strong&gt;: BCD!$#H, 4593abcd&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: your password is cAsE sEnSiTiVe&lt;/p&gt;.
+        /// </summary>
+        public static string PasswordRule {
+            get {
+                return ResourceManager.GetString("PasswordRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your password does not meet the minimum security requirement..
+        /// </summary>
+        public static string PasswordWrongRuleError {
+            get {
+                return ResourceManager.GetString("PasswordWrongRuleError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permissions.
+        /// </summary>
+        public static string Permissions {
+            get {
+                return ResourceManager.GetString("Permissions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Problem Account.
         /// </summary>
         public static string ProblemAccount {
@@ -304,6 +511,51 @@ namespace CN88.Accounts.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reports.
+        /// </summary>
+        public static string Reports {
+            get {
+                return ResourceManager.GetString("Reports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name is required..
+        /// </summary>
+        public static string RequiredNameError {
+            get {
+                return ResourceManager.GetString("RequiredNameError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry, password cannot be empty!!!.
+        /// </summary>
+        public static string RequiredPasswordError {
+            get {
+                return ResourceManager.GetString("RequiredPasswordError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset Password.
+        /// </summary>
+        public static string ResetPassword {
+            get {
+                return ResourceManager.GetString("ResetPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset Security Code.
+        /// </summary>
+        public static string ResetSecurityCode {
+            get {
+                return ResourceManager.GetString("ResetSecurityCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reviewed.
         /// </summary>
         public static string Reviewed {
@@ -318,6 +570,42 @@ namespace CN88.Accounts.Shared.Resources {
         public static string ReviewStatus {
             get {
                 return ResourceManager.GetString("ReviewStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save &amp; New.
+        /// </summary>
+        public static string SaveAndNew {
+            get {
+                return ResourceManager.GetString("SaveAndNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ”Select All” will automatically apply to all future accounts created..
+        /// </summary>
+        public static string SelectAllDownlineMessage {
+            get {
+                return ResourceManager.GetString("SelectAllDownlineMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Select All&quot; will automatically apply to all future accounts created..
+        /// </summary>
+        public static string SelectAllDownlineTooltip {
+            get {
+                return ResourceManager.GetString("SelectAllDownlineTooltip", resourceCulture);
             }
         }
         
@@ -394,6 +682,15 @@ namespace CN88.Accounts.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sub Account.
+        /// </summary>
+        public static string SubAccount {
+            get {
+                return ResourceManager.GetString("SubAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Submit.
         /// </summary>
         public static string Submit {
@@ -426,6 +723,42 @@ namespace CN88.Accounts.Shared.Resources {
         public static string To {
             get {
                 return ResourceManager.GetString("To", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Bets.
+        /// </summary>
+        public static string TotalBets {
+            get {
+                return ResourceManager.GetString("TotalBets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unlock.
+        /// </summary>
+        public static string Unlock {
+            get {
+                return ResourceManager.GetString("Unlock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to unlock this account?.
+        /// </summary>
+        public static string UnlockAccountConfirmMessage {
+            get {
+                return ResourceManager.GetString("UnlockAccountConfirmMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unlock Sub Account.
+        /// </summary>
+        public static string UnlockSubAccount {
+            get {
+                return ResourceManager.GetString("UnlockSubAccount", resourceCulture);
             }
         }
         

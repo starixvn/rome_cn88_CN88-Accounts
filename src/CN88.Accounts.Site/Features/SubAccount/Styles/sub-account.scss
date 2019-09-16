@@ -1,0 +1,466 @@
+﻿.subacc-page {
+    padding: 20px;
+    width: 1240px;
+}
+
+.message-container {
+    padding: 0 20px;
+}
+
+.modal-sub-account {
+    padding-bottom: 52px;
+
+    .head-title {
+        padding: 12px 20px 12px 27px;
+        border-bottom: 1px solid #737373;
+
+        &:before {
+            position: absolute;
+            left: 6px;
+            margin-top: -2px;
+            content: "\e900";
+            font-family: "CN88Icon", sans-serif !important;
+            font-size: 18px;
+            transition: transform .2s ease;
+        }
+
+        &.collapsed {
+            font-weight: bold;
+        }
+
+        &.collapsed:before {
+            transform: rotate(-90deg);
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .account-data {
+        width: 50%;
+        display: inline-block;
+        padding: 20px;
+        vertical-align: top;
+
+        &.general-info {
+            width: calc(50% - 4px);
+        }
+
+        .title {
+            border-bottom: 2px solid #831e1e;
+            padding: 0 16px 12px 0;
+        }
+
+        .account-data-content {
+            padding: 12px 0;
+
+            .form-group {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 0 0 15px;
+            }
+
+            .checkbox {
+                width: 100%;
+            }
+
+            .radio label, .checkbox label {
+                padding-left: 0;
+            }
+
+            .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+                right: 0;
+            }
+
+            .content-control {
+                display: inline-block;
+                width: calc(100% - 140px);
+
+                .control {
+                    width: 100%;
+                    margin: 0;
+                }
+            }
+
+            .username-box {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                flex-wrap: wrap;
+
+                .name {
+                    font-weight: normal;
+                    margin-bottom: 0;
+                    padding-right: 4px;
+                }
+
+                select {
+                    background-position: right 6px center;
+                }
+            }
+
+            .control-label {
+                font-weight: normal;
+                width: 140px;
+                text-align: left;
+                margin-right: -4px;
+                padding-top: 0;
+            }
+        }
+    }
+
+    .list-button {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        padding: 0 20px 20px;
+    }
+
+
+    .icon-info {
+        font-size: 16px;
+        color: #b1b1b1;
+        position: relative;
+        top: 2px;
+        left: 4px;
+        cursor: pointer;
+    }
+
+
+    .tooltip {
+        white-space: unset;
+
+        .tooltip-arrow:after {
+            border-right-color: #ececec !important;
+            border-top-color: transparent !important;
+            border-bottom-width: 4px;
+            bottom: -4px;
+            border-left-width: 0;
+            margin-left: 2px;
+        }
+    }
+
+    .tbl-managed-account {
+        width: 422px;
+        margin: 20px;
+
+        .col-all-check {
+            width: 100px;
+            text-align: center;
+        }
+
+        .all-check-func {
+            position: relative;
+        }
+
+        .icon-info {
+            position: absolute;
+            right: 10px;
+            top: 2px;
+            left: auto;
+        }
+
+        .tooltip {
+            width: 250px;
+        }
+    }
+}
+
+
+.add-new {
+    float: right;
+    margin-right: 0;
+    margin-bottom: 15px;
+    padding: 0 10px;
+
+    .icon-add {
+        position: relative;
+        top: 1px;
+        margin-right: 10px;
+        color: #fff;
+
+        &:after {
+            display: none;
+        }
+    }
+}
+
+.tbl-subaccount {
+    width: 100%;
+
+    .icon-minus {
+        color: #ff0e24;
+        font-size: 13px;
+
+        &:after {
+            content: none;
+        }
+    }
+
+    .icon-success {
+        color: #2da57f;
+    }
+
+    .col-action {
+        width: 204px;
+
+        [class*="icon"] {
+            margin: 0 9px;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &:hover:not(:disabled) {
+                cursor: pointer;
+            }
+        }
+        
+        .icon-unlock {
+            margin-left: 6px;
+        }
+    }
+
+    th {
+        padding: 4px 8px;
+    }
+
+    .username {
+        display: inline-block;
+    }
+
+    .hide-desktop {
+        display: none;
+    }
+}
+
+.icon-more-action,
+.visible-mobile,
+.nickname-mobile,
+.name-mobile {
+    display: none;
+}
+
+body.mobile {
+    .hide-mobile {
+        display: none;
+    }
+
+    .message-container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .subacc-page {
+        padding: 12px;
+        width: auto;
+
+        .username {
+            min-width: 65px;
+            word-break: break-all;
+        }
+
+        .icon-more-action {
+            display: block;
+            margin: 0;
+        }
+
+        .icon-success {
+            font-size: 16px;
+        }
+
+        .visible-mobile {
+            display: table-cell;
+        }
+
+        .col-action .dropdown.visible-mobile {
+            display: inline-block;
+        }
+
+        .col-action {
+            width: 46px;
+            min-width: 46px;
+            text-align: center;
+
+            .dropdown .dropdown-menu li span {
+                display: inline-block;
+                width: 100%;
+            }
+        }
+
+        .col-reports {
+            min-width: 38px;
+        }
+
+        .add-new {
+            line-height: 30px;
+            float: none;
+
+            .icon-add {
+                top: 3px;
+            }
+        }
+    }
+
+    .tbl-subaccount {
+        th {
+            padding: 4px;
+        }
+
+        .icon-minus {
+            font-size: 16px;
+        }
+
+        .hide-desktop {
+            display: block;
+        }
+
+        .username .hide-desktop {
+            display: inline-block;
+        }
+
+        .nickname-mobile {
+            display: block;
+            margin-top: 5px;
+            color: #865800;
+            font-style: italic;
+        }
+
+        .name-mobile {
+            display: block;
+            margin-top: 5px;
+            color: #3B3B3B;
+            font-size: 9.5px;
+            font-style: italic;
+        }
+    }
+
+    .modal-sub-account {
+        .nav.nav-tabs > li {
+            width: 50%;
+        }
+
+
+        .head-title {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 12px;
+            text-transform: uppercase;
+            color: #852423;
+            font-weight: bold;
+            border-color: #BDBDBD;
+        }
+
+        .account-data {
+            width: 100%;
+            padding: 12px;
+
+            .account-data-content {
+                padding: 12px 0;
+
+                .username-box {
+                    justify-content: space-between;
+
+                    .name {
+                        text-transform: uppercase;
+                    }
+
+                    select {
+                        font-size: 16px;
+                        width: 50px;
+                    }
+
+                    #suffix1 {
+                        margin-right: 4px;
+                    }
+                }
+
+                .content-control {
+                    width: 100%;
+
+                    .control {
+                        font-size: 16px;
+                    }
+                }
+
+                .checkbox {
+                    padding-top: 0;
+
+                    label {
+                        line-height: 27px;
+
+                        input[type="checkbox"] {
+                            margin-top: 5px;
+                        }
+                    }
+                }
+
+                .form-group {
+                    display: block;
+                }
+            }
+
+
+            &.permission {
+                padding-top: 0;
+
+                .account-data-content {
+                    padding-bottom: 0;
+                }
+
+                .form-group {
+                    margin-bottom: 10px;
+                }
+            }
+
+            &.general-info {
+                padding-bottom: 0;
+            }
+
+            .title {
+                padding: 0;
+                padding-bottom: 5px;
+                border-width: 1px;
+                font-weight: bold;
+            }
+
+            .control-label {
+                text-transform: uppercase;
+                display: block;
+            }
+        }
+
+        .list-button {
+            display: flex;
+            justify-content: space-between;
+            padding-left: 12px;
+            padding-right: 12px;
+            padding-bottom: 12px;
+            overflow: hidden;
+            background: #fff;
+
+            [class^="btn"] {
+                -moz-box-flex: 1;
+                -webkit-flex: 1;
+                -ms-flex: 1;
+                flex: 1;
+            }
+
+            [class^="btn"]:last-child {
+                margin-right: 0;
+            }
+        }
+
+        .tabManagedAccount {
+            padding: 12px;
+        }
+
+        .tbl-managed-account {
+            width: 100%;
+            margin: 0;
+        }
+    }
+}

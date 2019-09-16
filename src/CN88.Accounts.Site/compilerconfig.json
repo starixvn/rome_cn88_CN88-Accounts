@@ -6,5 +6,9 @@
   {
     "outputFile": "Features/ProblemAccount/Styles/update-review-status.css",
     "inputFile": "Features/ProblemAccount/Styles/update-review-status.scss"
+  },
+  {
+    "outputFile": "Features/SubAccount/Styles/sub-account.css",
+    "inputFile": "Features/SubAccount/Styles/sub-account.scss"
   }
 ]

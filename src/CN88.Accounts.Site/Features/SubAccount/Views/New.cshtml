@@ -1,0 +1,43 @@
+﻿@using Sunplus.Agent.Model.Entities;
+@using CN88.Accounts.Site.Features.SubAccount.ViewModels
+@{
+    Layout = "~/Features/Shared/Views/_Layout.cshtml";
+    ViewBag.Title = Resources.SubAccount;
+}
+@section Styles {
+    @StaticResources.RenderStyles("~/Features/SubAccount/bundles/sub-account")
+}
+@section Scripts {
+    @StaticResources.RenderScripts("~/Features/SubAccount/bundles/new-sub-account")
+}
+@model NewViewModel
+<div class="modal-sub-account">
+    <div id="message-container" class="message-container"></div>
+    @using (Html.BeginForm("New", "SubAccount", FormMethod.Post, new { id = "formSubAccount", @class = "form-horizontal", novalidate = "novalidate" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="head-title" data-target="#accountDetails">@Resources.AccountDetails</div>
+        <div id="accountDetails">
+            @{
+                Html.RenderPartial("_NewGeneralInfo");
+                var pageAccess = new PageAccess { ViewReports = true, ViewTotalBets = true };
+                Html.RenderPartial(
+                "_Permissions",
+                new Tuple<bool, PageAccess>(Model.ShowAccountManagementPermission, pageAccess));
+            }
+        </div>
+        <div class="head-title" data-target="#tblManagedAccount">@Resources.ManagedAccount (@HtmlHelpers.FormatNumber(Model.NumberOfDownline))</div>
+        @Html.Partial("_ManagedAccountTable", Model.ManagedAccountViewModel)
+        <div class="list-button text-right">
+            <input type="button" class="btn-cancel" id="buttonCancel" value="@Resources.Cancel" />
+            <input type="button" class="btn-submit" id="btnSaveAndNew" value="@Resources.SaveAndNew" />
+            <input type="submit" class="btn-submit" value="@Resources.Save" />
+        </div>
+    }
+</div>
+@Html.Hidden(nameof(Model.HashKey), Model.HashKey)
+@Html.Hidden(nameof(Resources.RequiredNameError), Resources.RequiredNameError)
+@Html.Hidden(nameof(Resources.RequiredPasswordError), Resources.RequiredPasswordError)
+@Html.Hidden(nameof(Resources.PasswordWrongRuleError), Resources.PasswordWrongRuleError)
+@Html.Hidden(nameof(Resources.ConfirmPasswordError), Resources.ConfirmPasswordError)
+@Html.Hidden("SuccessMessage", Resources.AccountSuccessfullyCreated)

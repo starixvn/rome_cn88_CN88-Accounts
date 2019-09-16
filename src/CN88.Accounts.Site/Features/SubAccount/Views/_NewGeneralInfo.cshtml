@@ -1,0 +1,38 @@
+﻿@using CN88.Accounts.Site.Features.SubAccount.ViewModels
+@model NewViewModel
+<div class="general-info account-data">
+    <div class="title">@Resources.GeneralData</div>
+    <div class="account-data-content">
+        <div class="form-group">
+            <label class="control-label required">@Resources.Username <span class="star">*</span></label>
+            <div class="content-control username-box">
+                <label class="name">@Model.SubAccountName</label>
+                <div class="suffix-container">
+                    @Html.DropDownList("suffix1", Model.Suffix1, new { id = "suffix1" })
+                    @Html.DropDownList("suffix2", Model.Suffix2, new { id = "suffix2" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="control-label">@Resources.Name</label>
+            <div class="content-control">
+                <input type="text" class="control" maxlength="50" id="name" autocomplete="off" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="control-label">
+                @Resources.Password <span class="star">*</span>
+                <span class="icon-info" data-toggle="tooltip" data-placement="right" id="pass-rule" data-html="true" title="@Resources.PasswordRule"></span>
+            </label>
+            <div class="content-control">
+                <input type="password" class="control" maxlength="12" id="password" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword" class="control-label">@Resources.ConfirmPassword <span class="star">*</span></label>
+            <div class="content-control">
+                <input type="password" class="control" maxlength="12" id="confirmPassword" />
+            </div>
+        </div>
+    </div>
+</div>

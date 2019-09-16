@@ -1,0 +1,121 @@
+﻿namespace CN88.Accounts.Site.Features.SubAccount
+{
+    using System.Net;
+    using System.Threading.Tasks;
+    using CN88.Accounts.Site.Features.SubAccount.Requests;
+    using CN88.Accounts.Site.Features.SubAccount.ViewModels;
+    using CN88.Accounts.SubAccount;
+    using CN88.Accounts.SubAccount.Constants;
+    using CN88.Accounts.SubAccount.Params;
+    using CN88.Common.Models;
+    using CN88.Web.Helpers;
+    using MediatR;
+    using Sunplus.Agent.Utilities;
+
+    public class SubAccountHandler :
+        IAsyncRequestHandler<IndexQuery, IndexViewModel>,
+        IAsyncRequestHandler<NewQuery, NewViewModel>,
+        IAsyncRequestHandler<UpdateQuery, EditViewModel>,
+        IAsyncRequestHandler<NewCommand, Result>,
+        IAsyncRequestHandler<UpdateCommand, Result>,
+        IAsyncRequestHandler<UnlockCommand, Result>,
+        IAsyncRequestHandler<DeleteCommand, Result>
+    {
+        private const string HashKeySessionKey = "Alpha.CN88.Site.Handlers.PasswordHandler.PasswordHash";
+
+        private readonly SubAccountService subAccountService;
+        private readonly Encryptor encryptor;
+        private readonly SessionManager sessionManager;
+        private readonly BrowserHelper browserHelper;
+
+        public SubAccountHandler(
+            SubAccountService subAccountService,
+            Encryptor encryptor,
+            SessionManager sessionManager,
+            BrowserHelper browserHelper)
+        {
+            this.subAccountService = subAccountService;
+            this.encryptor = encryptor;
+            this.sessionManager = sessionManager;
+            this.browserHelper = browserHelper;
+        }
+
+        public async Task<IndexViewModel> Handle(IndexQuery message)
+        {
+            var showActionButtons = message.ShowActionButtons;
+            var showAccountManagementPermission = message.ShowAccountManagementPermission;
+            var subAccounts = await subAccountService.GetSubAccountsAsync(message.ViewerId);
+
+            return new IndexViewModel(subAccounts, showActionButtons, showAccountManagementPermission, browserHelper);
+        }
+
+        public async Task<NewViewModel> Handle(NewQuery message)
+            => new NewViewModel(
+                message.ViewerName + SubAccountConstants.SubAccountPadding,
+                GenerateHashKey(),
+                message.ShowAccountManagementPermission,
+                await subAccountService.GetManagedAccounts(message.ViewerId, message.ViewerLevelId, 0));
+
+        public async Task<EditViewModel> Handle(UpdateQuery message)
+            => new EditViewModel(
+                await subAccountService.GetSubAccountAsync(message.ViewerId, message.CustId),
+                await subAccountService.GetManagedAccounts(message.ViewerId, message.ViewerLevelId, message.CustId));
+
+        public async Task<Result> Handle(NewCommand message)
+            => await subAccountService.CreateSubAccountAsync(new CreateSubAccountParam(
+                message.Suffix1,
+                message.Suffix2,
+                message.Password,
+                HashKey,
+                message.InvalidPasswords,
+                HtmlEncodeText(message.Name),
+                message.PageAccess,
+                message.LanguageKey,
+                message.IP,
+                message.ViewerId,
+                message.ViewerName,
+                message.ViewerLevelId,
+                message.IsSelectAllDownline,
+                message.DownlineId));
+
+        public async Task<Result> Handle(UpdateCommand message)
+            => await subAccountService.UpdateSubAccountAsync(new UpdateSubAccountParam(
+                message.CustId,
+                HtmlEncodeText(message.Name),
+                message.PageAccess,
+                message.LanguageKey,
+                message.IP,
+                message.ViewerId,
+                message.ViewerLevelId,
+                message.IsSelectAllDownline,
+                message.DownlineId));
+
+        public async Task<Result> Handle(UnlockCommand message)
+            => await subAccountService.UnlockSubAccountAsync(new UnlockSubAccountParam(
+                message.ViewerId,
+                message.CustId,
+                message.IP,
+                message.LanguageKey));
+
+        public async Task<Result> Handle(DeleteCommand message)
+            => await subAccountService.DeleteSubAccountAsync(new UnlockSubAccountParam(
+                message.ViewerId,
+                message.CustId,
+                message.IP,
+                message.LanguageKey));
+
+        private string GenerateHashKey()
+        {
+            var hashKey = encryptor.RandomString(4);
+            sessionManager.Add(HashKeySessionKey, hashKey);
+
+            return hashKey;
+        }
+
+        private string HashKey
+            => sessionManager.Get<string>(HashKeySessionKey);
+
+        private static string HtmlEncodeText(string text)
+            => string.IsNullOrWhiteSpace(text) ? text : WebUtility.HtmlEncode(text);
+    }
+}

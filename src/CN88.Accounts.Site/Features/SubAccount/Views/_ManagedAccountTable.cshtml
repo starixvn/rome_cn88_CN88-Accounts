@@ -1,0 +1,40 @@
+﻿@using CN88.Accounts.Site.Features.SubAccount.ViewModels
+@model ManagedAccountViewModel
+<table id="tblManagedAccount" class="tbl-style2 tbl-managed-account">
+    <thead>
+        <tr>
+            <th>@Resources.Username</th>
+            <th>@Resources.Name</th>
+            <th class="col-all-check">
+                <div class="all-check-func">
+                    <input type="checkbox" id="ckboxSelectAll" name="ckboxSelectAll" value="" @(Model.IsAllDownline ? "checked=checked" : string.Empty) />
+                    <span class="icon-info" data-toggle="tooltip" title="@Resources.SelectAllDownlineTooltip" />
+                </div>
+            </th>
+        </tr>
+    </thead>
+    @if (Model.ManagedAccounts.Any())
+    {
+        <tbody>
+
+            @foreach (var account in Model.ManagedAccounts)
+            {
+                <tr>
+                    <td>@account.Username</td>
+                    <td>@account.FirstName</td>
+                    <td align="center">
+                        <input type="checkbox" name="@account.CustId" value="@account.CustId" @(account.Assigned ? "checked=checked" : string.Empty) />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    }
+    else
+    {
+        @NoInformationTable.Render(3)
+    }
+</table>
+@Html.Hidden(nameof(Resources.OK), Resources.OK)
+@Html.Hidden(nameof(Resources.SystemMessage), Resources.SystemMessage)
+@Html.Hidden(nameof(Resources.SelectAllDownlineMessage), Resources.SelectAllDownlineMessage)
+@Html.Hidden(nameof(Resources.ManagedAccountValidationMessage), Resources.ManagedAccountValidationMessage)

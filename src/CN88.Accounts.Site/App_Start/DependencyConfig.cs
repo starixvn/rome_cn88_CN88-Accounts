@@ -6,9 +6,9 @@
     using CN88.Accounts.ProblemAccount;
     using CN88.Accounts.Shared.Models;
     using CN88.Accounts.Site.Features.Shared;
+    using CN88.Accounts.SubAccount;
     using CN88.Web.Helpers;
     using Fanex.Data.Repository;
-    using Fanex.Logging;
     using MediatR;
     using ONEbook.SpreadSheets;
     using ONEbook.SpreadSheets.NPOI;
@@ -17,6 +17,7 @@
     using SimpleInjector.Integration.Web.Mvc;
     using Sunplus.Agent.Model.Base;
     using Sunplus.Agent.Model.Entities;
+    using Sunplus.Agent.Utilities;
 
     public static class DependencyConfig
     {
@@ -70,11 +71,15 @@
             container.Register<IUserSession, UserSessionExt>(Lifestyle.Scoped);
             container.Register<IUser, User>(Lifestyle.Scoped);
             container.Register(typeof(Workbook<>), typeof(NpoiWorkbook<>), Lifestyle.Scoped);
+            container.Register<SessionManager, SessionManagerImpl>(Lifestyle.Scoped);
 
-            container.RegisterSingleton(Logger.Log);
+            container.RegisterSingleton(Fanex.Logging.Logger.Log);
+            container.RegisterSingleton<Encryptor, EncryptorImpl>();
             container.RegisterSingleton<BrowserHelper, BrowserHelperImpl>();
 
             container.RegisterSingleton<ProblemAccountService, ProblemAccountServiceImpl>();
+            container.RegisterSingleton<SubAccountValidator, SubAccountValidatorImpl>();
+            container.RegisterSingleton<SubAccountService, SubAccountServiceImpl>();
         }
     }
 }

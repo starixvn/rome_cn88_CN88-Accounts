@@ -1,10 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Functions SiteId="115" SiteName="CN88">
-  <Function Name="Account Status">
+  <Function Name="Check belonging">
+    <Setting Key="CS_HeadlineSelCheckBelonging" SpName="CS_HeadlineSelCheckBelonging" DbName="DBCust.CustDB.BODBDownlineNet" Plain="0" />
     <Setting Key="CS_CustomerStatusSel" SpName="CS_CustomerStatusSel" DbName="DBCust.CustDB.BODBDownlineNet" Plain="0" />
   </Function>
   <Function Name="Problem Account">
     <Setting Key="CS_ProblemAccount_CustomerList" SpName="CS_ProblemAccount_CustomerList_xtest" DbName="DBCust.CustDB.BODBDownlineNet" Plain="0" />
     <Setting Key="CS_ProblemAccount_ReviewStatusUpd" SpName="CS_ProblemAccount_ReviewStatusUpd_xtest" DbName="DBCust.CustDB.BODBDownlineNet" Plain="0" />
+  </Function>
+  <Function Name="Sub Account">
+    <Setting Key="CS_CustSubSel" SpName="CS_CustSubSel" DbName="DBCUST.CustDB.BODBDownlineNet" Plain="0" />
+    <Setting Key="CS_CustSubSelInfo" SpName="CS_CustSubSelInfo" DbName="DBCUST.CustDB.BODBDownlineNet" Plain="0" />
+    <Setting Key="CS_CustSubIns" SpName="CS_CustSubIns" DbName="DBCUST.CustDB.BODBDownlineNet" Plain="0" />
+    <Setting Key="CS_CustSubUpd" SpName="CS_CustSubUpd" DbName="DBCUST.CustDB.BODBDownlineNet" Plain="0" />
+    <Setting Key="CS_CustSubUnlock" SpName="CS_CustSubUnlock" DbName="DBCUST.CustDB.BODBDownlineNet" Plain="0" />
+    <Setting Key="CS_CustSubDel" SpName="CS_CustSubDel" DbName="DBCUST.CustDB.BODBDownlineNet" Plain="0" />
+    <Setting Key="CS_SubAccManagementSel" SpName="CS_SubAccManagementSel" DbName="DBCUST.CustDB.BODBDownlineNet" Plain="0" />
+    <Setting Key="CS_SubAccManagementUpd" SpName="CS_SubAccManagementUpd" DbName="DBCUST.CustDB.BODBDownlineNet" Plain="0" />
   </Function>
 </Functions>

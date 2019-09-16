@@ -58,17 +58,23 @@
     <Reference Include="Alpha.SubAccount, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Alpha.SubAccount.1.0.0.1\lib\net40\Alpha.SubAccount.dll</HintPath>
     </Reference>
-    <Reference Include="CN88.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CN88.Common.1.0.0\lib\net461\CN88.Common.dll</HintPath>
+    <Reference Include="CN88.Common, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CN88.Common.1.0.1-beta1\lib\net461\CN88.Common.dll</HintPath>
     </Reference>
     <Reference Include="CN88.Web, Version=1.0.1.6, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\CN88.Web.1.0.1.6\lib\net461\CN88.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Couchbase, Version=1.2.6.0, Culture=neutral, PublicKeyToken=05e9c6b5a9ec94c2, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CouchbaseNetClient.1.2.6.3\lib\net40\Couchbase.dll</HintPath>
     </Reference>
     <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="EasyNetQ, Version=2.3.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EasyNetQ.2.3.3\lib\net451\EasyNetQ.dll</HintPath>
+    </Reference>
+    <Reference Include="Enyim.Caching, Version=2.12.0.0, Culture=neutral, PublicKeyToken=05e9c6b5a9ec94c2, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CouchbaseNetClient.1.2.6.3\lib\net40\Enyim.Caching.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Caching, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.Caching.2.1.0\lib\net461\Fanex.Caching.dll</HintPath>
@@ -167,6 +173,9 @@
     <Reference Include="Sunplus.Agent.Model.Definitions, Version=3.0.2.7, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Sunplus.Agent.Model.Definitions.3.0.2.7\lib\net40\Sunplus.Agent.Model.Definitions.dll</HintPath>
     </Reference>
+    <Reference Include="Sunplus.Agent.Utilities, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Sunplus.Agent.Utilities.3.0.1\lib\net40\Sunplus.Agent.Utilities.dll</HintPath>
+    </Reference>
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -225,6 +234,9 @@
       <DependentUpon>securitycode.json</DependentUpon>
     </Content>
     <Content Include="App_Data\securitycode.pro.json">
+      <DependentUpon>securitycode.json</DependentUpon>
+    </Content>
+    <Content Include="App_Data\securitycode.staging.json">
       <DependentUpon>securitycode.json</DependentUpon>
     </Content>
     <Content Include="App_Data\SPNames\Dev\DBCust.CustDB.xml" />
@@ -293,6 +305,29 @@
     <Content Include="Features\Shared\Scripts\tests\libs\stacktable.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\store.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\tooltip.js" />
+    <Content Include="Features\SubAccount\bundles\edit-sub-account.js" />
+    <Content Include="Features\SubAccount\bundles\edit-sub-account.min.js">
+      <DependentUpon>edit-sub-account.js</DependentUpon>
+    </Content>
+    <Content Include="Features\SubAccount\bundles\new-sub-account.js" />
+    <Content Include="Features\SubAccount\bundles\new-sub-account.min.js">
+      <DependentUpon>new-sub-account.js</DependentUpon>
+    </Content>
+    <Content Include="Features\SubAccount\bundles\sub-account.css" />
+    <Content Include="Features\SubAccount\bundles\sub-account.js" />
+    <Content Include="Features\SubAccount\bundles\sub-account.min.css">
+      <DependentUpon>sub-account.css</DependentUpon>
+    </Content>
+    <Content Include="Features\SubAccount\bundles\sub-account.min.js">
+      <DependentUpon>sub-account.js</DependentUpon>
+    </Content>
+    <Content Include="Features\SubAccount\Scripts\src\aes.js" />
+    <Content Include="Features\SubAccount\Styles\sub-account.css">
+      <DependentUpon>sub-account.scss</DependentUpon>
+    </Content>
+    <Content Include="Features\SubAccount\Styles\sub-account.min.css">
+      <DependentUpon>sub-account.css</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -323,6 +358,19 @@
     <Compile Include="Features\Shared\ViewModels\ExcelFileViewModel.cs" />
     <Compile Include="Features\Shared\ViewModels\PagerViewModel.cs" />
     <Compile Include="Features\Shared\ViewModels\SingleSelectionViewModel.cs" />
+    <Compile Include="Features\SubAccount\Requests\DeleteCommand.cs" />
+    <Compile Include="Features\SubAccount\Requests\IndexQuery.cs" />
+    <Compile Include="Features\SubAccount\Requests\NewCommand.cs" />
+    <Compile Include="Features\SubAccount\Requests\NewQuery.cs" />
+    <Compile Include="Features\SubAccount\Requests\UnlockCommand.cs" />
+    <Compile Include="Features\SubAccount\Requests\UpdateCommand.cs" />
+    <Compile Include="Features\SubAccount\Requests\UpdateQuery.cs" />
+    <Compile Include="Features\SubAccount\SubAccountController.cs" />
+    <Compile Include="Features\SubAccount\SubAccountHandler.cs" />
+    <Compile Include="Features\SubAccount\ViewModels\EditViewModel.cs" />
+    <Compile Include="Features\SubAccount\ViewModels\IndexViewModel.cs" />
+    <Compile Include="Features\SubAccount\ViewModels\ManagedAccountViewModel.cs" />
+    <Compile Include="Features\SubAccount\ViewModels\NewViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
       <SonarQubeExclude>true</SonarQubeExclude>
@@ -355,6 +403,18 @@
     <Content Include="Features\ProblemAccount\Views\_TabItems.cshtml" />
     <Content Include="Features\ProblemAccount\Views\_ProblemAccountTableMobile.cshtml" />
     <Content Include="Features\chutzpah.json" />
+    <Content Include="App_Data\securitycode.json" />
+    <Content Include="Features\SubAccount\Views\Edit.cshtml" />
+    <Content Include="Features\SubAccount\Views\EditMobile.cshtml" />
+    <Content Include="Features\SubAccount\Views\Index.cshtml" />
+    <Content Include="Features\SubAccount\Views\New.cshtml" />
+    <Content Include="Features\SubAccount\Views\NewMobile.cshtml" />
+    <Content Include="Features\SubAccount\Views\_EditGeneralInfo.cshtml" />
+    <Content Include="Features\SubAccount\Views\_ManagedAccountTable.cshtml" />
+    <Content Include="Features\SubAccount\Views\_NewGeneralInfo.cshtml" />
+    <Content Include="Features\SubAccount\Views\_Permissions.cshtml" />
+    <Content Include="App_Code\HtmlHelpers.cshtml" />
+    <Content Include="Features\SubAccount\Styles\sub-account.scss" />
     <Content Include="App_Data\securitycode.json" />
     <None Include="packages.config" />
     <Content Include="Features\Shared\Views\_Layout.cshtml" />
@@ -447,14 +507,18 @@
     <TypeScriptCompile Include="Features\ProblemAccount\Scripts\tests\app\update-review-status-tests.ts">
       <SonarQubeExclude>true</SonarQubeExclude>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Features\Shared\Scripts\src\bootstrap-dropdown.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\core.ts">
       <SonarQubeExclude>true</SonarQubeExclude>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Features\Shared\Scripts\src\daterange-picker.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\filter-toggle.ts" />
+    <TypeScriptCompile Include="Features\Shared\Scripts\src\link-builder.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\message.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\pager.ts" />
+    <TypeScriptCompile Include="Features\Shared\Scripts\src\security-code-checker.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\single-selection-dropdown.ts" />
+    <TypeScriptCompile Include="Features\Shared\Scripts\src\sort.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\tests\app\daterange-picker-tests.ts">
       <SonarQubeExclude>true</SonarQubeExclude>
     </TypeScriptCompile>
@@ -473,6 +537,10 @@
     <TypeScriptCompile Include="Features\Shared\Scripts\tests\app\single-selection-dropdown-tests.ts">
       <SonarQubeExclude>true</SonarQubeExclude>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Features\SubAccount\Scripts\src\base-sub-account.ts" />
+    <TypeScriptCompile Include="Features\SubAccount\Scripts\src\edit-sub-account.ts" />
+    <TypeScriptCompile Include="Features\SubAccount\Scripts\src\new-sub-account.ts" />
+    <TypeScriptCompile Include="Features\SubAccount\Scripts\src\sub-account.ts" />
     <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\cleave.js\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\cleave.js\options\creditCard.d.ts" />

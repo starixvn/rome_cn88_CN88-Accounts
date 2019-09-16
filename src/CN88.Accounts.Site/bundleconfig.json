@@ -41,5 +41,40 @@
       "Features/Shared/Scripts/src/message.js",
       "Features/ProblemAccount/Scripts/src/update-review-status.js"
     ]
+  },
+  {
+    "outputFileName": "Features/SubAccount/bundles/sub-account.js",
+    "inputFiles": [
+      "Features/Shared/Scripts/src/core.js",
+      "Features/Shared/Scripts/src/security-code-checker.js",
+      "Features/Shared/Scripts/src/message.js",
+      "Features/Shared/Scripts/src/sort.js",
+      "Features/Shared/Scripts/src/link-builder.js",
+      "Features/Shared/Scripts/src/bootstrap-dropdown.js",
+      "Features/SubAccount/Scripts/src/sub-account.js"
+    ]
+  },
+  {
+    "outputFileName": "Features/SubAccount/bundles/new-sub-account.js",
+    "inputFiles": [
+      "Features/SubAccount/Scripts/src/aes.js",
+      "Features/Shared/Scripts/src/message.js",
+      "Features/SubAccount/Scripts/src/base-sub-account.js",
+      "Features/SubAccount/Scripts/src/new-sub-account.js"
+    ]
+  },
+  {
+    "outputFileName": "Features/SubAccount/bundles/edit-sub-account.js",
+    "inputFiles": [
+      "Features/Shared/Scripts/src/message.js",
+      "Features/SubAccount/Scripts/src/base-sub-account.js",
+      "Features/SubAccount/Scripts/src/edit-sub-account.js"
+    ]
+  },
+  {
+    "outputFileName": "Features/SubAccount/bundles/sub-account.css",
+    "inputFiles": [
+      "Features/SubAccount/Styles/sub-account.css"
+    ]
   }
 ]

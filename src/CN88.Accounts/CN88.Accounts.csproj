@@ -108,6 +108,7 @@
     <Compile Include="Shared\AppSettings.cs" />
     <Compile Include="Shared\Extensions\DateTimeExtensions.cs" />
     <Compile Include="Shared\Models\IUser.cs" />
+    <Compile Include="Shared\Params\LogParam.cs" />
     <Compile Include="Shared\Resources\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -236,9 +236,6 @@
     <Content Include="App_Data\securitycode.pro.json">
       <DependentUpon>securitycode.json</DependentUpon>
     </Content>
-    <Content Include="App_Data\securitycode.staging.json">
-      <DependentUpon>securitycode.json</DependentUpon>
-    </Content>
     <Content Include="App_Data\SPNames\Dev\DBCust.CustDB.xml" />
     <Content Include="App_Data\SPNames\Dev\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\Internal\DBCust.CustDB.xml" />
@@ -538,6 +535,9 @@
       <SonarQubeExclude>true</SonarQubeExclude>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Features\SubAccount\Scripts\src\base-sub-account.ts" />
+    <TypeScriptCompile Include="Features\SubAccount\Scripts\src\encryptor.ts">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Features\SubAccount\Scripts\src\edit-sub-account.ts" />
     <TypeScriptCompile Include="Features\SubAccount\Scripts\src\new-sub-account.ts" />
     <TypeScriptCompile Include="Features\SubAccount\Scripts\src\sub-account.ts" />
@@ -605,7 +605,7 @@
     </PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\..\packages\Fanex.Chutzpah.4.3.3\build\Fanex.Chutzpah.targets" Condition="Exists('..\..\packages\Fanex.Chutzpah.4.3.3\build\Fanex.Chutzpah.targets')" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

@@ -1,25 +1,19 @@
 ﻿namespace CN88.Accounts.SubAccount.Params
 {
-    public class UnlockSubAccountParam
+    using CN88.Accounts.Shared.Params;
+
+    public class UnlockSubAccountParam : LogParam
     {
         public UnlockSubAccountParam(
-            int custId,
+            int userId,
             int subAccId,
-            string ip,
+            string loginIP,
             string languageKey)
+            : base(userId, languageKey, loginIP)
         {
-            CustId = custId;
             SubAccId = subAccId;
-            IP = ip;
-            LanguageKey = languageKey;
         }
 
-        public int CustId { get; }
-
         public int SubAccId { get; }
-
-        public string IP { get; }
-
-        public string LanguageKey { get; }
     }
 }

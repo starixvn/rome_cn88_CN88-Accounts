@@ -177,7 +177,7 @@
 
         public async Task<Result> UnlockSubAccountAsync(UnlockSubAccountParam param)
         {
-            var command = new UnlockSubAccountCommand(param.CustId, param.SubAccId, param.IP, param.LanguageKey);
+            var command = new UnlockSubAccountCommand(param.UserId, param.SubAccId, param.LoginIP, param.LanguageKey);
             await dynamicRepository.ExecuteAsync(command);
 
             return new Result(command.ErrCode, command.ErrMsg);
@@ -185,7 +185,7 @@
 
         public async Task<Result> DeleteSubAccountAsync(UnlockSubAccountParam param)
         {
-            var command = new DeleteSubAccountCommand(param.CustId, param.SubAccId, param.IP, param.LanguageKey);
+            var command = new DeleteSubAccountCommand(param.UserId, param.SubAccId, param.LoginIP, param.LanguageKey);
             await dynamicRepository.ExecuteAsync(command);
 
             var result = new Result(command.ErrCode, command.ErrMsg);
@@ -193,7 +193,7 @@
             // Kickout.
             if (result.IsSuccess)
             {
-                await KickoutSubAccountAsync(param.CustId, param.SubAccId);
+                await KickoutSubAccountAsync(param.UserId, param.SubAccId);
             }
 
             return result;
@@ -225,7 +225,7 @@
                 param.SubAccId,
                 param.IsAllDownline,
                 param.DownlineId,
-                param.Language,
+                param.LanguageKey,
                 param.LoginIP,
                 param.UserId);
             await dynamicRepository.ExecuteAsync(command);

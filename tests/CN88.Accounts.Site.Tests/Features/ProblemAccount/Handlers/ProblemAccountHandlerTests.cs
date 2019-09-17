@@ -113,7 +113,7 @@
                         && p.IsAllDownline == message.IsAllDownline
                         && p.IsAffectedAllDownlines == message.IsAffectedAllDownlines
                         && p.SelectedDownlineIds == message.SelectedDownlineIds
-                        && p.Language == message.LanguageKey
+                        && p.LanguageKey == message.LanguageKey
                         && p.LoginIP == message.IP));
         }
     }

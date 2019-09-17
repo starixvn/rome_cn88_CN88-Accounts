@@ -56,7 +56,7 @@
                 param.IsAllDownline,
                 param.IsAffectedAllDownlines,
                 param.SelectedDownlineIds,
-                param.Language,
+                param.LanguageKey,
                 param.LoginIP);
 
             await dynamicRepository.ExecuteAsync(command);

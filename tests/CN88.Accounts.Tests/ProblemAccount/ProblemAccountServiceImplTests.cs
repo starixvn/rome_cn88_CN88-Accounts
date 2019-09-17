@@ -84,7 +84,7 @@
                         && c.IsAllDownline == param.IsAllDownline
                         && c.IsAffectedAllDownlines == param.IsAffectedAllDownlines
                         && c.CustomerList == param.SelectedDownlineIds
-                        && c.Language == param.Language
+                        && c.Language == param.LanguageKey
                         && c.LoginIP == param.LoginIP));
         }
     }

@@ -1,6 +1,8 @@
 ﻿namespace CN88.Accounts.ProblemAccount.Params
 {
-    public class UpdateReviewStatusParam
+    using CN88.Accounts.Shared.Params;
+
+    public class UpdateReviewStatusParam : LogParam
     {
         public UpdateReviewStatusParam(
             int userId,
@@ -9,20 +11,16 @@
             bool isAllDownline,
             bool isAffectedAllDownlines,
             string selectedDownlineIds,
-            string language,
+            string languageKey,
             string loginIP)
+            : base(userId, languageKey, loginIP)
         {
-            UserId = userId;
             SubAccId = subAccId;
             RoleId = roleId;
             IsAllDownline = isAllDownline;
             IsAffectedAllDownlines = isAffectedAllDownlines;
             SelectedDownlineIds = selectedDownlineIds;
-            Language = language;
-            LoginIP = loginIP;
         }
-
-        public int UserId { get; }
 
         public int SubAccId { get; }
 
@@ -33,9 +31,5 @@
         public bool IsAffectedAllDownlines { get; }
 
         public string SelectedDownlineIds { get; }
-
-        public string Language { get; }
-
-        public string LoginIP { get; }
     }
 }

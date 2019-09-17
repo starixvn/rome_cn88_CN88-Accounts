@@ -59,6 +59,7 @@
     "inputFiles": [
       "Features/SubAccount/Scripts/src/aes.js",
       "Features/Shared/Scripts/src/message.js",
+      "Features/SubAccount/Scripts/src/encryptor.js",
       "Features/SubAccount/Scripts/src/base-sub-account.js",
       "Features/SubAccount/Scripts/src/new-sub-account.js"
     ]

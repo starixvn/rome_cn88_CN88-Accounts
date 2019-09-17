@@ -84,11 +84,10 @@ class SortComponent {
             return;
         }
 
-        let self = this;
-
         const disabledSortColumns = this.$sortContainer.find("th[data-disabledsort='true']");
-        disabledSortColumns.each(function () {
-            self.options.headers[this.cellIndex] = { sorter: false };
+        disabledSortColumns.each((index: number, elem: Element) => {
+            const cellIndex = this.$(elem).index();
+            this.options.headers[cellIndex] = { sorter: false };
         });
 
         let sortList = [];

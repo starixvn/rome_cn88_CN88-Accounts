@@ -1,6 +1,8 @@
 ﻿namespace CN88.Accounts.SubAccount.Params
 {
-    public class UpdateManagedAccountParam
+    using CN88.Accounts.Shared.Params;
+
+    public class UpdateManagedAccountParam : LogParam
     {
         public UpdateManagedAccountParam(
             int custId,
@@ -8,18 +10,16 @@
             int subAccId,
             bool isAllDownline,
             string downlineId,
-            string language,
+            string languageKey,
             string loginIP,
             int userId)
+            : base(userId, languageKey, loginIP)
         {
             CustId = custId;
             RoleId = roleId;
             SubAccId = subAccId;
             IsAllDownline = isAllDownline;
             DownlineId = downlineId;
-            Language = language;
-            LoginIP = loginIP;
-            UserId = userId;
         }
 
         public int CustId { get; }
@@ -31,11 +31,5 @@
         public bool IsAllDownline { get; }
 
         public string DownlineId { get; }
-
-        public string Language { get; }
-
-        public string LoginIP { get; }
-
-        public int UserId { get; }
     }
 }

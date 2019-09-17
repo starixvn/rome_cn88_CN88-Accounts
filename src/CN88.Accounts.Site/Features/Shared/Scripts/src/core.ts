@@ -27,6 +27,11 @@ class CN88Accounts {
     convertAttributeToBool = (attrValue: string) => {
         return !!attrValue && attrValue.toString().toLowerCase() === "true";
     };
+
+    statusCode = {
+        Unauthorized: 401,
+        Forbidden: 403
+    }
 }
 
 const cn88Accounts = new CN88Accounts();

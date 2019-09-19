@@ -5,12 +5,12 @@ class EditSubAccount extends BaseSubAccount {
         super($, top);
     }
 
-    protected cacheElements(): void {
+    public cacheElements(): void {
         super.cacheElements();
         this.elements.subAccountId = this.$("#subAccountId").val();
     }
 
-    protected getFormData() {
+    public getFormData() {
         const formData = super.getFormData();
 
         return {

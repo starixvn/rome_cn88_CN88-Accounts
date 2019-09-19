@@ -36,3 +36,8 @@ packages/
 node_modules/
 *.orig
 /_Chutzpah.coverage.html
+/tests/CN88.Accounts.Tests/CN88.Accounts.Tests.v3.ncrunchproject
+/tests/CN88.Accounts.Site.Tests/CN88.Accounts.Site.Tests.v3.ncrunchproject
+/src/CN88.Accounts.Site/CN88.Accounts.Site.v3.ncrunchproject
+/CN88.Accounts.v3.ncrunchsolution
+/src/CN88.Accounts/CN88.Accounts.v3.ncrunchproject

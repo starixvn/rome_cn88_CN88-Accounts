@@ -1,6 +1,7 @@
 ﻿namespace CN88.Accounts.Site.Features.SubAccount.ViewModels
 {
     using System.Collections.Generic;
+    using CN88.Accounts.Site.Features.SubAccount.Requests;
     using CN88.Accounts.SubAccount.Models;
     using CN88.Web.Helpers;
     using Shared.Helpers;
@@ -10,16 +11,15 @@
         private readonly BrowserHelper browserHelper;
 
         public IndexViewModel(
+            IndexQuery query,
             IEnumerable<SubAccountItem> subAccounts,
-            bool showActionButtons,
-            bool showAccountManagementPermission,
             BrowserHelper browserHelper)
         {
             this.browserHelper = browserHelper;
 
             SubAccounts = subAccounts;
-            ShowActionButtons = showActionButtons;
-            ShowAccountManagementPermission = showAccountManagementPermission;
+            ShowActionButtons = query.ShowActionButtons;
+            ShowAccountManagementPermission = query.ShowAccountManagementPermission;
         }
 
         public IEnumerable<SubAccountItem> SubAccounts { get; }

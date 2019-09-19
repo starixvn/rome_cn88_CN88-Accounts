@@ -188,6 +188,8 @@
     <Compile Include="Features\Shared\QueryEntityModelBinderTests.cs" />
     <Compile Include="Features\Shared\Helpers\UrlHelperTestSetUp.cs" />
     <Compile Include="Features\Shared\UserTests.cs" />
+    <Compile Include="Features\SubAccount\SubAccountControllerTests.cs" />
+    <Compile Include="Features\SubAccount\SubAccountHandlerTests.cs" />
     <Compile Include="Fixtures\UserFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

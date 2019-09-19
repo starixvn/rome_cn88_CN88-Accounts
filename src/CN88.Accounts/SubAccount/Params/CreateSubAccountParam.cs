@@ -13,13 +13,13 @@
             string name,
             string pageAccess,
             string languageKey,
-            string ip,
-            int actorId,
+            string loginIP,
+            int userId,
             string actorName,
             byte roleId,
             bool isAllDownline,
             string downlineId)
-            : base(name, pageAccess, languageKey, ip, actorId, roleId, isAllDownline, downlineId)
+            : base(name, pageAccess, languageKey, loginIP, userId, roleId, isAllDownline, downlineId)
         {
             Suffix1 = suffix1;
             Suffix2 = suffix2;

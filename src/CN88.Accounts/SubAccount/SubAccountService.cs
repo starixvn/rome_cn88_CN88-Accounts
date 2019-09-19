@@ -68,28 +68,28 @@
                 param.PageAccess = string.Join(string.Empty, subAccountValidator.FilterWithValidPermissions(param.PageAccess));
 
                 var command = new CreateSubAccountCommand(
-                    param.ActorId,
+                    param.UserId,
                     param.Name,
                     param.UserName,
                     param.Password,
                     param.PageAccess,
                     param.LanguageKey,
-                    param.IP,
-                    param.ActorId);
+                    param.LoginIP,
+                    param.UserId);
                 result = await ExecuteAsync(command);
 
                 if (result.IsSuccess)
                 {
                     var updateManagedAccountResult = await UpdateManagedAccount(
                         new UpdateManagedAccountParam(
-                            param.ActorId,
+                            param.UserId,
                             param.RoleId,
                             command.SubAccId,
                             param.IsAllDownline,
                             param.DownlineId,
                             param.LanguageKey,
-                            param.IP,
-                            param.ActorId));
+                            param.LoginIP,
+                            param.UserId));
 
                     return updateManagedAccountResult.Item2;
                 }
@@ -100,14 +100,14 @@
 
         public async Task<Result> UpdateSubAccountAsync(UpdateSubAccountParam param)
         {
-            var subAccount = await GetSubAccountAsync(param.ActorId, param.SubAccId);
+            var subAccount = await GetSubAccountAsync(param.UserId, param.SubAccId);
 
             return subAccount != null
                 ? await UpdateSubAccountAndKickoutAsync(param, subAccount.PageAccess)
                 : Result.CreateSuccessResult(message: Resources.UpdateSuccessfully);
         }
 
-        private Result ValidateCreateSubAccountParam(CreateSubAccountParam param)
+        internal Result ValidateCreateSubAccountParam(CreateSubAccountParam param)
         {
             var result = subAccountValidator.ValidateEmptyPassword(param.Password);
 
@@ -135,38 +135,38 @@
             return Result.CreateSuccessResult();
         }
 
-        private async Task<Result> UpdateSubAccountAndKickoutAsync(UpdateSubAccountParam param, string oldPageAccess)
+        internal async Task<Result> UpdateSubAccountAndKickoutAsync(UpdateSubAccountParam param, string oldPageAccess)
         {
             var pageAccessList = subAccountValidator.FilterWithValidPermissions(param.PageAccess);
             var oldPageAccessList = subAccountValidator.GetAccountManagementPermission(oldPageAccess);
             param.PageAccess = string.Join(string.Empty, pageAccessList.Concat(oldPageAccessList));
 
             var command = new UpdateSubAccountCommand(
-                    param.ActorId,
+                    param.UserId,
                     param.SubAccId,
                     param.Name,
                     param.PageAccess,
                     param.LanguageKey,
-                    param.IP,
-                    param.ActorId);
+                    param.LoginIP,
+                    param.UserId);
             var result = await ExecuteAsync(command);
 
             if (result.IsSuccess)
             {
                 var updatedManagedAccountResult = await UpdateManagedAccount(
                     new UpdateManagedAccountParam(
-                        param.ActorId,
+                        param.UserId,
                         param.RoleId,
                         param.SubAccId,
                         param.IsAllDownline,
                         param.DownlineId,
                         param.LanguageKey,
-                        param.IP,
-                        param.ActorId));
+                        param.LoginIP,
+                        param.UserId));
 
                 if (oldPageAccess != param.PageAccess || updatedManagedAccountResult.Item1)
                 {
-                    await KickoutSubAccountAsync(param.ActorId, param.SubAccId);
+                    await KickoutSubAccountAsync(param.UserId, param.SubAccId);
                 }
 
                 return updatedManagedAccountResult.Item2;
@@ -217,7 +217,7 @@
             return Tuple.Create(criteria.IsAllDownline, downlines);
         }
 
-        private async Task<Tuple<bool, Result>> UpdateManagedAccount(UpdateManagedAccountParam param)
+        internal async Task<Tuple<bool, Result>> UpdateManagedAccount(UpdateManagedAccountParam param)
         {
             var command = new UpdateManagedAccountCommand(
                 param.CustId,

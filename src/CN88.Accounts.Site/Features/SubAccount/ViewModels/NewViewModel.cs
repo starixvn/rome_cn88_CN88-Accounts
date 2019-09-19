@@ -4,19 +4,20 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
+    using CN88.Accounts.Site.Features.SubAccount.Requests;
+    using CN88.Accounts.SubAccount.Constants;
     using CN88.Accounts.SubAccount.Models;
 
     public class NewViewModel
     {
         public NewViewModel(
-            string subAccountName,
+            NewQuery query,
             string hashKey,
-            bool showAccountManagementPermission,
             Tuple<bool, IEnumerable<ManagedAccount>> managedAccounts)
         {
-            SubAccountName = subAccountName;
             HashKey = hashKey;
-            ShowAccountManagementPermission = showAccountManagementPermission;
+            SubAccountName = query.ViewerName + SubAccountConstants.SubAccountPadding;
+            ShowAccountManagementPermission = query.ShowAccountManagementPermission;
             NumberOfDownline = managedAccounts.Item2.Count();
             ManagedAccountViewModel = new ManagedAccountViewModel(managedAccounts.Item1, managedAccounts.Item2);
         }

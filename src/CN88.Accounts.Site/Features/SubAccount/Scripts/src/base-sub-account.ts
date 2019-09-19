@@ -25,7 +25,7 @@
         this.elements.tooltips.tooltip();
     }
 
-    protected cacheElements(): void {
+    public cacheElements(): void {
         this.elements = {
             formSubAccount: this.$("#formSubAccount"),
             messageContainer: this.$("#message-container"),
@@ -120,7 +120,7 @@
         }
     };
 
-    protected getFormData() {
+    public getFormData() {
         let downlineId = "";
         const isSelectAllDownline = this.$checkboxSelectAll.is(":checked");
 

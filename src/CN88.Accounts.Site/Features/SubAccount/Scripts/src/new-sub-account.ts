@@ -7,7 +7,7 @@ class NewSubAccount extends BaseSubAccount {
         this.encryptor = encryptor;
     }
 
-    protected cacheElements(): void {
+    public cacheElements(): void {
         super.cacheElements();
 
         this.elements.requiredPasswordError = this.$("#RequiredPasswordError").val();
@@ -29,7 +29,7 @@ class NewSubAccount extends BaseSubAccount {
         });
     }
 
-    protected getFormData() {
+    public getFormData() {
         const hashKey: string = this.elements.hashKey;
         const password: string = this.elements.password.val();
         const formData = super.getFormData();

@@ -34,28 +34,44 @@
     { "Path": "Shared/Scripts/tests/libs/pagination/jquery.parser.js" },
     { "Path": "Shared/Scripts/tests/libs/pagination/jquery.linkbutton.js" },
     { "Path": "Shared/Scripts/tests/libs/pagination/jquery.pagination.js" },
+    { "Path": "Shared/Scripts/tests/libs/tablesorter.js" },
     { "Path": "Shared/Scripts/tests/libs/stacktable.js" },
     { "Path": "Shared/Scripts/tests/libs/backtop.js" },
+    { "Path": "Shared/Scripts/tests/libs/jquery.stickytableheaders.js" },
 
     { "Path": "Shared/Scripts/src/core.ts" },
     { "Path": "Shared/Scripts/src/daterange-picker.ts" },
     { "Path": "Shared/Scripts/src/filter-toggle.ts" },
     { "Path": "Shared/Scripts/src/message.ts" },
     { "Path": "Shared/Scripts/src/pager.ts" },
+    { "Path": "Shared/Scripts/src/link-builder.ts" },
+    { "Path": "Shared/Scripts/src/sort.ts" },
     { "Path": "Shared/Scripts/src/single-selection-dropdown.ts" },
+
     { "Path": "ProblemAccount/Scripts/src/update-review-status.ts" },
     { "Path": "ProblemAccount/Scripts/src/base-problem-account.ts" },
     { "Path": "ProblemAccount/Scripts/src/problem-account.ts" },
-    { "Path": "ProblemAccount/Scripts/src/problem-account-mobile.ts" }
+    { "Path": "ProblemAccount/Scripts/src/problem-account-mobile.ts" },
+
+    { "Path": "SubAccount/Scripts/src/aes.js" },
+    { "Path": "SubAccount/Scripts/src/encryptor.ts" },
+    { "Path": "SubAccount/Scripts/src/base-sub-account.ts" },
+    { "Path": "SubAccount/Scripts/src/edit-sub-account.ts" },
+    { "Path": "SubAccount/Scripts/src/new-sub-account.ts" },
+    { "Path": "SubAccount/Scripts/src/sub-account.ts" }
   ],
   "Tests": [
     {
       "Path": "Shared/Scripts/tests/app",
-      "Excludes": [ "**.js.map" ]
+      "Excludes": [ "**.js.map", "**.js", "**-template.ts" ]
     },
     {
       "Path": "ProblemAccount/Scripts/tests/app",
-      "Excludes": [ "**.js.map" ]
+      "Excludes": [ "**.js.map", "**.js", "**-template.ts" ]
+    },
+    {
+      "Path": "SubAccount/Scripts/tests/app",
+      "Excludes": [ "**.js.map", "**.js", "**-template.ts" ]
     }
   ]
 }

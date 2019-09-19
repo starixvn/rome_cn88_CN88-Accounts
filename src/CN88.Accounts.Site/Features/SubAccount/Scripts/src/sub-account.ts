@@ -32,17 +32,14 @@ class SubAccount {
     isDevice: boolean;
 
     sortComponent: SortComponent;
-    bootstrapDropdownComponent: BootstrapDropdownComponent;
 
     constructor(
         $: JQueryStatic,
         top: Window,
-        sortComponent: SortComponent,
-        bootstrapDropdownComponent: BootstrapDropdownComponent) {
+        sortComponent: SortComponent) {
         this.$ = $;
         this.top = top;
         this.sortComponent = sortComponent;
-        this.bootstrapDropdownComponent = bootstrapDropdownComponent;
         this.isDevice = cn88Accounts.convertAttributeToBool(this.$("#IsDevice").val());
     }
 
@@ -51,22 +48,8 @@ class SubAccount {
         this.bindEvents();
 
         if (!this.isDevice) {
-            const headers = {
-                0: { sorter: "text" },
-                1: { sorter: "text" },
-                2: { sorter: "text" }
-            };
-            headers[this.$("#createdDateColIndex").val()] = { sorter: "text" };
-            this.sortComponent.render(
-                new SortOption(
-                    this.tableSubAccount,
-                    this.tableSubAccount.data("totalrecords") > 1,
-                    true,
-                    this.sortComponent.afterSort,
-                    headers));
+            this.renderSortComponent();
         }
-
-        this.bootstrapDropdownComponent.render(new BootstrapDropdownOption(".tbl-subaccount .dropdown"));
     }
 
     cacheElements(): void {
@@ -101,45 +84,13 @@ class SubAccount {
 
         this.tableSubAccount.find("[data-toggle='tooltip']").tooltip();
 
-        this.tableSubAccount.find(".icon-pass, .opt-pass").click((event: JQueryEventObject) => {
-            const param = this.getSubAccountParam(this.$(event.currentTarget));
-            const width = 490, height = 430;
+        this.tableSubAccount.find(".icon-pass, .opt-pass").click(this.onResetPasswordClick);
 
-            this.openPopup(
-                `${this.resources.resetPassword} - ${param.subAccountName}`,
-                `${this.urls.resetPassword}?custId=${param.subAccountId}`,
-                width,
-                height);
-        });
+        this.tableSubAccount.find(".icon-security, .opt-security").click(this.onResetSecurityCodeClick);
 
-        this.tableSubAccount.find(".icon-security, .opt-security").click((event: JQueryEventObject) => {
-            const param = this.getSubAccountParam(this.$(event.currentTarget));
-            const width = 490, height = 344;
-            this.openPopup(
-                `${this.resources.resetSecurityCode} - ${param.subAccountName}`,
-                `${this.urls.resetSecurityCode}?custId=${param.subAccountId}`,
-                width,
-                height);
-        });
+        this.tableSubAccount.find(".icon-edit, .opt-edit").click(this.onEditSubAccountClick);
 
-        this.tableSubAccount.find(".icon-edit, .opt-edit").click((event: JQueryEventObject) => {
-            const param = this.getSubAccountParam(this.$(event.currentTarget));
-            const width = 948, height = 600;
-            this.openPopup(
-                `${this.resources.editSubAccount} - ${param.subAccountName}`,
-                `${this.urls.editSubAccount}?custId=${param.subAccountId}`,
-                width,
-                height);
-        });
-
-        this.tableSubAccount.find(".icon-more-action").on("click touchend", () => {
-            // Hide other dropdowns
-        });
-
-        this.$("#btnNewSubAccount").click(() => {
-            const width = 948, height = 600;
-            this.openPopup(this.resources.newSubAccount, this.urls.newSubAccount, width, height);
-        });
+        this.$("#btnNewSubAccount").click(this.onNewSubAccountClick);
 
         this.tableSubAccount.find(".icon-unlock, .opt-unlock").click((event: JQueryEventObject) => {
             this.unlockOrDeleteSubAccount(
@@ -157,6 +108,58 @@ class SubAccount {
                 this.urls.deleteSubAccount);
         });
     }
+
+    renderSortComponent(): void {
+        const headers = {
+            0: { sorter: "text" },
+            1: { sorter: "text" },
+            2: { sorter: "text" }
+        };
+        headers[this.$("#createdDateColIndex").val()] = { sorter: "text" };
+        this.sortComponent.render(
+            new SortOption(
+                this.tableSubAccount,
+                this.tableSubAccount.data("totalrecords") > 1,
+                true,
+                this.sortComponent.afterSort,
+                headers));
+    }
+
+    onResetPasswordClick = (event: JQueryEventObject) => {
+        const param = this.getSubAccountParam(this.$(event.currentTarget));
+        const width = 490, height = 430;
+
+        this.openPopup(
+            `${this.resources.resetPassword} - ${param.subAccountName}`,
+            `${this.urls.resetPassword}?custId=${param.subAccountId}`,
+            width,
+            height);
+    };
+
+    onResetSecurityCodeClick = (event: JQueryEventObject) => {
+        const param = this.getSubAccountParam(this.$(event.currentTarget));
+        const width = 490, height = 344;
+        this.openPopup(
+            `${this.resources.resetSecurityCode} - ${param.subAccountName}`,
+            `${this.urls.resetSecurityCode}?custId=${param.subAccountId}`,
+            width,
+            height);
+    };
+
+    onEditSubAccountClick = (event: JQueryEventObject) => {
+        const param = this.getSubAccountParam(this.$(event.currentTarget));
+        const width = 948, height = 600;
+        this.openPopup(
+            `${this.resources.editSubAccount} - ${param.subAccountName}`,
+            `${this.urls.editSubAccount}?custId=${param.subAccountId}`,
+            width,
+            height);
+    };
+
+    onNewSubAccountClick = () => {
+        const width = 948, height = 600;
+        this.openPopup(this.resources.newSubAccount, this.urls.newSubAccount, width, height);
+    };
 
     getSubAccountParam(element: JQuery): ISubAccountParam {
         const parent = element.closest("td");
@@ -211,9 +214,5 @@ class SubAccount {
 }
 
 $(() => {
-    new SubAccount(
-        $,
-        top,
-        new SortComponent($, new LinkBuilderComponent($)),
-        new BootstrapDropdownComponent($, top)).init();
+    new SubAccount($, top, new SortComponent($, new LinkBuilderComponent($))).init();
 });

@@ -50,7 +50,6 @@
       "Features/Shared/Scripts/src/message.js",
       "Features/Shared/Scripts/src/sort.js",
       "Features/Shared/Scripts/src/link-builder.js",
-      "Features/Shared/Scripts/src/bootstrap-dropdown.js",
       "Features/SubAccount/Scripts/src/sub-account.js"
     ]
   },

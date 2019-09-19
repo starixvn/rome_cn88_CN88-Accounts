@@ -289,6 +289,7 @@
     <Content Include="Features\Shared\Scripts\tests\libs\jasmine.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\jquery-blockui.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\jquery.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\jquery.stickytableheaders.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\moment.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\multiselect.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\nexDatePicker.js" />
@@ -301,6 +302,7 @@
     <Content Include="Features\Shared\Scripts\tests\libs\shortcut.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\stacktable.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\store.js" />
+    <Content Include="Features\Shared\Scripts\tests\libs\tablesorter.js" />
     <Content Include="Features\Shared\Scripts\tests\libs\tooltip.js" />
     <Content Include="Features\SubAccount\bundles\edit-sub-account.js" />
     <Content Include="Features\SubAccount\bundles\edit-sub-account.min.js">
@@ -504,7 +506,6 @@
     <TypeScriptCompile Include="Features\ProblemAccount\Scripts\tests\app\update-review-status-tests.ts">
       <SonarQubeExclude>true</SonarQubeExclude>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Features\Shared\Scripts\src\bootstrap-dropdown.ts" />
     <TypeScriptCompile Include="Features\Shared\Scripts\src\core.ts">
       <SonarQubeExclude>true</SonarQubeExclude>
     </TypeScriptCompile>
@@ -522,6 +523,9 @@
     <TypeScriptCompile Include="Features\Shared\Scripts\tests\app\filter-toggle-tests.ts">
       <SonarQubeExclude>true</SonarQubeExclude>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Features\Shared\Scripts\tests\app\link-builder-tests.ts">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Features\Shared\Scripts\tests\app\message-tests.ts">
       <SonarQubeExclude>true</SonarQubeExclude>
     </TypeScriptCompile>
@@ -534,6 +538,12 @@
     <TypeScriptCompile Include="Features\Shared\Scripts\tests\app\single-selection-dropdown-tests.ts">
       <SonarQubeExclude>true</SonarQubeExclude>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Features\Shared\Scripts\tests\app\sort-tests-template.ts">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Features\Shared\Scripts\tests\app\sort-tests.ts">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Features\SubAccount\Scripts\src\base-sub-account.ts" />
     <TypeScriptCompile Include="Features\SubAccount\Scripts\src\encryptor.ts">
       <SonarQubeExclude>true</SonarQubeExclude>
@@ -541,6 +551,15 @@
     <TypeScriptCompile Include="Features\SubAccount\Scripts\src\edit-sub-account.ts" />
     <TypeScriptCompile Include="Features\SubAccount\Scripts\src\new-sub-account.ts" />
     <TypeScriptCompile Include="Features\SubAccount\Scripts\src\sub-account.ts" />
+    <TypeScriptCompile Include="Features\SubAccount\Scripts\tests\app\edit-sub-account-tests.ts">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Features\SubAccount\Scripts\tests\app\new-sub-account-tests.ts">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Features\SubAccount\Scripts\tests\app\sub-account-tests.ts">
+      <SonarQubeExclude>true</SonarQubeExclude>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\cleave.js\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\cleave.js\options\creditCard.d.ts" />

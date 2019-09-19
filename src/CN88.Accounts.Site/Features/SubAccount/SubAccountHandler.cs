@@ -5,7 +5,6 @@
     using CN88.Accounts.Site.Features.SubAccount.Requests;
     using CN88.Accounts.Site.Features.SubAccount.ViewModels;
     using CN88.Accounts.SubAccount;
-    using CN88.Accounts.SubAccount.Constants;
     using CN88.Accounts.SubAccount.Params;
     using CN88.Common.Models;
     using CN88.Web.Helpers;
@@ -41,19 +40,15 @@
         }
 
         public async Task<IndexViewModel> Handle(IndexQuery message)
-        {
-            var showActionButtons = message.ShowActionButtons;
-            var showAccountManagementPermission = message.ShowAccountManagementPermission;
-            var subAccounts = await subAccountService.GetSubAccountsAsync(message.ViewerId);
-
-            return new IndexViewModel(subAccounts, showActionButtons, showAccountManagementPermission, browserHelper);
-        }
+            => new IndexViewModel(
+                message,
+                await subAccountService.GetSubAccountsAsync(message.ViewerId),
+                browserHelper);
 
         public async Task<NewViewModel> Handle(NewQuery message)
             => new NewViewModel(
-                message.ViewerName + SubAccountConstants.SubAccountPadding,
+                message,
                 GenerateHashKey(),
-                message.ShowAccountManagementPermission,
                 await subAccountService.GetManagedAccounts(message.ViewerId, message.ViewerLevelId, 0));
 
         public async Task<EditViewModel> Handle(UpdateQuery message)

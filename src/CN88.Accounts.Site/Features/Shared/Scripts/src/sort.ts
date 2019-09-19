@@ -155,18 +155,4 @@ class SortComponent {
             this.$reportForm.trigger("submit");
         }
     };
-
-    mapSortedColumnToStackMode = (sortedColumn: string, stackColumnGroups: string[][]) => {
-        for (const stackColumnGroup of stackColumnGroups) {
-            const firstColum = stackColumnGroup[0];
-
-            for (const stackColumn of stackColumnGroup) {
-                if (sortedColumn.toLowerCase() === stackColumn.toLowerCase()) {
-                    return firstColum;
-                }
-            }
-        }
-
-        return sortedColumn;
-    };
 }

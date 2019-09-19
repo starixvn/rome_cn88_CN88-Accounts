@@ -125,6 +125,18 @@
     <Compile Include="Shared\Extensions\DateTimeExtensionsTests.cs" />
     <Compile Include="Shared\Models\PagedDataTests.cs" />
     <Compile Include="Shared\SystemTimeTests.cs" />
+    <Compile Include="SubAccount\Criteria\CreateSubAccountCommandTests.cs" />
+    <Compile Include="SubAccount\Criteria\DeleteSubAccountCommandTests.cs" />
+    <Compile Include="SubAccount\Criteria\GetManagedAccountCriteriaTests.cs" />
+    <Compile Include="SubAccount\Criteria\GetSubAccountCriteriaTests.cs" />
+    <Compile Include="SubAccount\Criteria\GetSubAccountListCriteriaTests.cs" />
+    <Compile Include="SubAccount\Criteria\KickoutSubAccountCommandTests.cs" />
+    <Compile Include="SubAccount\Models\ManagedAccountTests.cs" />
+    <Compile Include="SubAccount\SubAccountServiceImplTests.cs" />
+    <Compile Include="SubAccount\Criteria\UnlockSubAccountCommandTests.cs" />
+    <Compile Include="SubAccount\Criteria\UpdateManagedAccountCommandTests.cs" />
+    <Compile Include="SubAccount\Criteria\UpdateSubAccountCommandTests.cs" />
+    <Compile Include="SubAccount\SubAccountValidatorImplTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

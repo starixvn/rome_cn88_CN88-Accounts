@@ -9,6 +9,8 @@
     {
         public static void SetUp()
         {
+            UrlHelper.MapMainPath = Substitute.For<Func<string, string>>();
+            UrlHelper.MapMainPath(Arg.Any<string>()).Returns("MainPath");
             UrlHelper.MapFeaturesPath = Substitute.For<Func<string, string>>();
             UrlHelper.MapFeaturesPath(Arg.Any<string>()).Returns("FeaturesPath");
             UrlHelper.MapAccountsPath = Substitute.For<Func<string, string>>();

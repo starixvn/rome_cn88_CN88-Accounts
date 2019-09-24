@@ -1,0 +1,11 @@
+{
+  "isActive": true,
+  "siteMainApp": "/site-cn88",
+  "paths": [
+    "ProblemAccount/UpdateReviewStatus"
+  ],
+  "sites": [
+  ],
+  "verifyingSecurityCodePath": "SecurityCode/VerifySecurityCode",
+  "resetSecurityCodePath": "SecurityCode/ChangeSecurityCode"
+}

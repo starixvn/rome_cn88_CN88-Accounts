@@ -52,6 +52,9 @@
     <Reference Include="Alpha.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Alpha.Logging.1.0.1\lib\net461\Alpha.Logging.dll</HintPath>
     </Reference>
+    <Reference Include="Alpha.SecurityCode, Version=3.0.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Alpha.SecurityCode.3.0.0.7\lib\net461\Alpha.SecurityCode.dll</HintPath>
+    </Reference>
     <Reference Include="Alpha.SubAccount, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Alpha.SubAccount.1.0.0.1\lib\net40\Alpha.SubAccount.dll</HintPath>
     </Reference>
@@ -218,6 +221,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\securitycode.napinternal.json">
+      <DependentUpon>securitycode.json</DependentUpon>
+    </Content>
+    <Content Include="App_Data\securitycode.pro.json">
+      <DependentUpon>securitycode.json</DependentUpon>
+    </Content>
     <Content Include="App_Data\SPNames\Dev\DBCust.CustDB.xml" />
     <Content Include="App_Data\SPNames\Dev\DBONUSER.ON_USER.xml" />
     <Content Include="App_Data\SPNames\Internal\DBCust.CustDB.xml" />
@@ -346,6 +355,7 @@
     <Content Include="Features\ProblemAccount\Views\_TabItems.cshtml" />
     <Content Include="Features\ProblemAccount\Views\_ProblemAccountTableMobile.cshtml" />
     <Content Include="Features\chutzpah.json" />
+    <Content Include="App_Data\securitycode.json" />
     <None Include="packages.config" />
     <Content Include="Features\Shared\Views\_Layout.cshtml" />
     <Content Include="Features\Web.config">

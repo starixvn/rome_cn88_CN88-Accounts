@@ -4,6 +4,10 @@
     <thead>
         <tr>
             <th class="col-no">@Resources.No</th>
+            @if (Model.ViewerLevel.IsHeadlineLevel() && Model.CustLevel.IsMasterLevel())
+            {
+                <th class="col-uplineusername">@Resources.Super</th>
+            }
             @if (Model.CustLevel.IsAgentLevel())
             {
                 <th class="col-uplineusername">@Resources.Master</th>
@@ -15,6 +19,10 @@
             <th class="col-username">@Resources.Username</th>
             <th class="col-name">@Resources.Name</th>
             <th class="col-nickname">@Resources.Nickname</th>
+            @if (Model.CustLevel.IsSuperLevel())
+            {
+                <th class="col-numberofaccounts text-center">@Resources.ProblemMAAccounts <span class="icon-info" data-toggle="tooltip" title="@Resources.ProblemMAAccountsTooltip" /></th>
+            }
             @if (Model.CustLevel.IsMasterLevel())
             {
                 <th class="col-numberofaccounts text-center">@Resources.ProblemAgentAccounts <span class="icon-info" data-toggle="tooltip" title="@Resources.ProblemAgentAccountsTooltip" /></th>
@@ -42,7 +50,7 @@
             {
                 <tr>
                     <td>@index</td>
-                    @if (Model.CustLevel.IsAgentLevel() || Model.CustLevel.IsMemberLevel())
+                    @if (Model.IsShowUplineUsername)
                     {
                         <td>@account.UplineUsername</td>
                     }
@@ -58,12 +66,12 @@
                     </td>
                     <td>@account.Name</td>
                     <td>@account.Nickname</td>
-                    @if (Model.CustLevel.IsMasterLevel() || Model.CustLevel.IsAgentLevel())
+                    @if (Model.IsShowNumberOfDownline)
                     {
                         <td class="text-center">@account.NumberOfDownline</td>
                     }
                     <td align="center">
-                        @if (Model.HasUpdatePermission)
+                        @if (Model.CanUpdateAccountStatus)
                         {
                             <a class="link status-link" data-username="@account.Username" href="@Model.BuildStatusLink(account.CustId, account.Status)">@account.StatusName</a>
                         }

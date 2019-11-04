@@ -255,4 +255,7 @@
   <data name="SetReviewedConfirmMessage" xml:space="preserve">
     <value>确定要将下列账户设为已审核</value>
   </data>
+  <data name="Super" xml:space="preserve">
+    <value>股东</value>
+  </data>
 </root>

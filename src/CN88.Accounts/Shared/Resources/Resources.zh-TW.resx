@@ -255,4 +255,7 @@
   <data name="SetReviewedConfirmMessage" xml:space="preserve">
     <value>確定要將下列帳戶設為已審核</value>
   </data>
+  <data name="Super" xml:space="preserve">
+    <value>股東</value>
+  </data>
 </root>

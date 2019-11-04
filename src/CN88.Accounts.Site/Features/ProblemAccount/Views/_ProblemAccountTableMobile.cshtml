@@ -3,6 +3,10 @@
 <table id="tblProblemAccount" class="tbl-style2 table-problem-account @($"tbl-{Model.CustLevel.DisplayName.ToLowerInvariant()}")">
     <thead>
         <tr>
+            @if (Model.ViewerLevel.IsHeadlineLevel() && Model.CustLevel.IsMasterLevel())
+            {
+                <th class="col-uplineusername">@Resources.Super</th>
+            }
             @if (Model.CustLevel.IsAgentLevel())
             {
                 <th class="col-uplineusername">@Resources.Master</th>
@@ -41,7 +45,7 @@
             @foreach (var account in Model.PageData.DataSource)
             {
                 <tr>
-                    @if (Model.CustLevel.IsAgentLevel() || Model.CustLevel.IsMemberLevel())
+                    @if (Model.IsShowUplineUsername)
                     {
                         <td class="username-wrapper">@account.UplineUsername</td>
                     }
@@ -60,7 +64,7 @@
                         </div>
                     </td>
                     <td align="center">
-                        @if (Model.HasUpdatePermission)
+                        @if (Model.CanUpdateAccountStatus)
                         {
                             <a class="link status-link" data-username="@account.Username" href="@Model.BuildStatusLink(account.CustId, account.Status)">@account.StatusName</a>
                         }
@@ -79,7 +83,7 @@
                             }
                         </td>
                     }
-                    @if (Model.CustLevel.IsMasterLevel() || Model.CustLevel.IsAgentLevel())
+                    @if (Model.IsShowNumberOfDownline)
                     {
                         <td class="text-center">@account.NumberOfDownline</td>
                     }

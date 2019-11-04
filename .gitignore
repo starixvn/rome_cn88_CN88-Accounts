@@ -36,3 +36,5 @@ packages/
 node_modules/
 *.orig
 /_Chutzpah.coverage.html
+*.ncrunchsolution
+*.ncrunchproject

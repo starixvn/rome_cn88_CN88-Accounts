@@ -6,6 +6,7 @@
             int userId,
             int subAccId,
             byte roleId,
+            byte targetRoleId,
             bool isAllDownline,
             bool isAffectedAllDownlines,
             string selectedDownlineIds,
@@ -15,6 +16,7 @@
             UserId = userId;
             SubAccId = subAccId;
             RoleId = roleId;
+            TargetRoleId = targetRoleId;
             IsAllDownline = isAllDownline;
             IsAffectedAllDownlines = isAffectedAllDownlines;
             SelectedDownlineIds = selectedDownlineIds;
@@ -27,6 +29,8 @@
         public int SubAccId { get; }
 
         public byte RoleId { get; }
+
+        public byte TargetRoleId { get; }
 
         public bool IsAllDownline { get; }
 

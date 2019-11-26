@@ -54,6 +54,7 @@
                 param.UserId,
                 param.SubAccId,
                 param.RoleId,
+                param.TargetRoleId,
                 param.IsAllDownline,
                 param.IsAffectedAllDownlines,
                 param.SelectedDownlineIds,

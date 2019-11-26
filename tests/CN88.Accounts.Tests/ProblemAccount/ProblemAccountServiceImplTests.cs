@@ -70,7 +70,7 @@
         public void UpdateReviewStatus_Always_CallsDynamicRepositoryExecuteAsync()
         {
             // Arrange
-            var param = new UpdateReviewStatusParam(1, 0, 3, true, false, "1,2", "E", "127.0.0.1");
+            var param = new UpdateReviewStatusParam(1, 0, 4, 3, true, false, "1,2", "E", "127.0.0.1");
 
             // Act
             problemAccountService.UpdateReviewStatus(param).ConfigureAwait(false);

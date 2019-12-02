@@ -3,7 +3,10 @@
 <form class="form-inline filter" role="form" id="report-form">
     @RenderHiddenFeilds()
     @DateRangePicker.Render(Model.DateRangePicker, Resources.DateNotifiedFrom)
-    @RenderReviewStatusDropdown(Model.ReviewStatusSelection)
+    @if (Model.ViewerLevel.IsNotHeadlineLevel())
+    {
+        @RenderReviewStatusDropdown(Model.ReviewStatusSelection)
+    }
     @if (Model.IsShowUplineUsername)
     {
         <div class="form-group">
@@ -23,7 +26,10 @@
     @RenderHiddenFeilds()
     @Html.Hidden("FromDate", Model.DateRangePicker.FromDate)
     @Html.Hidden("ToDate", Model.DateRangePicker.ToDate)
-    @Html.Hidden("SelectedReviewStatus", Model.ReviewStatusSelection.SelectedId)
+    @if (Model.ViewerLevel.IsNotHeadlineLevel())
+    {
+        @Html.Hidden("SelectedReviewStatus", Model.ReviewStatusSelection.SelectedId)
+    }
     @if (Model.CustLevel.IsAgentLevel() || Model.CustLevel.IsMemberLevel())
     {
         @Html.Hidden(nameof(Model.UplineUsername), Model.UplineUsername)

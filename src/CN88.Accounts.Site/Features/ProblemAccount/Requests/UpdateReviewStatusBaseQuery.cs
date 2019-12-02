@@ -15,6 +15,7 @@
         public override bool IsValid()
             => base.IsValid()
             && !IsInternal
-            && !string.IsNullOrWhiteSpace(SelectedDownlineIds);
+            && !string.IsNullOrWhiteSpace(SelectedDownlineIds)
+            && ViewerLevel.IsNotHeadlineLevel();
     }
 }

@@ -36,7 +36,6 @@
             var param = new UpdateReviewStatusParam(
                 message.ViewerId,
                 message.SubAccountId,
-                message.ViewerLevelId,
                 message.CustLevelId,
                 message.IsAllDownline,
                 message.IsAffectedAllDownlines,

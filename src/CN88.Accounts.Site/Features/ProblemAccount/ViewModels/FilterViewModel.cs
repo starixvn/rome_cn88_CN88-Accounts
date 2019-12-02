@@ -18,6 +18,7 @@
             UplineUsername = query.UplineUsername;
             CustName = query.CustName;
             CustLevel = query.CustLevel;
+            ViewerLevel = query.ViewerLevel;
             IsShowUplineUsername = isShowUplineUsername;
 
             DateRangePicker = new DateRangePickerViewModel(
@@ -38,6 +39,8 @@
         public string CustName { get; }
 
         public UserLevel CustLevel { get; }
+
+        public UserLevel ViewerLevel { get; }
 
         public DateRangePickerViewModel DateRangePicker { get; }
 

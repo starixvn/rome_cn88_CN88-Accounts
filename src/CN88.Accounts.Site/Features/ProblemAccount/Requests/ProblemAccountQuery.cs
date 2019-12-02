@@ -20,7 +20,7 @@
             CustLevelId = ViewerLevel.IsHeadlineLevel() ? UserLevel.Super.Value : UserLevel.Master.Value;
             FromDate = SystemTime.Today.AddDays(defaultNumberOfDays);
             ToDate = SystemTime.Today;
-            SelectedReviewStatus = ReviewStatusConstants.NotReviewed;
+            SelectedReviewStatus = ViewerLevel.IsHeadlineLevel() ? ReviewStatusConstants.All : ReviewStatusConstants.NotReviewed;
             PageIndex = 1;
             PageSize = PagerConstants.DefaultPageSize;
         }

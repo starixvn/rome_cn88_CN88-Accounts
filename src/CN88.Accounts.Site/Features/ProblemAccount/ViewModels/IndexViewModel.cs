@@ -21,7 +21,9 @@
 
             var hasEditAccountPermission = query.ViewerStatusId == CustomerStatusConstants.Active && query.AccountManagementEditView;
             CanUpdateAccountStatus = query.ViewerLevel.IsNotHeadlineLevel() && hasEditAccountPermission;
-            CanUpdateReviewStatus = hasEditAccountPermission && query.SelectedReviewStatus != ReviewStatusConstants.Reviewed;
+            CanUpdateReviewStatus = query.ViewerLevel.IsNotHeadlineLevel()
+                && hasEditAccountPermission
+                && query.SelectedReviewStatus != ReviewStatusConstants.Reviewed;
         }
 
         public bool IsMobile { get; }

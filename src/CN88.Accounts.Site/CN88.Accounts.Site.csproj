@@ -357,8 +357,10 @@
     <Content Include="Features\ProblemAccount\Views\_ProblemAccountTableMobile.cshtml" />
     <Content Include="Features\chutzpah.json" />
     <Content Include="App_Data\securitycode.json" />
-    <Content Include="Features\ProblemAccount\ExcelTemplates\Super.xls" />
+    <Content Include="Features\ProblemAccount\ExcelTemplates\HLSuper.xls" />
     <Content Include="Features\ProblemAccount\ExcelTemplates\HLMaster.xls" />
+    <Content Include="Features\ProblemAccount\ExcelTemplates\HLAgent.xls" />
+    <Content Include="Features\ProblemAccount\ExcelTemplates\HLMember.xls" />
     <None Include="packages.config" />
     <Content Include="Features\Shared\Views\_Layout.cshtml" />
     <Content Include="Features\Web.config">

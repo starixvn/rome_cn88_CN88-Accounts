@@ -33,12 +33,15 @@
             }
             <th class="col-status text-center">@Resources.Status</th>
             <th class="col-datenotified">@Resources.DateNotified</th>
-            <th class="col-reviewstatus">@Resources.ReviewStatus</th>
-            @if (Model.CanUpdateReviewStatus)
+            @if (Model.ViewerLevel.IsNotHeadlineLevel())
             {
-                <th class="text-center col-review-action">
-                    <input type="checkbox" id="SelectAll" name="SelectAll" value="" />
-                </th>
+                <th class="col-reviewstatus">@Resources.ReviewStatus</th>
+                if (Model.CanUpdateReviewStatus)
+                {
+                    <th class="text-center col-review-action">
+                        <input type="checkbox" id="SelectAll" name="SelectAll" value="" />
+                    </th>
+                }
             }
         </tr>
     </thead>
@@ -81,15 +84,18 @@
                         }
                     </td>
                     <td>@account.CreatedDate.ToLongDateWithHyphen()</td>
-                    <td>@account.ReviewStatus</td>
-                    @if (Model.CanUpdateReviewStatus)
+                    @if (Model.ViewerLevel.IsNotHeadlineLevel())
                     {
-                        <td class="text-center col-review-action">
-                            @if (!account.IsReviewed)
-                            {
-                                <input class="chk-downline" type="checkbox" name="@account.CustId" value="@account.CustId" data-username="@account.Username" />
-                            }
-                        </td>
+                        <td>@account.ReviewStatus</td>
+                        if (Model.CanUpdateReviewStatus)
+                        {
+                            <td class="text-center col-review-action">
+                                @if (!account.IsReviewed)
+                                {
+                                    <input class="chk-downline" type="checkbox" name="@account.CustId" value="@account.CustId" data-username="@account.Username" />
+                                }
+                            </td>
+                        }
                     }
                 </tr>
                 index++;

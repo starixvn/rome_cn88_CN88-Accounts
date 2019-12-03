@@ -258,4 +258,10 @@
   <data name="Super" xml:space="preserve">
     <value>股東</value>
   </data>
+  <data name="ProblemMAAccountsTooltip" xml:space="preserve">
+    <value>在選擇時間範圍內被新標記的帳戶即為有問題的總代理帳戶。</value>
+  </data>
+  <data name="ProblemMAAccounts" xml:space="preserve">
+    <value>問題帳戶(總代理)</value>
+  </data>
 </root>

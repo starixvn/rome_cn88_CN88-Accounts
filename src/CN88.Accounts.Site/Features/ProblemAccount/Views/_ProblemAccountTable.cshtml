@@ -4,7 +4,7 @@
     <thead>
         <tr>
             <th class="col-no">@Resources.No</th>
-            @if (Model.ViewerLevel.IsHeadlineLevel() && Model.CustLevel.IsMasterLevel())
+            @if (Model.IsHeadlineViewMaster)
             {
                 <th class="col-uplineusername">@Resources.Super</th>
             }

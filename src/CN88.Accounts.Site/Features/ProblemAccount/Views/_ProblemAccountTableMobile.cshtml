@@ -3,7 +3,7 @@
 <table id="tblProblemAccount" class="tbl-style2 table-problem-account @($"tbl-{Model.CustLevel.DisplayName.ToLowerInvariant()}")">
     <thead>
         <tr>
-            @if (Model.ViewerLevel.IsHeadlineLevel() && Model.CustLevel.IsMasterLevel())
+            @if (Model.IsHeadlineViewMaster)
             {
                 <th class="col-uplineusername">@Resources.Super</th>
             }

@@ -51,7 +51,9 @@
         public bool IsShowNumberOfDownline => !CustLevel.IsMemberLevel();
 
         public bool IsShowUplineUsername
-            => (ViewerLevel.IsHeadlineLevel() && CustLevel.IsMasterLevel()) || CustLevel.IsAgentLevel() || CustLevel.IsMemberLevel();
+            => IsHeadlineViewMaster || CustLevel.IsAgentLevel() || CustLevel.IsMemberLevel();
+
+        public bool IsHeadlineViewMaster => ViewerLevel.IsHeadlineLevel() && CustLevel.IsMasterLevel();
 
         public FilterViewModel FilterViewModel => new FilterViewModel(query, IsShowUplineUsername);
 

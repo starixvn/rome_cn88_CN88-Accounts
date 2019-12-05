@@ -26,7 +26,7 @@
         public void GetProblemAccounts_Always_CallsDynamicRepositoryFecthAsync()
         {
             // Arrange
-            var param = new GetProblemAccountsParam(1, 0, true, string.Empty, 3, string.Empty, 0, DateTime.Now, DateTime.Now, 1, 10);
+            var param = new GetProblemAccountsParam(1, 4, 0, true, string.Empty, 3, string.Empty, 0, DateTime.Now, DateTime.Now, 1, 10);
 
             // Act
             problemAccountService.GetProblemAccounts(param).ConfigureAwait(false);
@@ -51,7 +51,7 @@
         public void GetProblemAccounts_Always_ReturnsCorrectResult()
         {
             // Arrange
-            var param = new GetProblemAccountsParam(1, 0, true, string.Empty, 3, string.Empty, 0, DateTime.Now, DateTime.Now, 1, 10);
+            var param = new GetProblemAccountsParam(1, 4, 0, true, string.Empty, 3, string.Empty, 0, DateTime.Now, DateTime.Now, 1, 10);
             var problemAccounts = new List<ProblemAccount>
             {
                 new ProblemAccount(1,"UplineUsername","Username","Name","Nickname",5,1,DateTime.Now,false)

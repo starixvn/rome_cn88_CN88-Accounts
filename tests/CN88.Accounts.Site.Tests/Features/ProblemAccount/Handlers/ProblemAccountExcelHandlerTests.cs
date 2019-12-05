@@ -162,7 +162,6 @@
             Assert.Throws<ArgumentNullException>(() => problemAccountExcelHandler.GetExcelTemplatePath(templateName));
         }
 
-
         [Fact]
         public void GetExcelTemplatePath_FileIsNotExist_ThrowsArgumentNullException()
         {
@@ -182,7 +181,7 @@
             var data = new ProblemAccount(1, "UplineUsername", "Username", "Name", "Nickname", 5, 1, SystemTime.Today, false);
 
             // Act
-            var actualMapper = problemAccountExcelHandler.GetBodyRowMapper(message.CustLevel);
+            var actualMapper = problemAccountExcelHandler.GetBodyRowMapper(message);
 
             // Assert
             Assert.True((int)actualMapper.Mappings[Column.A](data) == 1
@@ -204,7 +203,7 @@
             var data = new ProblemAccount(1, "UplineUsername", "Username", "Name", "Nickname", 5, 1, SystemTime.Today, false);
 
             // Act
-            var actualMapper = problemAccountExcelHandler.GetBodyRowMapper(message.CustLevel);
+            var actualMapper = problemAccountExcelHandler.GetBodyRowMapper(message);
 
             // Assert
             Assert.True((int)actualMapper.Mappings[Column.A](data) == 1
@@ -227,7 +226,7 @@
             var data = new ProblemAccount(1, "UplineUsername", "Username", "Name", "Nickname", 5, 1, SystemTime.Today, false);
 
             // Act
-            var actualMapper = problemAccountExcelHandler.GetBodyRowMapper(message.CustLevel);
+            var actualMapper = problemAccountExcelHandler.GetBodyRowMapper(message);
 
             // Assert
             Assert.True((int)actualMapper.Mappings[Column.A](data) == 1

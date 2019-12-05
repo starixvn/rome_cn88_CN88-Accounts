@@ -1,11 +1,17 @@
 ﻿@using CN88.Common.Models
-@model UserLevel
-<li class="@(Model.IsMasterLevel() ? "active" : string.Empty)" role="presentation">
+@model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.IndexViewModel
+@if (Model.ViewerLevel.IsHeadlineLevel())
+{
+    <li class="@(Model.CustLevel.IsSuperLevel() ? "active" : string.Empty)" role="presentation">
+        <a href="@Url.Action("Index", "ProblemAccount", new { CustLevelId = UserLevel.Super.Value })">@Resources.Super</a>
+    </li>
+}
+<li class="@(Model.CustLevel.IsMasterLevel() ? "active" : string.Empty)" role="presentation">
     <a href="@Url.Action("Index", "ProblemAccount", new { CustLevelId = UserLevel.Master.Value })">@Resources.Master</a>
 </li>
-<li class="@(Model.IsAgentLevel() ? "active" : string.Empty)" role="presentation">
+<li class="@(Model.CustLevel.IsAgentLevel() ? "active" : string.Empty)" role="presentation">
     <a href="@Url.Action("Index", "ProblemAccount", new { CustLevelId = UserLevel.Agent.Value })">@Resources.Agent</a>
 </li>
-<li class="@(Model.IsMemberLevel() ? "active" : string.Empty)" role="presentation">
+<li class="@(Model.CustLevel.IsMemberLevel() ? "active" : string.Empty)" role="presentation">
     <a href="@Url.Action("Index", "ProblemAccount", new { CustLevelId = UserLevel.Member.Value })">@Resources.Member</a>
 </li>

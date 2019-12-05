@@ -7,6 +7,7 @@
     {
         public GetProblemAccountsCriteria(
             int custId,
+            byte roleId,
             int subAccId,
             bool isAllDownline,
             string uplineUsername,
@@ -19,6 +20,7 @@
             int pageSize)
         {
             CustId = custId;
+            RoleId = roleId;
             SubAccId = subAccId;
             IsAllDownline = isAllDownline;
             UplineUsername = uplineUsername;
@@ -32,6 +34,8 @@
         }
 
         public int CustId { get; }
+
+        public byte RoleId { get; }
 
         public int SubAccId { get; }
 
@@ -60,6 +64,5 @@
 
         public override bool IsValid()
             => CustId > 0 && SubAccId >= 0 && SearchRoleId > 0;
-
     }
 }

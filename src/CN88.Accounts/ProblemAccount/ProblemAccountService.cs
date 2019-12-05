@@ -27,6 +27,7 @@
         {
             var criteria = new GetProblemAccountsCriteria(
                 param.CustId,
+                param.ViewerLevelId,
                 param.SubAccId,
                 param.IsAllDownline,
                 param.UplineUsername,

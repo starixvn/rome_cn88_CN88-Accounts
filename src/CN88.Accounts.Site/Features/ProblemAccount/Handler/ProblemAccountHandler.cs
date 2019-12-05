@@ -49,6 +49,7 @@
         protected internal static GetProblemAccountsParam CreateParam(ProblemAccountQuery message)
             => new GetProblemAccountsParam(
                 message.ViewerId,
+                message.ViewerLevelId,
                 message.SubAccountId,
                 message.IsAllDownline,
                 message.UplineUsername,

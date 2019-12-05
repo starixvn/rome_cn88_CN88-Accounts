@@ -13,11 +13,13 @@
 
     public class FilterViewModel
     {
-        public FilterViewModel(ProblemAccountQuery query)
+        public FilterViewModel(ProblemAccountQuery query, bool isShowUplineUsername)
         {
             UplineUsername = query.UplineUsername;
             CustName = query.CustName;
             CustLevel = query.CustLevel;
+            ViewerLevel = query.ViewerLevel;
+            IsShowUplineUsername = isShowUplineUsername;
 
             DateRangePicker = new DateRangePickerViewModel(
                DateTime.MinValue,
@@ -30,13 +32,15 @@
                 query.SelectedReviewStatus);
         }
 
-
+        public bool IsShowUplineUsername { get; }
 
         public string UplineUsername { get; }
 
         public string CustName { get; }
 
         public UserLevel CustLevel { get; }
+
+        public UserLevel ViewerLevel { get; }
 
         public DateRangePickerViewModel DateRangePicker { get; }
 

@@ -1,6 +1,5 @@
 ﻿namespace CN88.Accounts.Site.Features.ProblemAccount.Handler
 {
-    using System.Collections.Generic;
     using System.Threading.Tasks;
     using CN88.Accounts.ProblemAccount;
     using CN88.Accounts.Shared.Extensions;
@@ -33,9 +32,9 @@
             var problemAccounts = await problemAccountService.GetProblemAccounts(param);
 
             var fileContent = workbook
-                .UseTemplate(GetTemplateInfo(message.CustLevel))
+                .UseTemplate(GetTemplateInfo(message))
                 .Header(Resources.ResourceManager.GetString)
-                .Body(problemAccounts.DataSource, GetBodyRowMapper(message.CustLevel))
+                .Body(problemAccounts.DataSource, GetBodyRowMapper(message))
                 .ExportToBytes();
 
             return new ExcelFileViewModel(GetExcelFileName(message), fileContent);
@@ -43,30 +42,43 @@
 
         protected override string GetExcelTemplateDir() => "~/Features/ProblemAccount/ExcelTemplates";
 
-        internal Mapper<ProblemAccount> GetBodyRowMapper(UserLevel userLevel)
-            => BodyRowMapperByLevel[userLevel];
-
-        private IDictionary<UserLevel, Mapper<ProblemAccount>> BodyRowMapperByLevel
-            => new Dictionary<UserLevel, Mapper<ProblemAccount>>
+        internal Mapper<ProblemAccount> GetBodyRowMapper(ProblemAccountExcelQuery message)
+        {
+            if (message.CustLevel.IsMemberLevel())
             {
-                [UserLevel.Master] = GetMasterBodyRowMapper(),
-                [UserLevel.Agent] = GetAgentBodyRowMapper(),
-                [UserLevel.Member] = GetMemberBodyRowMapper()
-            };
+                return GetMemberBodyRowMapper(message.ViewerLevel);
+            }
 
-        private Mapper<ProblemAccount> GetMasterBodyRowMapper()
-            => new Mapper<ProblemAccount>()
+            if (message.CustLevel.IsSuperLevel() || (message.CustLevel.IsMasterLevel() && message.ViewerLevel.IsNotHeadlineLevel()))
+            {
+                return GetTopLevelBodyRowMapper(message.ViewerLevel);
+            }
+
+            return GetBodyRowMapper(message.ViewerLevel);
+        }
+
+        private Mapper<ProblemAccount> GetTopLevelBodyRowMapper(UserLevel viewerLevel)
+        {
+            var mapper = new Mapper<ProblemAccount>()
                 .Map(A, _ => currentRowIndex++)
                 .Map(B, data => data.Username)
                 .Map(C, data => data.Name)
                 .Map(D, data => data.Nickname ?? string.Empty)
                 .Map(E, data => data.NumberOfDownline)
                 .Map(F, data => data.StatusName)
-                .Map(G, data => data.CreatedDate)
-                .Map(H, data => data.ReviewStatus);
+                .Map(G, data => data.CreatedDate);
 
-        private Mapper<ProblemAccount> GetAgentBodyRowMapper()
-            => new Mapper<ProblemAccount>()
+            if (viewerLevel.IsNotHeadlineLevel())
+            {
+                mapper.Map(H, data => data.ReviewStatus);
+            }
+
+            return mapper;
+        }
+
+        private Mapper<ProblemAccount> GetBodyRowMapper(UserLevel viewerLevel)
+        {
+            var mapper = new Mapper<ProblemAccount>()
                 .Map(A, _ => currentRowIndex++)
                 .Map(B, data => data.UplineUsername)
                 .Map(C, data => data.Username)
@@ -74,21 +86,49 @@
                 .Map(E, data => data.Nickname ?? string.Empty)
                 .Map(F, data => data.NumberOfDownline)
                 .Map(G, data => data.StatusName)
-                .Map(H, data => data.CreatedDate)
-                .Map(I, data => data.ReviewStatus);
+                .Map(H, data => data.CreatedDate);
 
-        private Mapper<ProblemAccount> GetMemberBodyRowMapper()
-            => new Mapper<ProblemAccount>()
+            if (viewerLevel.IsNotHeadlineLevel())
+            {
+                mapper.Map(I, data => data.ReviewStatus);
+            }
+
+            return mapper;
+        }
+
+        private Mapper<ProblemAccount> GetMemberBodyRowMapper(UserLevel viewerLevel)
+        {
+            var mapper = new Mapper<ProblemAccount>()
                 .Map(A, _ => currentRowIndex++)
                 .Map(B, data => data.UplineUsername)
                 .Map(C, data => data.Username)
                 .Map(D, data => data.Name)
                 .Map(E, data => data.Nickname ?? string.Empty)
                 .Map(F, data => data.StatusName)
-                .Map(G, data => data.CreatedDate)
-                .Map(H, data => data.ReviewStatus);
+                .Map(G, data => data.CreatedDate);
+
+            if (viewerLevel.IsNotHeadlineLevel())
+            {
+                mapper.Map(H, data => data.ReviewStatus);
+            }
+
+            return mapper;
+        }
 
         private static string GetExcelFileName(ProblemAccountExcelQuery message)
             => $"{Resources.ProblemAccount} {message.FromDate.ToShortDateWithHyphen()} --> {message.ToDate.ToShortDateWithHyphen()} - {Resources.ResourceManager.GetString(message.CustLevel.DisplayName)}";
+
+        private TemplateInfo GetTemplateInfo(ProblemAccountExcelQuery message)
+        {
+            var templateName = message.ViewerLevel.IsHeadlineLevel() ? $"HL{message.CustLevel.DisplayName}" : message.CustLevel.DisplayName;
+
+            return new TemplateInfo(
+                   GetExcelTemplatePath(templateName),
+                   noInfomationText: Resources.NoInformationIsAvailable,
+                   titleStartIndex: -1,
+                   headerStartIndex: 1,
+                   bodyStartIndex: 2,
+                   bodyEndIndex: 3);
+        }
     }
 }

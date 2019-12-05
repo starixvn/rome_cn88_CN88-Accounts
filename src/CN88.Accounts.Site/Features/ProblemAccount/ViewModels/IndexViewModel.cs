@@ -18,15 +18,21 @@
         {
             this.query = query;
             PageData = pagedData;
-            HasUpdatePermission = query.ViewerStatusId == CustomerStatusConstants.Active && query.AccountManagementEditView;
-            CanUpdateReviewStatus = HasUpdatePermission && query.SelectedReviewStatus != ReviewStatusConstants.Reviewed;
+
+            var hasEditAccountPermission = query.ViewerStatusId == CustomerStatusConstants.Active && query.AccountManagementEditView;
+            CanUpdateAccountStatus = query.ViewerLevel.IsNotHeadlineLevel() && hasEditAccountPermission;
+            CanUpdateReviewStatus = query.ViewerLevel.IsNotHeadlineLevel()
+                && hasEditAccountPermission
+                && query.SelectedReviewStatus != ReviewStatusConstants.Reviewed;
         }
 
         public bool IsMobile { get; }
 
-        public bool HasUpdatePermission { get; }
+        public bool CanUpdateAccountStatus { get; }
 
         public bool CanUpdateReviewStatus { get; }
+
+        public UserLevel ViewerLevel => query.ViewerLevel;
 
         public UserLevel CustLevel => query.CustLevel;
 
@@ -42,7 +48,14 @@
             }
         }
 
-        public FilterViewModel FilterViewModel => new FilterViewModel(query);
+        public bool IsShowNumberOfDownline => !CustLevel.IsMemberLevel();
+
+        public bool IsShowUplineUsername
+            => IsHeadlineViewMaster || CustLevel.IsAgentLevel() || CustLevel.IsMemberLevel();
+
+        public bool IsHeadlineViewMaster => ViewerLevel.IsHeadlineLevel() && CustLevel.IsMasterLevel();
+
+        public FilterViewModel FilterViewModel => new FilterViewModel(query, IsShowUplineUsername);
 
         public PagerViewModel PagerViewModel
             => new PagerViewModel(PageData.PageIndex, PageData.PageSize, PageData.TotalRecords);

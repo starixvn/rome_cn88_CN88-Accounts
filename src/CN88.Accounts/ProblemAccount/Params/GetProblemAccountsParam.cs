@@ -6,6 +6,7 @@
     {
         public GetProblemAccountsParam(
             int custId,
+            byte viewerLevelId,
             int subAccId,
             bool isAllDownline,
             string uplineUsername,
@@ -18,6 +19,7 @@
             int pageSize)
         {
             CustId = custId;
+            ViewerLevelId = viewerLevelId;
             SubAccId = subAccId;
             IsAllDownline = isAllDownline;
             UplineUsername = uplineUsername;
@@ -31,6 +33,8 @@
         }
 
         public int CustId { get; }
+
+        public byte ViewerLevelId { get; }
 
         public int SubAccId { get; }
 

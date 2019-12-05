@@ -51,7 +51,6 @@ namespace CN88.Accounts.Tests.ProblemAccount.Criteria
             Assert.False(criteria.IsValid());
         }
 
-
         [Fact]
         public void IsValid_ValidCriteria_ReturnsTrue()
         {

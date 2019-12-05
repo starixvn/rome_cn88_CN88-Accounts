@@ -286,6 +286,24 @@ namespace CN88.Accounts.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Problem MA Accounts.
+        /// </summary>
+        public static string ProblemMAAccounts {
+            get {
+                return ResourceManager.GetString("ProblemMAAccounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Problem Master Agent Accounts are the newly marked ones in the selected report period..
+        /// </summary>
+        public static string ProblemMAAccountsTooltip {
+            get {
+                return ResourceManager.GetString("ProblemMAAccountsTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Problem Member Accounts.
         /// </summary>
         public static string ProblemMemberAccounts {
@@ -399,6 +417,15 @@ namespace CN88.Accounts.Shared.Resources {
         public static string Submit {
             get {
                 return ResourceManager.GetString("Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SMA.
+        /// </summary>
+        public static string Super {
+            get {
+                return ResourceManager.GetString("Super", resourceCulture);
             }
         }
         

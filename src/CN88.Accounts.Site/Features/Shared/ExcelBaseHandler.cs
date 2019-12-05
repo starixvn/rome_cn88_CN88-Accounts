@@ -32,8 +32,8 @@
                    bodyStartIndex: bodyStartIndex,
                    bodyEndIndex: bodyEndIndex);
 
-        protected internal virtual string ExcelTemplatePath(UserLevel viewerLevel)
-            => GetExcelTemplatePath(viewerLevel.DisplayName);
+        protected internal virtual string ExcelTemplatePath(UserLevel userLevel)
+            => GetExcelTemplatePath(userLevel.DisplayName);
 
         protected internal virtual string GetExcelTemplatePath(string templateName, string fileExtension = "xls")
         {

@@ -1,11 +1,5 @@
 ﻿@using CN88.Common.Models
 @model CN88.Accounts.Site.Features.ProblemAccount.ViewModels.IndexViewModel
-@if (Model.ViewerLevel.IsHeadlineLevel())
-{
-    <li class="@(Model.CustLevel.IsSuperLevel() ? "active" : string.Empty)" role="presentation">
-        <a href="@Url.Action("Index", "ProblemAccount", new { CustLevelId = UserLevel.Super.Value })">@Resources.Super</a>
-    </li>
-}
 <li class="@(Model.CustLevel.IsMasterLevel() ? "active" : string.Empty)" role="presentation">
     <a href="@Url.Action("Index", "ProblemAccount", new { CustLevelId = UserLevel.Master.Value })">@Resources.Master</a>
 </li>

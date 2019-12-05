@@ -17,7 +17,7 @@
         public ProblemAccountQuery(IUser viewer)
             : base(viewer)
         {
-            CustLevelId = ViewerLevel.IsHeadlineLevel() ? UserLevel.Super.Value : UserLevel.Master.Value;
+            CustLevelId = UserLevel.Master.Value;
             FromDate = SystemTime.Today.AddDays(defaultNumberOfDays);
             ToDate = SystemTime.Today;
             SelectedReviewStatus = ViewerLevel.IsHeadlineLevel() ? ReviewStatusConstants.All : ReviewStatusConstants.NotReviewed;
@@ -42,7 +42,10 @@
             var isValidViewerLevel = ViewerLevel.IsHeadlineLevel()
                 || (ViewerLevel.IsSuperLevel() && ViewerLevel.IsUplineOf(CustLevel));
 
-            return base.IsValid() && isValidViewerLevel && FromDate <= ToDate;
+            return base.IsValid()
+                && isValidViewerLevel
+                && CustLevel.IsNotSuperLevel()
+                && FromDate <= ToDate;
         }
     }
 }

@@ -20,7 +20,7 @@ class DateRangePickerComponent {
 
         const dateRangePicker = this.$("#" + this.options.selectorId);
         const currentDate = dateRangePicker.data("currentdate");
-        const minDate = dateRangePicker.data("mindate") == "0001-01-01" ? null : dateRangePicker.data("mindate");
+        const minDate = dateRangePicker.data("mindate") === "0001-01-01" ? null : dateRangePicker.data("mindate");
         const maxDate = dateRangePicker.data("maxdate");
 
         dateRangePicker.nexDatePicker({
